@@ -9,6 +9,7 @@ import { existsSync } from 'node:fs';
 const site = JSON.parse(await readFile('data/site.json', 'utf8'));
 const manuel = JSON.parse(await readFile('data/yazilar.json', 'utf8')).yazilar;
 const konusmalar = JSON.parse(await readFile('data/konusmalar.json', 'utf8')).konusmalar;
+const raporlar = JSON.parse(await readFile('data/raporlar.json', 'utf8')).raporlar;
 const onbellek = JSON.parse(await readFile('data/substack-onbellek.json', 'utf8'));
 
 const KATEGORILER = [
@@ -180,6 +181,8 @@ const konusmaHTML = konusmalar.map((t) => {
   return `<li class="konusma"><div class="yt" data-id="${id}"><button type="button" class="yt-oynat" aria-label="${esc(t.baslik)} videosunu oynat"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="yt-dugme" aria-hidden="true"><svg viewBox="0 0 68 48" width="56" height="40"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#f00"/><path d="M45 24 27 14v20z" fill="#fff"/></svg></span></button></div>${metin}</li>`;
 }).join('\n');
 
+const raporHTML = raporlar.map((r) => `<li><a class="rapor" href="${esc(r.url)}">${r.kapak ? `<span class="rapor-kapak"><img src="${esc(r.kapak)}" alt="" loading="lazy"></span>` : `<span class="rapor-kapak rapor-rozet" aria-hidden="true">${/tez/i.test(r.etiket) ? 'Tez' : 'Rapor'}</span>`}<span class="rapor-metin"><span class="etiket">${esc(r.etiket)} · ${esc(r.tarih)}</span><span class="rapor-baslik">${esc(r.baslik)}</span>${r.aciklama ? `<span class="soluk">${esc(r.aciklama)}</span>` : ''}</span></a></li>`).join('\n');
+
 // ---------- Logolar ----------
 const LOGO = {
   spotify: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1DB954"/><path d="M6.2 9.3c3.9-1.2 8.3-.8 11.6 1.1M6.8 12.5c3.2-.9 6.7-.6 9.5 1M7.4 15.5c2.5-.7 5.1-.5 7.3.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>',
@@ -288,11 +291,7 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 <section id="yazilar" class="kap bolum-blok">
 <p class="ust-etiket koyu">Raporlar ve yazılar</p>
 <h2>Uzun soluklu çalışmalar</h2>
-<div class="rapor-izgara">
-<a class="kart koyu-kart" href="https://www.toplum.org.tr/made-in-europe-ve-turkiye/"><span class="etiket">TÇE Raporu · 20 Ekim 2026</span><span class="rapor-baslik">"Made in Europe" ve Türkiye</span><span class="soluk-acik">Avrupa Birliği Sanayi Hızlandırma Yasası önerisi ve Türkiye için anlamı</span><span class="oku">Raporu oku →</span></a>
-<a class="kart koyu-kart" href="https://www.toplum.org.tr/yeni-guc-mimarisi-dijital-hegemonya/"><span class="etiket">TÇE Raporu · No 27 · Ağustos 2026</span><span class="rapor-baslik">Yeni Güç Mimarisi: Dijital Hegemonya</span><span class="soluk-acik">İmran Gürakan ile birlikte · Dijital egemenlik ve Türkiye için politika seçenekleri</span><span class="oku">Raporu oku →</span></a>
-<div class="kart"><span class="etiket">Yüksek lisans tezi · ODTÜ · 2025</span><span class="rapor-baslik kucuk-baslik">Regulation of Digital Markets: A Comparative Analysis of the EU Digital Markets Act and Its Implications for Competition Law in Türkiye</span></div>
-</div>
+<ol class="rapor-listesi">${raporHTML}</ol>
 <div class="baslik-satir tum-yazilar"><h3>Tüm yazılar <span class="soluk" id="sayac">(${yazilar.length})</span></h3><span class="soluk">En yeniden en eskiye</span></div>
 <div class="filtreler" role="group" aria-label="Konuya göre filtrele">${filtreHTML}</div>
 <div id="yazi-alani">${yaziListesiHTML()}</div>

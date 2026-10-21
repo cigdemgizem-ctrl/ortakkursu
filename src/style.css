@@ -109,14 +109,15 @@ a.sayi:hover .sayi-kapak img { transform: scale(1.03); }
 
 /* Raporlar ve yazılar */
 #yazilar h2 { margin-bottom: 32px; }
-.rapor-izgara { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 24px; }
-.rapor-izgara .kart { min-height: 240px; padding: 32px; }
-.koyu-kart { background: var(--murekkep); border-color: var(--murekkep); color: var(--krem); }
-a.koyu-kart:hover { color: var(--krem); border-color: var(--kiremit); }
-.koyu-kart .etiket, .koyu-kart .oku { color: var(--kiremit); }
-.soluk-acik { color: var(--soluk-acik); font-size: 15px; }
-.rapor-baslik { font-family: var(--serif); font-weight: 700; font-size: 26px; line-height: 1.2; }
-.kucuk-baslik { font-size: 21px; line-height: 1.3; }
+.rapor-listesi { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 520px), 1fr)); gap: 14px; }
+.rapor { display: flex; gap: 18px; align-items: center; background: var(--beyaz); border: 1px solid var(--tas); border-radius: 14px; padding: 12px; text-decoration: none; color: var(--murekkep); height: 100%; }
+.rapor:hover { border-color: var(--murekkep); color: var(--murekkep); }
+.rapor-kapak { flex: 0 0 132px; aspect-ratio: 16 / 10; border-radius: 8px; overflow: hidden; background: var(--tas); }
+.rapor-kapak img { width: 100%; height: 100%; object-fit: cover; }
+.rapor-rozet { display: flex; align-items: center; justify-content: center; background: var(--murekkep); color: var(--kiremit); font-family: var(--serif); font-weight: 700; font-size: 22px; }
+.rapor-metin { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.rapor-baslik { font-family: var(--serif); font-weight: 700; font-size: 18px; line-height: 1.3; }
+.rapor .soluk { font-size: 14px; }
 .tum-yazilar { margin-top: 72px; margin-bottom: 16px; }
 .tum-yazilar h3 { font-size: 30px; }
 .filtreler { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
@@ -193,6 +194,8 @@ a.yazi-baslik:hover { color: var(--kiremit-koyu); }
   .tanitim .dugmeler { width: 100%; }
   .konusma { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .konusma-metin { padding: 0 6px 6px; }
+  .rapor-kapak { flex-basis: 96px; }
+  .rapor-baslik { font-size: 16px; }
   .bolum-blok { padding-top: 64px; }
   .menu { gap: 0 18px; }
 }

@@ -1,20 +1,83 @@
 {
   "_aciklama": "Konuşma ve paneller, en yeniden en eskiye. video alanına YouTube linkini yazın; kart tıklandığında o videoya gider.",
   "konusmalar": [
-    { "zaman": "Ekim 2026 · Ankara", "baslik": "Türkiye'de Demografik Dönüşüm ve Stratejiler: Rapor Sunumu ve Panel", "yer": "Toplum Çalışmaları Enstitüsü", "video": "https://www.youtube.com/watch?v=K_Pq6sAMbAA" },
-    { "zaman": "Ekim 2026 · Ankara", "baslik": "Ankara Barosu 69. Olağan Genel Kurulu", "yer": "Avukat Hakları Grubu Ankara · canlı yayın", "video": "https://www.youtube.com/watch?v=GZhV2a-mU2M" },
-    { "zaman": "Ağustos 2026 · Ankara", "baslik": "Av. Çiğdem Gizem Okkaoğlu", "yer": "Avukat Hakları Grubu Ankara", "video": "https://www.youtube.com/watch?v=8ZzaJeIZYZM" },
-    { "zaman": "Eylül 2025 · Ankara", "baslik": "30 Ağustos Zafer Bayramı Resepsiyonu ve Adli Yıl Açılışı Konuşması", "yer": "Avukat Hakları Grubu Ankara", "video": "https://www.youtube.com/watch?v=R-AD8It5mfM" },
-    { "zaman": "Ocak 2025", "baslik": "Kartalkaya Faciasının Hukuki İncelemesi", "yer": "Toplum Çalışmaları Enstitüsü · Dr. Halim Alperen Çıtak ile", "video": "https://www.youtube.com/watch?v=RXitCPb3gks" },
-    { "zaman": "Ekim 2024", "baslik": "Yapay Zekâ Nerede, Biz Neredeyiz?", "yer": "Toplum Çalışmaları Enstitüsü · Ussal Şahbaz ile", "video": "https://www.youtube.com/watch?v=VkLNiUcobgw" },
-    { "zaman": "Mayıs 2024 · İstanbul", "baslik": "Bilgisayımsal Antitröst: Rekabet Hukuku Uygulamasında Yeni Bir Dönem", "yer": "Uygulamalı Rekabet Hukuku Seminerleri, İstanbul Bilgi Üniversitesi Rekabet Hukuku Merkezi · Av. Yavuz Selim Günay ile", "video": "https://www.youtube.com/watch?v=gM1_0BvUPEI" },
-    { "zaman": "Şubat 2024 · Ankara", "baslik": "Rekabet Hukuku Odaklı Dava Atölyesi", "yer": "Avukat Hakları Grubu Ankara", "video": "https://www.youtube.com/watch?v=EUxGGtAbCeo" },
-    { "zaman": "Eylül 2023", "baslik": "HT Podcast #4: Being an E-Discovery Lawyer, İbrahim Enis Özkan (Consilio)", "yer": "hukukteknolojisi.com", "video": "https://www.youtube.com/watch?v=phBRRlQBfo8" },
-    { "zaman": "Eylül 2023", "baslik": "HT Podcast #3: Revolutionizing Document Automation, Dorna Moini (Gavel)", "yer": "hukukteknolojisi.com", "video": "https://www.youtube.com/watch?v=LlEPIEL-8PI" },
-    { "zaman": "Ağustos 2023", "baslik": "HT Podcast #2: BRYTER Ürün Tanıtımı, Bartu Gündoğdu", "yer": "hukukteknolojisi.com", "video": "https://www.youtube.com/watch?v=2h3dUaSqRdo" },
-    { "zaman": "Ağustos 2023", "baslik": "HT Podcast #1: Hukuk Teknolojileri, Bartu Gündoğdu (BRYTER)", "yer": "hukukteknolojisi.com", "video": "https://www.youtube.com/watch?v=Kj9hf0g-lLs" },
-    { "zaman": "Haziran 2023 · İstanbul", "baslik": "Girişimcilikte Hukukun Yeri ve Önemi", "yer": "Girişim UP · in4startups", "video": "https://www.youtube.com/watch?v=_knt8ov92G4" },
-    { "zaman": "Nisan 2020 · İstanbul", "baslik": "Data Protection as a Non-Price Parameter of Competition", "yer": "İstanbul Bilgi Üniversitesi, Rekabet Hukuku Merkezi", "video": "" },
-    { "zaman": "Şubat 2019 · Paris", "baslik": "Pay-for-Delay Agreements in the Turkish Pharmaceutical Sector", "yer": "OECD Genel Merkezi", "video": "" }
+    {
+      "zaman": "Ekim 2026 · Ankara",
+      "baslik": "Türkiye'de Demografik Dönüşüm ve Stratejiler: Rapor Sunumu ve Panel",
+      "yer": "Toplum Çalışmaları Enstitüsü",
+      "video": "https://www.youtube.com/watch?v=K_Pq6sAMbAA"
+    },
+    {
+      "zaman": "Ekim 2026 · Ankara",
+      "baslik": "Ankara Barosu 69. Olağan Genel Kurulu",
+      "yer": "Avukat Hakları Grubu Ankara · canlı yayın",
+      "video": "https://www.youtube.com/watch?v=GZhV2a-mU2M"
+    },
+    {
+      "zaman": "Ağustos 2026 · Ankara",
+      "baslik": "Av. Çiğdem Gizem Okkaoğlu",
+      "yer": "Avukat Hakları Grubu Ankara",
+      "video": "https://www.youtube.com/watch?v=8ZzaJeIZYZM"
+    },
+    {
+      "zaman": "Eylül 2025 · Ankara",
+      "baslik": "30 Ağustos Zafer Bayramı Resepsiyonu ve Adli Yıl Açılışı Konuşması",
+      "yer": "Avukat Hakları Grubu Ankara",
+      "video": "https://www.youtube.com/watch?v=R-AD8It5mfM"
+    },
+    {
+      "zaman": "Ocak 2025",
+      "baslik": "Kartalkaya Faciasının Hukuki İncelemesi",
+      "yer": "Toplum Çalışmaları Enstitüsü · Dr. Halim Alperen Çıtak ile",
+      "video": "https://www.youtube.com/watch?v=RXitCPb3gks"
+    },
+    {
+      "zaman": "Ekim 2024",
+      "baslik": "Yapay Zekâ Nerede, Biz Neredeyiz?",
+      "yer": "Toplum Çalışmaları Enstitüsü · Ussal Şahbaz ile",
+      "video": "https://www.youtube.com/watch?v=VkLNiUcobgw"
+    },
+    {
+      "zaman": "Mayıs 2024 · İstanbul",
+      "baslik": "Bilgisayımsal Antitröst: Rekabet Hukuku Uygulamasında Yeni Bir Dönem",
+      "yer": "Uygulamalı Rekabet Hukuku Seminerleri, İstanbul Bilgi Üniversitesi Rekabet Hukuku Merkezi · Av. Yavuz Selim Günay ile",
+      "video": "https://www.youtube.com/watch?v=gM1_0BvUPEI"
+    },
+    {
+      "zaman": "Şubat 2024 · Ankara",
+      "baslik": "Rekabet Hukuku Odaklı Dava Atölyesi",
+      "yer": "Avukat Hakları Grubu Ankara",
+      "video": "https://www.youtube.com/watch?v=EUxGGtAbCeo"
+    },
+    {
+      "zaman": "Eylül 2023",
+      "baslik": "HT Podcast #4: Being an E-Discovery Lawyer, İbrahim Enis Özkan (Consilio)",
+      "yer": "hukukteknolojisi.com",
+      "video": "https://www.youtube.com/watch?v=phBRRlQBfo8"
+    },
+    {
+      "zaman": "Eylül 2023",
+      "baslik": "HT Podcast #3: Revolutionizing Document Automation, Dorna Moini (Gavel)",
+      "yer": "hukukteknolojisi.com",
+      "video": "https://www.youtube.com/watch?v=LlEPIEL-8PI"
+    },
+    {
+      "zaman": "Ağustos 2023",
+      "baslik": "HT Podcast #2: BRYTER Ürün Tanıtımı, Bartu Gündoğdu",
+      "yer": "hukukteknolojisi.com",
+      "video": "https://www.youtube.com/watch?v=2h3dUaSqRdo"
+    },
+    {
+      "zaman": "Ağustos 2023",
+      "baslik": "HT Podcast #1: Hukuk Teknolojileri, Bartu Gündoğdu (BRYTER)",
+      "yer": "hukukteknolojisi.com",
+      "video": "https://www.youtube.com/watch?v=Kj9hf0g-lLs"
+    },
+    {
+      "zaman": "Haziran 2023 · İstanbul",
+      "baslik": "Girişimcilikte Hukukun Yeri ve Önemi",
+      "yer": "Girişim UP · in4startups",
+      "video": "https://www.youtube.com/watch?v=_knt8ov92G4"
+    }
   ]
 }
