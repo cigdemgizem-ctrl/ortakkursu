@@ -20,23 +20,41 @@
   });
 })();
 
-// Abonelik: açık rıza verilmeden Substack formu yüklenmez
+// Abonelik: geçerli e-posta → onay kutusu açılır → onay → Abone ol
 (function () {
+  var form = document.getElementById('abone-formu');
+  if (!form) return;
+  var eposta = document.getElementById('eposta');
   var kutu = document.getElementById('kvkk');
-  var alan = document.getElementById('substack-form');
-  var uyari = document.getElementById('onay-uyari');
-  if (!kutu || !alan) return;
-  var cerceve = alan.querySelector('iframe');
-  kutu.addEventListener('change', function () {
-    if (kutu.checked) {
-      if (!cerceve.getAttribute('src')) cerceve.setAttribute('src', cerceve.getAttribute('data-src'));
-      alan.hidden = false;
-      if (uyari) uyari.hidden = true;
-    } else {
-      alan.hidden = true;
-      if (uyari) uyari.hidden = false;
-    }
+  var dugme = document.getElementById('abone-dugme');
+  var durum = document.getElementById('abone-durum');
+  var adres = form.getAttribute('action').replace(/\/subscribe$/, '');
+  var gecerli = function () { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(eposta.value.trim()); };
+  function guncelle() {
+    var ok = gecerli();
+    kutu.disabled = !ok;
+    if (!ok) kutu.checked = false;
+    dugme.disabled = !(ok && kutu.checked);
+  }
+  eposta.addEventListener('input', guncelle);
+  kutu.addEventListener('change', guncelle);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!gecerli() || !kutu.checked) return;
+    dugme.disabled = true;
+    durum.textContent = 'Gönderiliyor…';
+    var veri = new URLSearchParams({ email: eposta.value.trim(), first_url: location.href, current_url: location.href, source: 'ortakkursu.com' });
+    fetch(adres + '/api/v1/free', { method: 'POST', mode: 'no-cors', body: veri })
+      .then(function () {
+        durum.innerHTML = 'Teşekkürler! Aboneliğinizi onaylamak için e-posta kutunuza gelen bağlantıya tıklayın. E-posta gelmezse aboneliği <a href="' + adres + '/subscribe" target="_blank" rel="noopener">buradan</a> tamamlayabilirsiniz.';
+        form.reset(); guncelle();
+      })
+      .catch(function () {
+        durum.innerHTML = 'Şu an gönderilemedi. Aboneliği <a href="' + adres + '/subscribe" target="_blank" rel="noopener">buradan</a> tamamlayabilirsiniz.';
+        guncelle();
+      });
   });
+  guncelle();
 })();
 
 // Konuşma videoları: tıklanınca sayfada oynat (YouTube çerezsiz oynatıcı)

@@ -312,11 +312,16 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 <section id="abone" class="abone">
 <div class="kap abone-ic">
 <div><h2>Her pazar, haftanın Teknoloji · Hukuk · Politika bülteni</h2><p>Bülten e-posta kutunuza gelsin; yeni podcast bölümlerinden de ilk siz haberdar olun.</p></div>
-<div class="abone-form">
-<label class="onay" for="kvkk"><input id="kvkk" type="checkbox"><span>Aydınlatma Metni'ni okudum. E-posta adresimin bülten gönderimi için işlenmesine ve bu amaçla Substack aracılığıyla yurt dışına aktarılmasına açık rıza veriyorum.</span></label>
-<p class="onay-uyari" id="onay-uyari">Abonelik formu, onay kutusunu işaretlediğinizde açılır.</p>
-<div id="substack-form" hidden><iframe title="Ortak Kürsü bülten abonelik formu" data-src="${esc(site.substackAdres)}/embed" width="100%" height="150" frameborder="0" scrolling="no"></iframe></div>
+<form class="abone-form" id="abone-formu" action="${esc(site.substackAdres)}/subscribe" method="get" novalidate>
+<div class="eposta-satir">
+<label for="eposta" class="gizli">E-posta adresiniz</label>
+<input id="eposta" name="email" type="email" autocomplete="email" inputmode="email" placeholder="E-posta adresiniz" required>
+<button type="submit" class="dugme dugme-koyu" id="abone-dugme" disabled>Abone ol</button>
+</div>
+<label class="onay" for="kvkk"><input id="kvkk" type="checkbox" disabled><span>Aydınlatma Metni'ni okudum. E-posta adresimin bülten gönderimi için işlenmesine ve bu amaçla Substack aracılığıyla yurt dışına aktarılmasına açık rıza veriyorum.</span></label>
+<p class="abone-durum" id="abone-durum" role="status" aria-live="polite"></p>
 <details class="aydinlatma"><summary>Kişisel Verilerin Korunması Aydınlatma Metni</summary>${aydinlatmaMetni}</details>
+</form>
 </div>
 </div>
 </section>

@@ -173,8 +173,14 @@ a.yazi-baslik:hover { color: var(--kiremit-koyu); }
 .abone-form { display: flex; flex-direction: column; gap: 14px; }
 .onay { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.5; cursor: pointer; }
 .onay input { width: 22px; height: 22px; margin: 1px 0 0; flex-shrink: 0; accent-color: var(--murekkep); cursor: pointer; }
-.onay-uyari { font-size: 14px; }
-#substack-form iframe { background: var(--beyaz); border-radius: 12px; display: block; }
+.eposta-satir { display: flex; flex-wrap: wrap; gap: 10px; }
+.eposta-satir input { font: inherit; flex: 1 1 220px; min-width: 0; padding: 13px 18px; min-height: 48px; border-radius: 999px; border: 1.5px solid var(--murekkep); background: var(--beyaz); color: var(--murekkep); }
+.abone-form .dugme { border: none; font: inherit; font-weight: 600; cursor: pointer; }
+.abone-form .dugme:disabled { opacity: .45; cursor: not-allowed; }
+.onay input:disabled { cursor: not-allowed; }
+.onay:has(input:disabled) { opacity: .6; cursor: not-allowed; }
+.abone-durum { font-size: 15px; font-weight: 500; }
+.abone-durum:empty { display: none; }
 .aydinlatma { font-size: 13px; line-height: 1.55; background: rgba(255, 255, 255, 0.5); border-radius: 12px; padding: 12px 16px; }
 .aydinlatma summary { font-weight: 600; cursor: pointer; }
 .aydinlatma p { margin-top: 8px; }
