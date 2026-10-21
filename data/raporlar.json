@@ -2,7 +2,7 @@
   "_aciklama": "Uzun soluklu çalışmalar (raporlar ve tezler), en yeniden en eskiye. kapak: küçük görselin adresi; boşsa yazı rozeti gösterilir.",
   "raporlar": [
     {
-      "tarih": "20 Ekim 2026",
+      "tarih": "Ekim 2026",
       "etiket": "Toplum Çalışmaları Enstitüsü Raporu",
       "baslik": "\"Made in Europe\" ve Türkiye",
       "aciklama": "Avrupa Birliği Sanayi Hızlandırma Yasası önerisi ve Türkiye için anlamı",
@@ -10,7 +10,7 @@
       "kapak": "https://www.toplum.org.tr/wp-content/uploads/2026/10/Made-in-Europe-ve-Turkiye-rapor-300x169.webp"
     },
     {
-      "tarih": "21 Ağustos 2026",
+      "tarih": "Ağustos 2026",
       "etiket": "Toplum Çalışmaları Enstitüsü Raporu",
       "baslik": "Yeni Güç Mimarisi: Dijital Hegemonya",
       "aciklama": "İmran Gürakan ile birlikte · Dijital egemenlik ve Türkiye için politika seçenekleri",
@@ -18,7 +18,7 @@
       "kapak": "https://www.toplum.org.tr/wp-content/uploads/2026/08/Dijital-Hegemonya-300x169.webp"
     },
     {
-      "tarih": "3 Ağustos 2026",
+      "tarih": "Ağustos 2026",
       "etiket": "Toplum Çalışmaları Enstitüsü Raporu",
       "baslik": "\"Adli Süreçteki Çocuk\" Düzenlemesine Dair Değerlendirme",
       "aciklama": "Çocuk ceza adaleti sistemine ilişkin kanun teklifinin değerlendirmesi",
@@ -26,7 +26,7 @@
       "kapak": "https://www.toplum.org.tr/wp-content/uploads/2026/08/Adli-Surecteki-Cocuk-1.jpg"
     },
     {
-      "tarih": "8 Haziran 2026",
+      "tarih": "Haziran 2026",
       "etiket": "Toplum Çalışmaları Enstitüsü Raporu",
       "baslik": "Yapay Zekânın Dağıtım Kanallarında Hâkim Durumun Kötüye Kullanılması: Rekabet Kurulunun Meta–WhatsApp Geçici Tedbir Kararı Örneği",
       "aciklama": "",
@@ -34,7 +34,7 @@
       "kapak": "https://www.toplum.org.tr/wp-content/uploads/2026/06/IMG_1036.jpeg"
     },
     {
-      "tarih": "12 Mayıs 2026",
+      "tarih": "Mayıs 2026",
       "etiket": "Toplum Çalışmaları Enstitüsü Raporu",
       "baslik": "Türkiye Büyük Millet Meclisi Yapay Zekâ Komisyon Raporu Üzerine: Küresel Perspektifte Analiz ve Politika Önerileri",
       "aciklama": "",
@@ -43,14 +43,14 @@
     },
     {
       "tarih": "Kasım 2025",
-      "etiket": "Yüksek lisans tezi · ODTÜ Avrupa Çalışmaları",
+      "etiket": "Yüksek Lisans Tezi · ODTÜ Avrupa Çalışmaları",
       "baslik": "Regulation of Digital Markets: A Comparative Analysis of the EU Digital Markets Act and Its Implications for Competition Law in Türkiye",
       "aciklama": "",
       "url": "https://open.metu.edu.tr/handle/11511/116624",
       "kapak": "https://images.unsplash.com/photo-1594810205183-18a8b0ce6c13?w=400&h=250&fit=crop&q=80&auto=format"
     },
     {
-      "tarih": "1 Aralık 2024",
+      "tarih": "Aralık 2024",
       "etiket": "Toplum Çalışmaları Enstitüsü Raporu",
       "baslik": "Dünya Bankası'nın \"2024 Yılı Yoksulluk, Refah ve Gezegen Raporu\" ve Türkiye'deki Durum",
       "aciklama": "",
@@ -58,7 +58,7 @@
       "kapak": "https://www.toplum.org.tr/wp-content/uploads/2024/12/Dunya-Bankasinin-2024-Yili-Yoksulluk-Refah-ve-Gezegen-Raporu.webp"
     },
     {
-      "tarih": "3 Kasım 2024",
+      "tarih": "Kasım 2024",
       "etiket": "Toplum Çalışmaları Enstitüsü Raporu",
       "baslik": "Toplumun En Büyük Ortak Politika Önerisi: \"Göçmenlerin Geri Gönderilmesi\"",
       "aciklama": "",
@@ -66,7 +66,7 @@
       "kapak": "https://www.toplum.org.tr/wp-content/uploads/2024/11/Gocmenlerin-Geri-Gonderilmesi.jpg"
     },
     {
-      "tarih": "27 Eylül 2024",
+      "tarih": "Eylül 2024",
       "etiket": "Toplum Çalışmaları Enstitüsü Raporu",
       "baslik": "Dijital Devler Mercek Altında",
       "aciklama": "",
@@ -75,7 +75,7 @@
     },
     {
       "tarih": "Eylül 2020",
-      "etiket": "Rekabet Kurumu uzmanlık tezi",
+      "etiket": "Rekabet Kurumu Uzmanlık Tezi",
       "baslik": "Big Data and Merger Control",
       "aciklama": "",
       "url": "https://www.rekabet.gov.tr/Dosya/uzmanlik-tezleri/05-cigdem-gizem-okka-tez-20200923173802835-pdf",

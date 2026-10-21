@@ -128,7 +128,7 @@ const gunAy = (iso) => { const d = new Date(iso); return `${d.getUTCDate()} ${AY
 function anahtarTarih(t) { // "YYYY-AA-GG" (00 = bilinmiyor) → gösterim
   const [, a, g] = t.split('-').map(Number);
   if (!a) return '';
-  return g ? `${g} ${AYLAR[a - 1]}` : AYLAR[a - 1];
+  return AYLAR[a - 1];
 }
 
 function haftaAraligi(yil, hafta) { // ISO hafta → "12–18 Ekim 2026"
@@ -152,7 +152,7 @@ function sayiKarti(s, buyuk) {
 // ---------- Yazılar listesi ----------
 const yazilar = [
   ...manuel.map((y) => ({ k: y.tarih, tarih: anahtarTarih(y.tarih), baslik: y.baslik, yayin: y.yayin, kat: y.kategori, url: y.url })),
-  ...substackYazilar.map((p) => ({ k: p.post_date.slice(0, 10), tarih: gunAy(p.post_date), baslik: p.title, yayin: 'Ortak Kürsü · yazı', kat: tahminKategori(p), url: p.canonical_url })),
+  ...substackYazilar.map((p) => ({ k: p.post_date.slice(0, 10), tarih: AYLAR[new Date(p.post_date).getUTCMonth()], baslik: p.title, yayin: 'Ortak Kürsü · yazı', kat: tahminKategori(p), url: p.canonical_url })),
 ].sort((a, b) => (a.k < b.k ? 1 : a.k > b.k ? -1 : 0));
 
 function yaziListesiHTML() {
