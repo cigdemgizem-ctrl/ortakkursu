@@ -146,7 +146,7 @@ function sayiKarti(s, buyuk) {
     ? `<ul class="sayi-ozet">${gosterilen.map((m) => `<li>${esc(m)}</li>`).join('')}</ul>`
     : (s.ozet_yedek ? `<p class="sayi-ozet">${esc(kisalt(s.ozet_yedek, 260))}</p>` : '');
   const kapak = s.cover_image || '';
-  return `<a class="kart sayi${buyuk ? ' sayi-buyuk' : ''}" href="${esc(s.canonical_url)}">${kapak ? `<span class="sayi-kapak"><img src="${esc(kapak)}" alt="" loading="${buyuk ? 'eager' : 'lazy'}"></span>` : ''}<span class="sayi-govde"><span class="etiket">${buyuk ? 'Son sayı · ' : ''}Sayı ${s.no}</span><span class="sayi-hafta">${haftaAraligi(s.yil, s.hafta)}</span>${ozetHTML}<span class="oku">Oku →</span></span></a>`;
+  return `<a class="kart sayi${buyuk ? ' sayi-buyuk' : ''}" href="${esc(s.canonical_url)}">${kapak ? `<span class="sayi-kapak"><img src="${esc(kapak)}" alt="Sayı ${s.no} kapak görseli" loading="${buyuk ? 'eager' : 'lazy'}" decoding="async" width="960" height="540"></span>` : ''}<span class="sayi-govde"><span class="etiket">${buyuk ? 'Son sayı · ' : ''}Sayı ${s.no}</span><span class="sayi-hafta">${haftaAraligi(s.yil, s.hafta)}</span>${ozetHTML}<span class="oku">Oku →</span></span></a>`;
 }
 
 // ---------- Yazılar listesi ----------
@@ -174,6 +174,22 @@ const oynat = '<svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true
 const bolumKarti = (b) => `
 <li><a class="bolum" href="${esc(b.canonical_url)}"><span class="bolum-oynat">${oynat}</span><span class="bolum-metin"><span class="bolum-ust">Bölüm ${b.no} · ${gunAy(b.post_date)}${b.podcast_duration ? ` · ${Math.round(b.podcast_duration / 60)} dk` : ''}</span><span class="bolum-ad">${esc(b.ad)}</span></span></a></li>`;
 const bolumHTML = bolumler.slice(0, 5).map(bolumKarti).join('');
+const iso8601Sure = (sn) => `PT${Math.floor(sn / 60)}M${sn % 60}S`;
+const PODCAST = {
+  '@type': 'PodcastSeries', '@id': 'https://ortakkursu.com/podcast/#seri', name: 'Ortak Kürsü', url: 'https://ortakkursu.com/podcast/', inLanguage: 'tr-TR',
+  description: 'Teknolojinin, hukukun ve politikanın aynı kürsüde buluştuğu haftalık podcast.', image: 'https://ortakkursu.com/assets/logo.png',
+  author: { '@id': 'https://ortakkursu.com/#kisi' }, sameAs: [site.spotify, site.youtube, site.youtubeMusic],
+};
+const podcastBolumleri = bolumler.map((b) => ({
+  '@type': 'PodcastEpisode', name: `Bölüm ${b.no}: ${b.ad}`, url: b.canonical_url, datePublished: b.post_date.slice(0, 10), episodeNumber: b.no,
+  ...(b.podcast_duration ? { timeRequired: iso8601Sure(Math.round(b.podcast_duration)) } : {}), partOfSeries: { '@id': 'https://ortakkursu.com/podcast/#seri' }, inLanguage: 'tr-TR',
+}));
+const BULTEN = {
+  '@type': 'CreativeWorkSeries', '@id': 'https://ortakkursu.com/bulten/#seri', name: 'Teknoloji · Hukuk · Politika', alternateName: 'Ortak Kürsü haftalık bülteni',
+  url: 'https://ortakkursu.com/bulten/', inLanguage: 'tr-TR', author: { '@id': 'https://ortakkursu.com/#kisi' }, sameAs: [site.substackAdres],
+  description: 'Her pazar yayımlanan haftalık teknoloji, hukuk ve politika bülteni.',
+};
+const bultenSayilari = { '@type': 'ItemList', name: 'Teknoloji · Hukuk · Politika bülten sayıları', itemListElement: sayilar.map((x, i) => ({ '@type': 'ListItem', position: i + 1, url: x.canonical_url, name: `Sayı ${x.no}: ${haftaAraligi(x.yil, x.hafta)}` })) };
 
 const ytId = (u) => (String(u || '').match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/) || [])[1] || '';
 const saniye = (t) => String(t || '').split(':').reduce((top, x) => top * 60 + Number(x), 0);
@@ -187,7 +203,7 @@ const konusmaHTML = konusmalar.map((t) => {
   return `<li class="konusma"><div class="yt" data-id="${id}"${b ? ` data-bas="${b.bas}" data-son="${b.son}"` : ''}><button type="button" class="yt-oynat" aria-label="${esc(t.baslik)} videosunu oynat"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="yt-dugme" aria-hidden="true"><svg viewBox="0 0 68 48" width="56" height="40"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#f00"/><path d="M45 24 27 14v20z" fill="#fff"/></svg></span></button></div>${metin}</li>`;
 }).join('\n');
 
-const raporHTML = raporlar.map((r) => `<li><a class="rapor" href="${esc(r.url)}">${r.kapak ? `<span class="rapor-kapak"><img src="${esc(r.kapak)}" alt="" loading="lazy"></span>` : `<span class="rapor-kapak rapor-rozet" aria-hidden="true">${/tez/i.test(r.etiket) ? 'Tez' : 'Rapor'}</span>`}<span class="rapor-metin"><span class="etiket">${esc(r.etiket)} · ${esc(r.tarih)}</span><span class="rapor-baslik">${esc(r.baslik)}</span>${r.aciklama ? `<span class="soluk">${esc(r.aciklama)}</span>` : ''}</span></a></li>`).join('\n');
+const raporHTML = raporlar.map((r) => `<li><a class="rapor" href="${esc(r.url)}">${r.kapak ? `<span class="rapor-kapak"><img src="${esc(r.kapak)}" alt="" loading="lazy" decoding="async" width="300" height="188"></span>` : `<span class="rapor-kapak rapor-rozet" aria-hidden="true">${/tez/i.test(r.etiket) ? 'Tez' : 'Rapor'}</span>`}<span class="rapor-metin"><span class="etiket">${esc(r.etiket)} · ${esc(r.tarih)}</span><span class="rapor-baslik">${esc(r.baslik)}</span>${r.aciklama ? `<span class="soluk">${esc(r.aciklama)}</span>` : ''}</span></a></li>`).join('\n');
 
 // ---------- Logolar ----------
 const LOGO = {
@@ -206,25 +222,52 @@ const sosyalHesaplar = [
 const sosyalHTML = sosyalHesaplar.map(([k, ad, u]) => `<a class="sosyal-baglanti" href="${esc(u)}">${LOGO[k]}<span>${ad}</span></a>`).join('');
 
 // ---------- Sayfa iskeleti ----------
-const head = (baslik, aciklama, yol = '/') => `<!doctype html>
+const SITE = 'https://ortakkursu.com';
+const jsonLd = (dizi) => JSON.stringify({ '@context': 'https://schema.org', '@graph': dizi }).replace(/</g, '\\u003c');
+const KISI = {
+  '@type': 'Person', '@id': 'https://ortakkursu.com/#kisi', name: 'Çiğdem Gizem Okkaoğlu', url: 'https://ortakkursu.com/',
+  image: 'https://ortakkursu.com/assets/logo.png',
+  description: 'Hukukçu, teknoloji politikaları doktora adayı ve endüstri mühendisi. Ortak Kürsü bülteni ve podcastinin yazarı ve sunucusu.',
+  knowsAbout: ['Rekabet hukuku', 'Dijital piyasalar', 'Teknoloji politikası', 'Yapay zekâ yönetişimi', 'Dijital Piyasalar Yasası'],
+  alumniOf: [{ '@type': 'CollegeOrUniversity', name: 'Orta Doğu Teknik Üniversitesi' }, { '@type': 'CollegeOrUniversity', name: 'Ankara Üniversitesi' }, { '@type': 'CollegeOrUniversity', name: 'Bilkent Üniversitesi' }],
+  sameAs: [site.linkedin, site.youtube, site.youtubeMusic, site.spotify, site.x, site.substackAdres, site.instagram, 'https://www.toplum.org.tr/author/cigdem-gizem-okkaoglu/'].filter(Boolean),
+};
+const WEBSITE = { '@type': 'WebSite', '@id': 'https://ortakkursu.com/#site', name: 'Ortak Kürsü', alternateName: 'ortakkursu.com', url: 'https://ortakkursu.com/', inLanguage: 'tr-TR', publisher: { '@id': 'https://ortakkursu.com/#kisi' } };
+const head = (baslik, aciklama, yol = '/', ekJsonLd = [], robots = 'index, follow, max-image-preview:large') => `<!doctype html>
 <html lang="tr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(baslik)}</title>
 <meta name="description" content="${esc(aciklama)}">
-<link rel="canonical" href="https://ortakkursu.com${yol}">
+<meta name="author" content="Çiğdem Gizem Okkaoğlu">
+<meta name="robots" content="${robots}">
+<meta name="theme-color" content="#161616">
+<link rel="canonical" href="${SITE}${yol}">
+<link rel="alternate" type="application/rss+xml" title="Ortak Kürsü bülteni" href="${esc(site.substackAdres)}/feed">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ortak Kürsü">
 <meta property="og:title" content="${esc(baslik)}">
 <meta property="og:description" content="${esc(aciklama)}">
-<meta property="og:image" content="https://ortakkursu.com/assets/og-image.jpg">
-<meta property="og:url" content="https://ortakkursu.com${yol}">
+<meta property="og:image" content="${SITE}/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ortak Kürsü: Teknoloji · Hukuk · Politika">
+<meta property="og:url" content="${SITE}${yol}">
 <meta property="og:locale" content="tr_TR">
-<link rel="icon" href="/favicon.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@cigdemokkaoglu">
+<meta name="twitter:creator" content="@cigdemokkaoglu">
+<meta name="twitter:title" content="${esc(baslik)}">
+<meta name="twitter:description" content="${esc(aciklama)}">
+<meta name="twitter:image" content="${SITE}/assets/og-image.jpg">
+<link rel="icon" href="/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital@1&display=swap">
 <link rel="stylesheet" href="/style.css?v=${SURUM}">
+<script type="application/ld+json">${jsonLd([WEBSITE, KISI, ...ekJsonLd])}</script>
 </head>`;
 
 const ust = `
@@ -251,12 +294,12 @@ const aydinlatmaMetni = `
 <p>Bülten, Substack Inc. altyapısıyla gönderildiği için e-posta adresiniz Amerika Birleşik Devletleri'ndeki sunuculara aktarılır; aktarım Kanun'un 9. maddesine göre yapılır. Adresiniz başka bir amaçla kullanılmaz, üçüncü kişilerle paylaşılmaz ve aboneliğiniz sürdüğü müddetçe saklanır.</p>
 <p>Rızanızı her bültenin altındaki bağlantıyla dilediğiniz an geri alabilirsiniz. Kanun'un 11. maddesindeki haklarınız için ${esc(site.iletisimEposta)} adresine yazabilirsiniz.</p>`;
 
-const index = `${head('Ortak Kürsü · Çiğdem Gizem Okkaoğlu', 'Çiğdem Gizem Okkaoğlu: haftalık Teknoloji · Hukuk · Politika bülteni, Ortak Kürsü podcast, raporlar, yazılar ve konuşmalar.')}
+const index = `${head('Ortak Kürsü · Çiğdem Gizem Okkaoğlu | Teknoloji, Hukuk ve Politika', 'Çiğdem Gizem Okkaoğlu\'nun haftalık bülteni, Ortak Kürsü podcasti ve rekabet hukuku, dijital piyasalar ve yapay zekâ üzerine rapor, yazı ve konuşmaları.', '/', [PODCAST, BULTEN])}
 <body>${ust}
 <main id="icerik">
 
 <section class="kahraman">
-<h1 class="gizli">Ortak Kürsü · Çiğdem Gizem Okkaoğlu</h1>
+<h1 class="gizli">Ortak Kürsü: Çiğdem Gizem Okkaoğlu ile teknoloji, hukuk ve politika</h1>
 <picture class="afis">
 <source media="(max-width: 700px)" srcset="/assets/banner-dar.jpg" width="1000" height="563">
 <img src="/assets/banner-genis.jpg" srcset="/assets/banner-genis-1200.jpg 1200w, /assets/banner-genis.jpg 1983w" sizes="100vw" width="1983" height="500" alt="Ortak Kürsü: Teknoloji · Hukuk · Politika. Kiremit rengi bir daire önünde siyah kürsü." fetchpriority="high">
@@ -332,18 +375,18 @@ ${sayilar.slice(0, 7).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 </html>
 `;
 
-const ekSayfa = (yol, baslik, aciklama, ust_, h2, govde) => `${head(baslik + ' · Ortak Kürsü', aciklama, yol)}
+const ekSayfa = (yol, baslik, aciklama, ust_, h2, govde, ekJsonLd = []) => `${head(baslik + ' · Ortak Kürsü', aciklama, yol, ekJsonLd)}
 <body>${ust}
 <main id="icerik" class="kap bolum-blok">
 <p><a href="/" class="ok-baglanti">← Ana sayfa</a></p>
-<div class="baslik-satir"><div><p class="ust-etiket koyu">${ust_}</p><h2>${h2}</h2></div></div>
+<div class="baslik-satir"><div><p class="ust-etiket koyu">${ust_}</p><h1 class="sayfa-baslik">${h2}</h1></div></div>
 ${govde}
 </main>${alt}
 <script src="/site.js?v=${SURUM}" defer></script>
 </body>
 </html>
 `;
-const aydinlatmaSayfa = `${head('Aydınlatma Metni · Ortak Kürsü', 'Ortak Kürsü bülten aboneliği için kişisel verilerin korunması aydınlatma metni.', '/aydinlatma-metni/')}
+const aydinlatmaSayfa = `${head('Aydınlatma Metni · Ortak Kürsü', 'Ortak Kürsü bülten aboneliği için kişisel verilerin korunması aydınlatma metni.', '/aydinlatma-metni/', [], 'noindex, follow')}
 <body>${ust}
 <main id="icerik" class="kap bolum-blok metin-sayfa">
 <h1>Kişisel Verilerin Korunması Aydınlatma Metni</h1>
@@ -362,8 +405,25 @@ await cp('src/style.css', 'dist/style.css');
 await cp('src/site.js', 'dist/site.js');
 await writeFile('dist/index.html', index);
 await writeFile('dist/aydinlatma-metni/index.html', aydinlatmaSayfa);
+const bugun = new Date().toISOString().slice(0, 10);
+const sonSayiTarih = (sayilar[0]?.post_date || new Date().toISOString()).slice(0, 10);
+const sonBolumTarih = (bolumler[0]?.post_date || new Date().toISOString()).slice(0, 10);
+await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>${SITE}/</loc><lastmod>${bugun}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+<url><loc>${SITE}/bulten/</loc><lastmod>${sonSayiTarih}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>${SITE}/podcast/</loc><lastmod>${sonBolumTarih}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+</urlset>
+`);
+await writeFile('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
+await writeFile('dist/404.html', `${head('Sayfa bulunamadı · Ortak Kürsü', 'Aradığınız sayfa bulunamadı.', '/404.html', [], 'noindex, follow')}
+<body>${ust}
+<main id="icerik" class="kap bolum-blok metin-sayfa"><h1>Aradığınız sayfa bulunamadı</h1><p>Bağlantı değişmiş ya da sayfa kaldırılmış olabilir.</p><p><a href="/">← Ana sayfaya dön</a></p></main>${alt}
+</body>
+</html>
+`);
 await mkdir('dist/bulten', { recursive: true });
 await mkdir('dist/podcast', { recursive: true });
-await writeFile('dist/bulten/index.html', ekSayfa('/bulten/', 'Haftalık Bülten', 'Teknoloji · Hukuk · Politika bülteninin tüm sayıları.', 'Her Pazar', 'Haftalık Bülten', `<div class="sayilar">${sayilar.map((x) => sayiKarti(x, false)).join('\n')}</div>`));
-await writeFile('dist/podcast/index.html', ekSayfa('/podcast/', 'Podcast', 'Ortak Kürsü podcastinin tüm bölümleri.', 'Her Hafta', 'Podcast', `<div class="dugmeler" style="margin-bottom:24px"><a href="${esc(site.spotify)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.spotify}Spotify'da dinle</a><a href="${esc(site.youtube)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtube}YouTube'da izle</a><a href="${esc(site.youtubeMusic)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtubeMusic}YouTube Music'te dinle</a></div><ol class="bolumler">${bolumler.map(bolumKarti).join('')}</ol>`));
+await writeFile('dist/bulten/index.html', ekSayfa('/bulten/', 'Haftalık Bülten Arşivi', 'Çiğdem Gizem Okkaoğlu\'nun her pazar yayımlanan Teknoloji · Hukuk · Politika bülteninin tüm sayıları: yapay zekâ, rekabet hukuku, dijital piyasalar ve Türkiye.', 'Her Pazar', 'Haftalık Bülten', `<div class="sayilar">${sayilar.map((x) => sayiKarti(x, false)).join('\n')}</div>`, [BULTEN, bultenSayilari]));
+await writeFile('dist/podcast/index.html', ekSayfa('/podcast/', 'Podcast Bölümleri', 'Ortak Kürsü podcastinin tüm bölümleri: her hafta teknoloji, hukuk ve politikadan tek bir mesele, kaynaklarıyla ve Türkiye için ne anlama geldiğiyle.', 'Her Hafta', 'Podcast', `<div class="dugmeler" style="margin-bottom:24px"><a href="${esc(site.spotify)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.spotify}Spotify'da dinle</a><a href="${esc(site.youtube)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtube}YouTube'da izle</a><a href="${esc(site.youtubeMusic)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtubeMusic}YouTube Music'te dinle</a></div><ol class="bolumler">${bolumler.map(bolumKarti).join('')}</ol>`, [PODCAST, ...podcastBolumleri]));
 console.log(`Derlendi: ${sayilar.length} bülten sayısı, ${bolumler.length} podcast bölümü, ${yazilar.length} yazı.`);

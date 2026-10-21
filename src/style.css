@@ -20,7 +20,7 @@ img { max-width: 100%; display: block; }
 a { color: var(--kiremit-koyu); }
 a:hover { color: var(--murekkep); }
 h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; letter-spacing: -0.01em; margin: 0; }
-h2 { font-size: clamp(30px, 4vw, 42px); line-height: 1.15; }
+h2, .sayfa-baslik { font-size: clamp(30px, 4vw, 42px); line-height: 1.15; }
 h3 { font-size: 24px; line-height: 1.25; }
 p { margin: 0; }
 .kap { max-width: 1200px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
