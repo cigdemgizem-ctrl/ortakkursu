@@ -57,16 +57,21 @@ function kisalt(t, n = 300) {
 }
 async function sayiOzeti(slug) {
   const r = await fetch(`${site.substackAdres}/api/v1/posts/${slug}`, { headers: { 'User-Agent': 'ortakkursu.com site derleyici' }, signal: AbortSignal.timeout(20000) });
-  if (!r.ok) return '';
+  if (!r.ok) return [];
   const j = await r.json();
-  const metin = htmlMetin(j.body_html || '');
-  const i = metin.search(/Bu sayıda/i);
-  if (i < 0) return '';
-  const satirlar = metin.slice(i).split('\n').map((x) => x.trim()).filter(Boolean);
-  satirlar[0] = satirlar[0].replace(/^Bu sayıda\s*[:…\.]*\s*/i, '');
-  const alinan = [];
-  for (const sat of satirlar) { if (!sat) continue; if (alinan.join(' ').length > 320) break; if (/^Başlarken/i.test(sat) && alinan.length) break; alinan.push(sat); }
-  return kisalt(alinan.filter(Boolean).join(alinan.every((x) => x.length < 140) ? ' · ' : ' '), 320);
+  const bloklar = (j.body_html || '').match(/<(p|li|h[1-6]|blockquote)[^>]*>[\s\S]*?<\/\1>/gi) || [];
+  const metinler = bloklar.map((b) => htmlMetin(b).replace(/\s+/g, ' ').trim()).filter(Boolean);
+  const i = metinler.findIndex((t) => /^Bu say[ıi]da/i.test(t));
+  if (i < 0) return [];
+  const maddeler = [];
+  const ilk = metinler[i].replace(/^Bu say[ıi]da\s*[:…\.]*\s*/i, '');
+  if (ilk) maddeler.push(ilk);
+  for (let k = i + 1; k < metinler.length && maddeler.length < 6; k++) {
+    if (/^(Başlarken|Takip listesi|Kıssadan)/i.test(metinler[k])) break;
+    if (metinler[k].length > 3) maddeler.push(metinler[k]);
+    if (maddeler.join(' ').length > 700) break;
+  }
+  return maddeler;
 }
 
 const SAYI_RE = /Teknoloji\s*·\s*Hukuk\s*·\s*Politika\s*\((\d{4})\/(\d{1,2})\)/i;
@@ -75,9 +80,9 @@ try {
   const taze = await substackCek();
   if (taze.length) {
     const bySlug = new Map(onbellek.map((p) => [p.slug, p]));
-    for (const p of taze) { const eski = bySlug.get(p.slug) || {}; bySlug.set(p.slug, { ...eski, ...p, ozet: eski.ozet || '' }); }
+    for (const p of taze) { const eski = bySlug.get(p.slug) || {}; bySlug.set(p.slug, { ...eski, ...p, ozet: eski.ozet && eski.ozet.length ? eski.ozet : [], cover_image: p.cover_image || eski.cover_image || '' }); }
     for (const p of bySlug.values()) {
-      if (SAYI_RE.test(p.title) && !p.ozet) { try { p.ozet = await sayiOzeti(p.slug); } catch { /* özet alınamazsa boş kalır */ } }
+      if (SAYI_RE.test(p.title) && !(p.ozet && p.ozet.length)) { try { p.ozet = await sayiOzeti(p.slug); } catch { /* özet alınamazsa boş kalır */ } }
     }
     gonderiler = [...bySlug.values()];
     await writeFile('data/substack-onbellek.json', JSON.stringify(gonderiler, null, 2) + '\n');
@@ -132,16 +137,14 @@ function haftaAraligi(yil, hafta) { // ISO hafta → "12–18 Ekim 2026"
   if (pzt.getUTCFullYear() !== paz.getUTCFullYear()) return `${pzt.getUTCDate()} ${a1} ${pzt.getUTCFullYear()} – ${paz.getUTCDate()} ${a2} ${paz.getUTCFullYear()}`;
   return a1 === a2 ? `${pzt.getUTCDate()}–${paz.getUTCDate()} ${a2} ${paz.getUTCFullYear()}` : `${pzt.getUTCDate()} ${a1} – ${paz.getUTCDate()} ${a2} ${paz.getUTCFullYear()}`;
 }
-function kapakUrl(u) {
-  if (!u) return '';
-  if (u.includes('substackcdn.com/image/youtube/')) return u;
-  if (u.startsWith('https://substack-post-media.s3.amazonaws.com/')) return `https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good/${encodeURIComponent(u)}`;
-  return u.replace(/\/image\/fetch\/[^/]*\//, (m) => m.replace(/fetch\/[^/]*\//, 'fetch/w_960,c_limit,f_auto,q_auto:good/'));
-}
 function sayiKarti(s, buyuk) {
-  const ozet = s.ozet || kisalt(s.ozet_yedek || '', 260);
-  const kapak = kapakUrl(s.cover_image);
-  return `<a class="kart sayi${buyuk ? ' sayi-buyuk' : ''}" href="${esc(s.canonical_url)}">${kapak ? `<span class="sayi-kapak"><img src="${esc(kapak)}" alt="" loading="${buyuk ? 'eager' : 'lazy'}"></span>` : ''}<span class="sayi-govde"><span class="etiket">${buyuk ? 'Son sayı · ' : ''}Sayı ${s.no}</span><span class="sayi-hafta">${haftaAraligi(s.yil, s.hafta)}</span>${ozet ? `<span class="sayi-ozet">${esc(ozet)}</span>` : ''}<span class="oku">Oku →</span></span></a>`;
+  const maddeler = Array.isArray(s.ozet) ? s.ozet : [];
+  const gosterilen = buyuk ? maddeler : maddeler.slice(0, 2);
+  const ozetHTML = gosterilen.length
+    ? `<ul class="sayi-ozet">${gosterilen.map((m) => `<li>${esc(m)}</li>`).join('')}</ul>`
+    : (s.ozet_yedek ? `<p class="sayi-ozet">${esc(kisalt(s.ozet_yedek, 260))}</p>` : '');
+  const kapak = s.cover_image || '';
+  return `<a class="kart sayi${buyuk ? ' sayi-buyuk' : ''}" href="${esc(s.canonical_url)}">${kapak ? `<span class="sayi-kapak"><img src="${esc(kapak)}" alt="" loading="${buyuk ? 'eager' : 'lazy'}"></span>` : ''}<span class="sayi-govde"><span class="etiket">${buyuk ? 'Son sayı · ' : ''}Sayı ${s.no}</span><span class="sayi-hafta">${haftaAraligi(s.yil, s.hafta)}</span>${ozetHTML}<span class="oku">Oku →</span></span></a>`;
 }
 
 // ---------- Yazılar listesi ----------
@@ -173,6 +176,22 @@ const konusmaHTML = konusmalar.map((t) => t.video
   ? `<a class="kart konusma" href="${esc(t.video)}"><span class="etiket">${esc(t.zaman)}</span><h3>${esc(t.baslik)}</h3><p>${esc(t.yer)}</p><span class="oku">${oynat} Videoyu izle</span></a>`
   : `<article class="kart konusma"><span class="etiket">${esc(t.zaman)}</span><h3>${esc(t.baslik)}</h3><p>${esc(t.yer)}</p></article>`).join('\n');
 
+// ---------- Logolar ----------
+const LOGO = {
+  spotify: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1DB954"/><path d="M6.2 9.3c3.9-1.2 8.3-.8 11.6 1.1M6.8 12.5c3.2-.9 6.7-.6 9.5 1M7.4 15.5c2.5-.7 5.1-.5 7.3.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  youtube: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><rect x="1" y="4.5" width="22" height="15" rx="4.5" fill="#FF0000"/><path d="M10 8.7v6.6l5.6-3.3z" fill="#fff"/></svg>',
+  youtubeMusic: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#FF0000"/><circle cx="12" cy="12" r="6.3" fill="none" stroke="#fff" stroke-width="1.4"/><path d="M10.2 9.3v5.4l4.6-2.7z" fill="#fff"/></svg>',
+  linkedin: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0A66C2"/><rect x="5" y="9.5" width="3" height="9" fill="#fff"/><circle cx="6.5" cy="6.5" r="1.8" fill="#fff"/><path d="M10.5 9.5h2.9v1.3c.5-.9 1.6-1.6 3.1-1.6 2.7 0 3.5 1.7 3.5 4.3v5h-3v-4.4c0-1.1-.2-2.2-1.6-2.2s-1.9 1-1.9 2.2v4.4h-3z" fill="#fff"/></svg>',
+  x: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#000"/><path d="M6 6h3.3l9 12H15z" fill="#fff"/><path d="M17.3 6 12.9 11M11 13l-4.6 5" stroke="#fff" stroke-width="1.5"/></svg>',
+  substack: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#FF6719"/><path d="M6.5 6h11v1.6h-11zM6.5 9.1h11v1.6h-11zM6.5 12.2h11V19l-5.5-3.1L6.5 19z" fill="#fff"/></svg>',
+  instagram: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FEDA75"/><stop offset=".35" stop-color="#FA7E1E"/><stop offset=".6" stop-color="#D62976"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#ig)"/><rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></svg>',
+};
+const sosyalHesaplar = [
+  ['linkedin', 'LinkedIn', site.linkedin], ['youtube', 'YouTube', site.youtube], ['youtubeMusic', 'YouTube Music', site.youtubeMusic],
+  ['spotify', 'Spotify', site.spotify], ['x', 'X', site.x], ['substack', 'Substack', site.substackAdres], ['instagram', 'Instagram', site.instagram],
+].filter(([, , u]) => u);
+const sosyalHTML = sosyalHesaplar.map(([k, ad, u]) => `<a class="sosyal-baglanti" href="${esc(u)}">${LOGO[k]}<span>${ad}</span></a>`).join('');
+
 // ---------- Sayfa iskeleti ----------
 const head = (baslik, aciklama, yol = '/') => `<!doctype html>
 <html lang="tr">
@@ -201,7 +220,7 @@ const ust = `
 <div class="kap ust-ic">
 <a href="/" class="marka" aria-label="Ortak Kürsü ana sayfa"><span class="marka-ad">Ortak Kürsü</span></a>
 <nav aria-label="Ana menü" class="menu">
-<a href="/#bulten">Bülten</a><a href="/#podcast">Podcast</a><a href="/#yazilar">Raporlar ve yazılar</a><a href="/#konusmalar">Konuşmalar</a><a href="/#hakkimda">Hakkımda</a><a href="/#abone" class="dugme dugme-vurgu">Abone ol</a>
+<a href="/#bulten">Bülten</a><a href="/#podcast">Podcast</a><a href="/#yazilar">Raporlar ve yazılar</a><a href="/#konusmalar">Konuşmalar ve programlar</a><a href="/#hakkimda">Hakkımda</a><a href="/#abone" class="dugme dugme-vurgu">Abone ol</a>
 </nav>
 </div>
 </header>`;
@@ -249,7 +268,7 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 <p class="ust-etiket">Podcast</p>
 <h2>Ortak Kürsü</h2>
 <p>Haftalık bir sohbet: gündemden tek bir mesele, açık açık ve tane tane. Kaynakları bölüm notlarında.</p>
-<div class="dugmeler"><a href="${esc(site.spotify)}" class="dugme dugme-acik">Spotify'da dinle</a><a href="${esc(site.youtube)}" class="dugme dugme-cerceve">YouTube'da izle</a><a href="${esc(site.youtubeMusic)}" class="dugme dugme-cerceve">YouTube Music'te dinle</a></div>
+<div class="dugmeler"><a href="${esc(site.spotify)}" class="dugme dugme-acik dugme-logo">${LOGO.spotify}Spotify'da dinle</a><a href="${esc(site.youtube)}" class="dugme dugme-acik dugme-logo">${LOGO.youtube}YouTube'da izle</a><a href="${esc(site.youtubeMusic)}" class="dugme dugme-acik dugme-logo">${LOGO.youtubeMusic}YouTube Music'te dinle</a></div>
 </div>
 <ol class="bolumler">${bolumHTML}</ol>
 </div>
@@ -269,20 +288,16 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 </section>
 
 <section id="konusmalar" class="kap bolum-blok">
-<p class="ust-etiket koyu">Konuşmalar ve paneller</p>
-<h2>Kürsüden</h2>
+<p class="ust-etiket koyu">Kürsüden</p>
+<h2>Konuşmalar ve programlar</h2>
 <div class="konusma-izgara">${konusmaHTML}</div>
 <p class="soluk"><a href="${esc(site.youtube)}">Tüm konuşma kayıtları YouTube kanalında →</a></p>
 </section>
 
 <section id="hakkimda" class="kap bolum-blok">
 <div class="hakkimda">
-<div><p class="ust-etiket koyu">Hakkımda</p><h2>Çiğdem Gizem Okkaoğlu</h2></div>
-<div class="hakkimda-metin">
-<p>Endüstri mühendisliğiyle başlayan yolum hukuka, iktisada ve teknoloji politikasına uzandı. Rekabet Kurumu'nda uzman olarak çalıştıktan sonra önde gelen hukuk bürolarında rekabet hukuku ve regülasyon alanında avukatlık yaptım; bugün uluslararası bir teknoloji şirketinde baş hukuk müşaviriyim.</p>
-<p>ODTÜ Bilim ve Teknoloji Politikası Çalışmaları'nda doktora yapıyor, Toplum Çalışmaları Enstitüsü'nde Genel Sekreter olarak görev alıyorum. Ortak Kürsü'de kurumların dijital çağda nasıl düşündüğünü, nasıl karar verdiğini ve nasıl kapasite inşa ettiğini konuşuyorum.</p>
-<p class="sosyal"><a href="${esc(site.x)}">X</a><a href="${esc(site.linkedin)}">LinkedIn</a><a href="${esc(site.substackAdres)}">Substack</a><a href="${esc(site.spotify)}">Spotify</a><a href="${esc(site.youtube)}">YouTube</a><a href="${esc(site.youtubeMusic)}">YouTube Music</a></p>
-</div>
+<div><p class="ust-etiket koyu">Hakkımda</p><h2>Çiğdem Gizem Okkaoğlu</h2><p class="soluk">Hukukçu · Teknoloji Politikaları Doktora Adayı · Endüstri Mühendisi</p></div>
+<nav class="sosyal" aria-label="Sosyal medya hesapları">${sosyalHTML}</nav>
 </div>
 </section>
 

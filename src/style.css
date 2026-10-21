@@ -83,13 +83,14 @@ a.kart:hover { color: var(--murekkep); border-color: var(--tas-koyu); }
 a.sayi:hover .sayi-kapak img { transform: scale(1.03); }
 .sayi-govde { display: flex; flex-direction: column; gap: 8px; padding: 22px 24px 24px; flex: 1; }
 .sayi-hafta { font-family: var(--serif); font-weight: 700; font-size: 22px; line-height: 1.2; }
-.sayi-ozet { color: var(--soluk); font-size: 15px; line-height: 1.55; }
+.sayi-ozet { color: var(--soluk); font-size: 15px; line-height: 1.55; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.sayi-ozet li { margin: 0; }
 .sayi .oku { margin-top: auto; padding-top: 6px; }
 .sayi-buyuk { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
-.sayi-buyuk .sayi-kapak { aspect-ratio: auto; min-height: 320px; height: 100%; }
+.sayi-buyuk .sayi-kapak { aspect-ratio: auto; min-height: 360px; height: 100%; }
 .sayi-buyuk .sayi-govde { padding: 36px; gap: 12px; justify-content: center; }
 .sayi-buyuk .sayi-hafta { font-size: clamp(28px, 3vw, 36px); }
-.sayi-buyuk .sayi-ozet { font-size: 17px; }
+.sayi-buyuk .sayi-ozet { font-size: 16px; color: var(--murekkep); }
 
 /* Podcast */
 .podcast { background: var(--koyu); color: var(--krem); margin-top: 64px; }
@@ -141,10 +142,14 @@ a.konusma:hover h3 { color: var(--kiremit-koyu); }
 .konusma .oku { display: inline-flex; align-items: center; gap: 8px; }
 
 /* Hakkımda */
-.hakkimda { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px; border-top: 2px solid var(--murekkep); padding-top: 48px; padding-bottom: 48px; }
-.hakkimda-metin { display: flex; flex-direction: column; gap: 16px; font-size: 18px; }
-.sosyal { display: flex; flex-wrap: wrap; gap: 4px 22px; font-size: 15px; font-weight: 600; }
-.sosyal a { padding: 10px 0; }
+.hakkimda { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px 48px; align-items: center; border-top: 2px solid var(--murekkep); padding-top: 48px; padding-bottom: 48px; }
+.hakkimda h2 { margin-bottom: 6px; }
+.sosyal { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+.sosyal-baglanti { white-space: nowrap; display: flex; align-items: center; gap: 12px; padding: 12px 16px; min-height: 48px; background: var(--beyaz); border: 1px solid var(--tas); border-radius: 12px; text-decoration: none; color: var(--murekkep); font-weight: 600; font-size: 15px; }
+.sosyal-baglanti:hover { border-color: var(--murekkep); color: var(--murekkep); }
+.sosyal-baglanti svg { flex-shrink: 0; }
+.dugme-logo { gap: 10px; }
+.dugme-logo svg { flex-shrink: 0; }
 
 /* Abonelik */
 .abone { background: var(--kiremit); }
