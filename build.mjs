@@ -232,7 +232,7 @@ const ust = `
 <div class="kap ust-ic">
 <a href="/" class="marka" aria-label="Ortak Kürsü ana sayfa"><span class="marka-ad">Ortak Kürsü</span></a>
 <nav aria-label="Ana menü" class="menu">
-<a href="/#bulten">Bülten</a><a href="/#podcast">Podcast</a><a href="/#konusmalar">Konuşmalar ve programlar</a><a href="/#yazilar">Raporlar ve yazılar</a><a href="/#iletisim">İletişim</a><a href="/#abone" class="dugme dugme-vurgu">Abone ol</a>
+<a href="/#bulten">Bülten</a><a href="/#podcast">Podcast</a><a href="/#konusmalar">Konuşma ve Programlar</a><a href="/#yazilar">Rapor ve Yazılar</a><a href="/#iletisim">İletişim</a><a href="/#abone" class="dugme dugme-vurgu">Abone ol</a>
 </nav>
 </div>
 </header>`;
@@ -267,7 +267,7 @@ const index = `${head('Ortak Kürsü · Çiğdem Gizem Okkaoğlu', 'Çiğdem Giz
 </section>
 
 <section id="bulten" class="kap bolum-blok">
-<div class="baslik-satir"><div><p class="ust-etiket koyu">Her pazar</p><h2>Haftalık bülten</h2></div><a href="${esc(site.substackAdres)}/archive" class="ok-baglanti">Tüm sayılar →</a></div>
+<div class="baslik-satir"><div><p class="ust-etiket koyu">Her Pazar</p><h2>Haftalık Bülten</h2></div><a href="${esc(site.substackAdres)}/archive" class="ok-baglanti">Tüm sayılar →</a></div>
 <div class="sayilar">
 ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 </div>
@@ -277,8 +277,8 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 <div class="kap podcast-ic">
 <div class="podcast-sol">
 <img src="/assets/logo.png" alt="Ortak Kürsü logosu: krem zemin üzerinde kiremit rengi daire önünde siyah bir kürsü" width="180" height="180" class="kapak">
-<p class="ust-etiket">Podcast</p>
-<h2>Ortak Kürsü</h2>
+<p class="ust-etiket">Ortak Kürsü</p>
+<h2>Her Hafta Podcast</h2>
 <p>Haftalık bir sohbet: gündemden tek bir mesele, açık açık ve tane tane. Kaynakları bölüm notlarında.</p>
 <div class="dugmeler"><a href="${esc(site.spotify)}" class="dugme dugme-acik dugme-logo">${LOGO.spotify}Spotify'da dinle</a><a href="${esc(site.youtube)}" class="dugme dugme-acik dugme-logo">${LOGO.youtube}YouTube'da izle</a><a href="${esc(site.youtubeMusic)}" class="dugme dugme-acik dugme-logo">${LOGO.youtubeMusic}YouTube Music'te dinle</a></div>
 </div>
@@ -288,14 +288,14 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 
 <section id="konusmalar" class="kap bolum-blok">
 <p class="ust-etiket koyu">Kürsüden</p>
-<h2>Konuşmalar ve programlar</h2>
+<h2>Konuşma ve Programlar</h2>
 <ol class="konusma-listesi">${konusmaHTML}</ol>
 <p class="soluk"><a href="${esc(site.youtube)}">Tüm konuşma kayıtları YouTube kanalında →</a></p>
 </section>
 
 <section id="yazilar" class="kap bolum-blok">
-<p class="ust-etiket koyu">Raporlar ve yazılar</p>
-<h2>Uzun soluklu çalışmalar</h2>
+<p class="ust-etiket koyu">Uzun soluklu çalışmalar</p>
+<h2>Rapor ve Yazılar</h2>
 <ol class="rapor-listesi">${raporHTML}</ol>
 <div class="baslik-satir tum-yazilar"><h3>Tüm yazılar <span class="soluk" id="sayac">(${yazilar.length})</span></h3><span class="soluk">En yeniden en eskiye</span></div>
 <div class="filtreler" role="group" aria-label="Konuya göre filtrele">${filtreHTML}</div>
