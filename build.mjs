@@ -171,8 +171,9 @@ const filtreHTML = [`<button type="button" class="filtre" aria-pressed="true" da
 
 // ---------- Bölümler ----------
 const oynat = '<svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.5 13 8l-8.5 5.5Z" fill="currentColor"/></svg>';
-const bolumHTML = bolumler.slice(0, 6).map((b) => `
-<li><a class="bolum" href="${esc(b.canonical_url)}"><span class="bolum-oynat">${oynat}</span><span class="bolum-metin"><span class="bolum-ust">Bölüm ${b.no} · ${gunAy(b.post_date)}${b.podcast_duration ? ` · ${Math.round(b.podcast_duration / 60)} dk` : ''}</span><span class="bolum-ad">${esc(b.ad)}</span></span></a></li>`).join('');
+const bolumKarti = (b) => `
+<li><a class="bolum" href="${esc(b.canonical_url)}"><span class="bolum-oynat">${oynat}</span><span class="bolum-metin"><span class="bolum-ust">Bölüm ${b.no} · ${gunAy(b.post_date)}${b.podcast_duration ? ` · ${Math.round(b.podcast_duration / 60)} dk` : ''}</span><span class="bolum-ad">${esc(b.ad)}</span></span></a></li>`;
+const bolumHTML = bolumler.slice(0, 5).map(bolumKarti).join('');
 
 const ytId = (u) => (String(u || '').match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/) || [])[1] || '';
 const saniye = (t) => String(t || '').split(':').reduce((top, x) => top * 60 + Number(x), 0);
@@ -267,20 +268,19 @@ const index = `${head('Ortak Kürsü · Çiğdem Gizem Okkaoğlu', 'Çiğdem Giz
 </section>
 
 <section id="bulten" class="kap bolum-blok">
-<div class="baslik-satir"><div><p class="ust-etiket koyu">Her Pazar</p><h2>Haftalık Bülten</h2></div><a href="${esc(site.substackAdres)}/archive" class="ok-baglanti">Tüm sayılar →</a></div>
+<div class="baslik-satir"><div><p class="ust-etiket koyu">Her Pazar</p><h2>Haftalık Bülten</h2></div><a href="/bulten/" class="ok-baglanti">Tümünü gör →</a></div>
 <div class="sayilar">
-${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
+${sayilar.slice(0, 7).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 </div>
 </section>
 
-<section id="podcast" class="podcast">
-<div class="kap podcast-ic">
+<section id="podcast" class="kap bolum-blok podcast">
+<div class="baslik-satir"><div><p class="ust-etiket koyu">Her Hafta</p><h2>Podcast</h2></div><a href="/podcast/" class="ok-baglanti">Tümünü gör →</a></div>
+<div class="podcast-ic">
 <div class="podcast-sol">
 <img src="/assets/logo.png" alt="Ortak Kürsü logosu: krem zemin üzerinde kiremit rengi daire önünde siyah bir kürsü" width="180" height="180" class="kapak">
-<p class="ust-etiket">Ortak Kürsü</p>
-<h2>Her Hafta Podcast</h2>
 <p>Haftalık bir sohbet: gündemden tek bir mesele, açık açık ve tane tane. Kaynakları bölüm notlarında.</p>
-<div class="dugmeler"><a href="${esc(site.spotify)}" class="dugme dugme-acik dugme-logo">${LOGO.spotify}Spotify'da dinle</a><a href="${esc(site.youtube)}" class="dugme dugme-acik dugme-logo">${LOGO.youtube}YouTube'da izle</a><a href="${esc(site.youtubeMusic)}" class="dugme dugme-acik dugme-logo">${LOGO.youtubeMusic}YouTube Music'te dinle</a></div>
+<div class="dugmeler"><a href="${esc(site.spotify)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.spotify}Spotify'da dinle</a><a href="${esc(site.youtube)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtube}YouTube'da izle</a><a href="${esc(site.youtubeMusic)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtubeMusic}YouTube Music'te dinle</a></div>
 </div>
 <ol class="bolumler">${bolumHTML}</ol>
 </div>
@@ -333,6 +333,17 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 </html>
 `;
 
+const ekSayfa = (yol, baslik, aciklama, ust_, h2, govde) => `${head(baslik + ' · Ortak Kürsü', aciklama, yol)}
+<body>${ust}
+<main id="icerik" class="kap bolum-blok">
+<p><a href="/" class="ok-baglanti">← Ana sayfa</a></p>
+<div class="baslik-satir"><div><p class="ust-etiket koyu">${ust_}</p><h2>${h2}</h2></div></div>
+${govde}
+</main>${alt}
+<script src="/site.js?v=${SURUM}" defer></script>
+</body>
+</html>
+`;
 const aydinlatmaSayfa = `${head('Aydınlatma Metni · Ortak Kürsü', 'Ortak Kürsü bülten aboneliği için kişisel verilerin korunması aydınlatma metni.', '/aydinlatma-metni/')}
 <body>${ust}
 <main id="icerik" class="kap bolum-blok metin-sayfa">
@@ -352,4 +363,8 @@ await cp('src/style.css', 'dist/style.css');
 await cp('src/site.js', 'dist/site.js');
 await writeFile('dist/index.html', index);
 await writeFile('dist/aydinlatma-metni/index.html', aydinlatmaSayfa);
+await mkdir('dist/bulten', { recursive: true });
+await mkdir('dist/podcast', { recursive: true });
+await writeFile('dist/bulten/index.html', ekSayfa('/bulten/', 'Haftalık Bülten', 'Teknoloji · Hukuk · Politika bülteninin tüm sayıları.', 'Her Pazar', 'Haftalık Bülten', `<div class="sayilar">${sayilar.map((x) => sayiKarti(x, false)).join('\n')}</div>`));
+await writeFile('dist/podcast/index.html', ekSayfa('/podcast/', 'Podcast', 'Ortak Kürsü podcastinin tüm bölümleri.', 'Her Hafta', 'Podcast', `<div class="dugmeler" style="margin-bottom:24px"><a href="${esc(site.spotify)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.spotify}Spotify'da dinle</a><a href="${esc(site.youtube)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtube}YouTube'da izle</a><a href="${esc(site.youtubeMusic)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtubeMusic}YouTube Music'te dinle</a></div><ol class="bolumler">${bolumler.map(bolumKarti).join('')}</ol>`));
 console.log(`Derlendi: ${sayilar.length} bülten sayısı, ${bolumler.length} podcast bölümü, ${yazilar.length} yazı.`);
