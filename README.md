@@ -30,19 +30,10 @@ node build.mjs
 
 Çıktı `dist/` klasörüne yazılır.
 
-## Yayın ayarları (bir kez yapılır)
+## Yayın
 
-**Cloudflare Pages**
-- Proje bu GitHub deposuna bağlanır.
-- Derleme komutu: `node build.mjs`
-- Çıktı klasörü: `dist`
-- Ortam değişkeni: `NODE_VERSION` = `20`
+Site GitHub Pages'te yayımlanır. `.github/workflows/yayin.yml` siteyi her gönderimde, her gün 07:17'de ve her pazar 20:47'de (Türkiye saati) yeniden derleyip yayımlar.
 
-**Alan adı**
-- Cloudflare'de ortakkursu.com eklenir.
-- GoDaddy'de alan adının ad sunucuları Cloudflare'in verdiği iki adresle değiştirilir.
-- Pages projesinde "Custom domains" altından ortakkursu.com ve www.ortakkursu.com eklenir.
-
-**Günlük güncelleme**
-- Pages projesinde Settings → Builds → Deploy hooks altından bir kanca oluşturulur.
-- Kanca adresi GitHub deposunda Settings → Secrets and variables → Actions altına `CLOUDFLARE_DEPLOY_HOOK` adıyla eklenir.
+- Depo ayarlarında Settings → Pages → Source: "GitHub Actions" seçilidir.
+- Özel alan adı: ortakkursu.com (`public/CNAME`).
+- GoDaddy DNS: `@` için GitHub Pages'in dört A kaydı (185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153), `www` için kullanıcıadı.github.io CNAME kaydı.
