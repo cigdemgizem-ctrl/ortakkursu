@@ -54,7 +54,9 @@ p { margin: 0; }
 
 /* Kahraman */
 .gizli { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.kahraman { background: var(--krem); }
+.kahraman { background: #F5F1E9; }
+.afis-kare { display: flex; justify-content: center; padding: 32px 16px 0; }
+.afis-kare img { width: min(100%, 520px); height: auto; display: block; border-radius: 4px; }
 .afis { display: block; }
 .afis img { width: 100%; height: auto; display: block; }
 .tanitim { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px 32px; padding-top: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--tas); }

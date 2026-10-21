@@ -302,10 +302,7 @@ const index = `${head('Ortak Kürsü · Çiğdem Gizem Okkaoğlu | Teknoloji, Hu
 
 <section class="kahraman">
 <h1 class="gizli">Ortak Kürsü: Çiğdem Gizem Okkaoğlu ile teknoloji, hukuk ve politika</h1>
-<picture class="afis">
-<source media="(max-width: 700px)" srcset="/assets/banner-dar.jpg" width="1000" height="563">
-<img src="/assets/banner-genis.jpg" srcset="/assets/banner-genis-1200.jpg 1200w, /assets/banner-genis.jpg 1983w" sizes="100vw" width="1983" height="500" alt="Ortak Kürsü: Teknoloji · Hukuk · Politika. Kiremit rengi bir daire önünde siyah kürsü." fetchpriority="high">
-</picture>
+<div class="afis-kare"><img src="/assets/afis-kare-1000.jpg" srcset="/assets/afis-kare-600.jpg 600w, /assets/afis-kare-1000.jpg 1000w" sizes="(max-width: 600px) 100vw, 520px" width="1000" height="1000" alt="Ortak Kürsü logosu: kiremit rengi bir dairenin önünde siyah bir kürsü; üç mikrofon Teknoloji, Hukuk ve Politika kelimelerine uzanıyor." fetchpriority="high"></div>
 <div class="kap tanitim">
 <div class="dugmeler"><a href="/#bulten" class="dugme dugme-koyu">Son bülteni oku</a><a href="/#podcast" class="dugme dugme-cerceve-koyu">${oynat}Podcast'i dinle</a><a href="/#abone" class="dugme dugme-cerceve-koyu">Abone ol</a></div>
 </div>
