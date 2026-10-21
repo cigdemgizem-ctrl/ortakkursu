@@ -213,11 +213,12 @@ const LOGO = {
   linkedin: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0A66C2"/><rect x="5" y="9.5" width="3" height="9" fill="#fff"/><circle cx="6.5" cy="6.5" r="1.8" fill="#fff"/><path d="M10.5 9.5h2.9v1.3c.5-.9 1.6-1.6 3.1-1.6 2.7 0 3.5 1.7 3.5 4.3v5h-3v-4.4c0-1.1-.2-2.2-1.6-2.2s-1.9 1-1.9 2.2v4.4h-3z" fill="#fff"/></svg>',
   x: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#000"/><path d="M6 6h3.3l9 12H15z" fill="#fff"/><path d="M17.3 6 12.9 11M11 13l-4.6 5" stroke="#fff" stroke-width="1.5"/></svg>',
   substack: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#FF6719"/><path d="M6.5 6h11v1.6h-11zM6.5 9.1h11v1.6h-11zM6.5 12.2h11V19l-5.5-3.1L6.5 19z" fill="#fff"/></svg>',
+  eposta: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#161616"/><rect x="5" y="7" width="14" height="10" rx="1.5" fill="none" stroke="#DD8D68" stroke-width="1.6"/><path d="m5.5 7.8 6.5 5 6.5-5" fill="none" stroke="#DD8D68" stroke-width="1.6"/></svg>',
   instagram: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FEDA75"/><stop offset=".35" stop-color="#FA7E1E"/><stop offset=".6" stop-color="#D62976"/><stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs><rect width="24" height="24" rx="6" fill="url(#ig)"/><rect x="5.5" y="5.5" width="13" height="13" rx="4" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="12" cy="12" r="3.1" fill="none" stroke="#fff" stroke-width="1.6"/><circle cx="16.1" cy="7.9" r="1" fill="#fff"/></svg>',
 };
 const sosyalHesaplar = [
   ['linkedin', 'LinkedIn', site.linkedin], ['youtube', 'YouTube', site.youtube], ['youtubeMusic', 'YouTube Music', site.youtubeMusic],
-  ['spotify', 'Spotify', site.spotify], ['x', 'X', site.x], ['substack', 'Substack', site.substackAdres], ['instagram', 'Instagram', site.instagram],
+  ['spotify', 'Spotify', site.spotify], ['x', 'X', site.x], ['substack', 'Substack', site.substackAdres], ['instagram', 'Instagram', site.instagram], ['eposta', site.iletisimEposta, site.iletisimEposta && !site.iletisimEposta.startsWith('[') ? `mailto:${site.iletisimEposta}` : ''],
 ].filter(([, , u]) => u);
 const sosyalHTML = sosyalHesaplar.map(([k, ad, u]) => `<a class="sosyal-baglanti" href="${esc(u)}">${LOGO[k]}<span>${ad}</span></a>`).join('');
 
@@ -227,6 +228,7 @@ const jsonLd = (dizi) => JSON.stringify({ '@context': 'https://schema.org', '@gr
 const KISI = {
   '@type': 'Person', '@id': 'https://ortakkursu.com/#kisi', name: 'Çiğdem Gizem Okkaoğlu', url: 'https://ortakkursu.com/',
   image: 'https://ortakkursu.com/assets/logo.png',
+  email: 'mailto:info@ortakkursu.com',
   description: 'Hukukçu, teknoloji politikaları doktora adayı ve endüstri mühendisi. Ortak Kürsü bülteni ve podcastinin yazarı ve sunucusu.',
   knowsAbout: ['Rekabet hukuku', 'Dijital piyasalar', 'Teknoloji politikası', 'Yapay zekâ yönetişimi', 'Dijital Piyasalar Yasası'],
   alumniOf: [{ '@type': 'CollegeOrUniversity', name: 'Orta Doğu Teknik Üniversitesi' }, { '@type': 'CollegeOrUniversity', name: 'Ankara Üniversitesi' }, { '@type': 'CollegeOrUniversity', name: 'Bilkent Üniversitesi' }],
@@ -292,7 +294,7 @@ const alt = `
 const aydinlatmaMetni = `
 <p>Veri sorumlusu Çiğdem Gizem Okkaoğlu'dur. Abonelik için yalnızca e-posta adresiniz alınır ve yalnızca Ortak Kürsü bülteni ile yeni yayın duyurularının gönderilmesi amacıyla, 6698 sayılı Kişisel Verilerin Korunması Kanunu'nun 5. maddesi uyarınca açık rızanıza dayanılarak işlenir.</p>
 <p>Bülten, Substack Inc. altyapısıyla gönderildiği için e-posta adresiniz Amerika Birleşik Devletleri'ndeki sunuculara aktarılır; aktarım Kanun'un 9. maddesine göre yapılır. Adresiniz başka bir amaçla kullanılmaz, üçüncü kişilerle paylaşılmaz ve aboneliğiniz sürdüğü müddetçe saklanır.</p>
-<p>Rızanızı her bültenin altındaki bağlantıyla dilediğiniz an geri alabilirsiniz. Kanun'un 11. maddesindeki haklarınız için ${esc(site.iletisimEposta)} adresine yazabilirsiniz.</p>`;
+<p>Rızanızı her bültenin altındaki bağlantıyla dilediğiniz an geri alabilirsiniz. Kanun'un 11. maddesindeki haklarınız için <a href="mailto:${esc(site.iletisimEposta)}">${esc(site.iletisimEposta)}</a> adresine yazabilirsiniz.</p>`;
 
 const index = `${head('Ortak Kürsü · Çiğdem Gizem Okkaoğlu | Teknoloji, Hukuk ve Politika', 'Çiğdem Gizem Okkaoğlu\'nun haftalık bülteni, Ortak Kürsü podcasti ve rekabet hukuku, dijital piyasalar ve yapay zekâ üzerine rapor, yazı ve konuşmaları.', '/', [PODCAST, BULTEN])}
 <body>${ust}
