@@ -1,0 +1,10 @@
+{
+  "name": "ortakkursu",
+  "private": true,
+  "type": "module",
+  "description": "ortakkursu.com — Çiğdem Gizem Okkaoğlu",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

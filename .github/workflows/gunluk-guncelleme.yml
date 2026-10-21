@@ -1,0 +1,20 @@
+name: Günlük güncelleme
+
+# Siteyi her gün ve her pazar akşamı yeniden derletir; böylece yeni bülten sayıları,
+# podcast bölümleri ve Substack yazıları kendiliğinden siteye düşer.
+on:
+  schedule:
+    - cron: '17 4 * * *'    # her gün 07:17 (Türkiye saati)
+    - cron: '47 17 * * 0'   # her pazar 20:47 (Türkiye saati), bülten sonrası
+  workflow_dispatch: {}
+
+jobs:
+  yeniden-derle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cloudflare Pages derlemesini tetikle
+        env:
+          HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "CLOUDFLARE_DEPLOY_HOOK tanımlı değil"; exit 1; fi
+          curl -fsS -X POST "$HOOK"

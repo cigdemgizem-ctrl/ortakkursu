@@ -1,0 +1,24 @@
+{
+  "_aciklama": "Sitenin genel ayarları. substackAltalan: Substack adresinizin başındaki kısım.",
+  "substackAltalan": "cigdemgizemokkaoglu",
+  "substackAdres": "https://cigdemgizemokkaoglu.substack.com",
+  "spotify": "https://open.spotify.com/show/5taujJy2E5YGJTI5xYlvIR",
+  "youtube": "https://www.youtube.com/@cigdemokkaoglu",
+  "youtubeMusic": "https://music.youtube.com/@cigdemokkaoglu",
+  "x": "https://x.com/cigdemokkaoglu",
+  "linkedin": "https://www.linkedin.com/in/cigdemgizemokkaoglu",
+  "iletisimEposta": "[İLETİŞİM E-POSTASI]",
+  "aboneSayisiMetni": "2.900'ü aşkın abone",
+  "substackYaziKategorileri": {
+    "_aciklama": "Substack'teki bülten dışı yazıların kategorisi. Burada yoksa başlıktaki anahtar kelimelere göre tahmin edilir.",
+    "bir-cipin-jeopolitigi-nvidia-h200": "egemenlik",
+    "metann-buyuk-tutun-an": "dijital",
+    "yazlm-muhendisligi-bitiyor-mu": "yz",
+    "gpt-56-cyber-kimlerin-elinde": "yz",
+    "googles-monopoly-over-android-app": "dijital",
+    "may-14-2024-a-new-era-in-ai": "yz",
+    "federal-trade-commissions-final-rule": "rekabet",
+    "rekabet-hukuku-ekseninde-yapay-zeka": "yz",
+    "buyuk-dil-modelleri-ve-hukuk": "yz"
+  }
+}

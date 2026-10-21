@@ -1,0 +1,8 @@
+{
+  "_aciklama": "Konuşma ve paneller, en yeniden en eskiye. Video varsa video alanına YouTube linkini yazın.",
+  "konusmalar": [
+    { "zaman": "2026 · Ankara", "baslik": "Türkiye'de Demografik Dönüşüm ve Stratejiler", "yer": "Toplum Çalışmaları Enstitüsü, Rapor No 29 sunumu", "video": "" },
+    { "zaman": "Nisan 2020 · İstanbul", "baslik": "Data Protection as a Non-Price Parameter of Competition", "yer": "İstanbul Bilgi Üniversitesi, Rekabet Hukuku Merkezi", "video": "" },
+    { "zaman": "Şubat 2019 · Paris", "baslik": "Pay-for-Delay Agreements in the Turkish Pharmaceutical Sector", "yer": "OECD Genel Merkezi", "video": "" }
+  ]
+}
