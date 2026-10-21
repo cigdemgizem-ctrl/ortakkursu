@@ -1,17 +1,27 @@
 {
-  "_aciklama": "Konuşma ve paneller, en yeniden en eskiye. video alanına YouTube linkini yazın; kart tıklandığında o videoya gider.",
+  "_aciklama": "Konuşma ve paneller, en yeniden en eskiye. video: YouTube linki. bolum (isteğe bağlı): videoda sizin konuştuğunuz aralık; etiket, baslangic, bitis (ss:dd:sn ya da dd:sn).",
   "konusmalar": [
     {
       "zaman": "Ekim 2026 · Ankara",
       "baslik": "Türkiye'de Demografik Dönüşüm ve Stratejiler: Rapor Sunumu ve Panel",
       "yer": "Toplum Çalışmaları Enstitüsü",
-      "video": "https://www.youtube.com/watch?v=K_Pq6sAMbAA"
+      "video": "https://www.youtube.com/watch?v=K_Pq6sAMbAA",
+      "bolum": {
+        "etiket": "Sunumum",
+        "baslangic": "16:00",
+        "bitis": "59:00"
+      }
     },
     {
       "zaman": "Ekim 2026 · Ankara",
       "baslik": "Ankara Barosu 69. Olağan Genel Kurulu",
       "yer": "Avukat Hakları Grubu Ankara · canlı yayın",
-      "video": "https://www.youtube.com/watch?v=GZhV2a-mU2M"
+      "video": "https://www.youtube.com/watch?v=GZhV2a-mU2M",
+      "bolum": {
+        "etiket": "Konuşmam",
+        "baslangic": "2:11:47",
+        "bitis": "2:19:09"
+      }
     },
     {
       "zaman": "Ağustos 2026 · Ankara",

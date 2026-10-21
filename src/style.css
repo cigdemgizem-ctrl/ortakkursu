@@ -142,6 +142,9 @@ a.yazi-baslik:hover { color: var(--kiremit-koyu); }
 .konusma-metin { display: flex; flex-direction: column; gap: 4px; min-width: 0; padding-right: 12px; }
 .konusma h3 { font-size: 20px; line-height: 1.3; }
 .konusma p { color: var(--soluk); font-size: 15px; }
+.yt-bolum { font: inherit; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; width: fit-content; margin-top: 6px; padding: 8px 14px; min-height: 40px; border-radius: 999px; border: 1.5px solid var(--kiremit-koyu); background: transparent; color: var(--kiremit-koyu); cursor: pointer; }
+.yt-bolum:hover { background: var(--kiremit-koyu); color: var(--beyaz); }
+.yt-bolum svg { width: 14px; height: 14px; }
 .yt-dis { font-size: 14px; font-weight: 600; margin-top: 4px; width: fit-content; }
 .yt { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; }
 .yt-oynat { all: unset; cursor: pointer; display: block; width: 100%; height: 100%; position: relative; }
