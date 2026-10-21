@@ -6,6 +6,7 @@
 import { readFile, writeFile, mkdir, cp, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
+const SURUM = Date.now().toString(36);
 const site = JSON.parse(await readFile('data/site.json', 'utf8'));
 const manuel = JSON.parse(await readFile('data/yazilar.json', 'utf8')).yazilar;
 const konusmalar = JSON.parse(await readFile('data/konusmalar.json', 'utf8')).konusmalar;
@@ -222,7 +223,7 @@ const head = (baslik, aciklama, yol = '/') => `<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital@1&display=swap">
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/style.css?v=${SURUM}">
 </head>`;
 
 const ust = `
@@ -327,7 +328,7 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 </section>
 
 </main>${alt}
-<script src="/site.js" defer></script>
+<script src="/site.js?v=${SURUM}" defer></script>
 </body>
 </html>
 `;
