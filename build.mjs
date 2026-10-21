@@ -135,7 +135,7 @@ const head = (baslik, aciklama, yol = '/') => `<!doctype html>
 <link rel="canonical" href="https://ortakkursu.com${yol}">
 <meta property="og:title" content="${esc(baslik)}">
 <meta property="og:description" content="${esc(aciklama)}">
-<meta property="og:image" content="https://ortakkursu.com/assets/logo.png">
+<meta property="og:image" content="https://ortakkursu.com/assets/og-image.jpg">
 <meta property="og:url" content="https://ortakkursu.com${yol}">
 <meta property="og:locale" content="tr_TR">
 <link rel="icon" href="/favicon.png">
