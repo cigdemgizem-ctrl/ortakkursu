@@ -262,7 +262,6 @@ const index = `${head('Ortak Kürsü · Çiğdem Gizem Okkaoğlu', 'Çiğdem Giz
 <img src="/assets/banner-genis.jpg" srcset="/assets/banner-genis-1200.jpg 1200w, /assets/banner-genis.jpg 1983w" sizes="100vw" width="1983" height="500" alt="Ortak Kürsü: Teknoloji · Hukuk · Politika. Kiremit rengi bir daire önünde siyah kürsü." fetchpriority="high">
 </picture>
 <div class="kap tanitim">
-<div class="kisi"><div><p class="kisi-ad">Çiğdem Gizem Okkaoğlu</p></div></div>
 <div class="dugmeler"><a href="/#bulten" class="dugme dugme-koyu">Son bülteni oku</a><a href="/#podcast" class="dugme dugme-cerceve-koyu">${oynat}Podcast'i dinle</a><a href="/#abone" class="dugme dugme-cerceve-koyu">Abone ol</a></div>
 </div>
 </section>
