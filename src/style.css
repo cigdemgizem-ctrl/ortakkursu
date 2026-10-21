@@ -53,18 +53,17 @@ p { margin: 0; }
 .ust-etiket.koyu { color: var(--kiremit-koyu); }
 
 /* Kahraman */
-.kahraman { background: var(--murekkep); color: var(--krem); }
-.kahraman-ic { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 56px; align-items: end; padding-top: 64px; padding-bottom: 88px; }
-.kahraman-sol { display: flex; flex-direction: column; gap: 22px; }
-.kahraman h1 { font-size: clamp(38px, 5.4vw, 66px); line-height: 1.08; font-weight: 700; }
-.giris { max-width: 560px; font-size: 19px; color: var(--soluk-acik); }
-.kahraman-sag { display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #3A3936; padding-top: 28px; }
-.kisi { display: flex; align-items: center; gap: 18px; }
-.kisi-logo { width: 88px; height: 88px; border-radius: 20px; flex-shrink: 0; }
-.kisi-ad { font-family: var(--serif); font-weight: 700; font-size: 22px; }
-.kisi-unvan { font-size: 15px; color: var(--soluk-acik); }
-.alinti { font-family: 'IBM Plex Serif', Georgia, serif; font-style: italic; font-size: 18px; color: #E6E1D9; }
-.kucuk { font-size: 15px; color: #A8A099; }
+.gizli { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.kahraman { background: var(--krem); }
+.afis { display: block; }
+.afis img { width: 100%; height: auto; display: block; }
+.tanitim { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 32px; padding-top: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--tas); }
+.kisi-ad { font-family: var(--serif); font-weight: 700; font-size: 24px; line-height: 1.2; }
+.kisi-unvan { font-size: 15px; color: var(--soluk); }
+.dugme-koyu { background: var(--murekkep); color: var(--krem); }
+.dugme-koyu:hover { background: #333; color: var(--krem); }
+.dugme-cerceve-koyu { border: 1.5px solid var(--murekkep); color: var(--murekkep); }
+.dugme-cerceve-koyu:hover { background: var(--beyaz); color: var(--murekkep); }
 
 /* Genel bloklar */
 .bolum-blok { padding-top: 88px; padding-bottom: 40px; }
@@ -175,7 +174,7 @@ a.konusma:hover h3 { color: var(--kiremit-koyu); }
   .sayi-buyuk .sayi-kapak { aspect-ratio: 16 / 9; min-height: 0; }
   .sayi-buyuk .sayi-govde { padding: 24px; }
   .yazi { grid-template-columns: minmax(0, 1fr); gap: 4px; }
-  .kahraman-ic { padding-top: 40px; padding-bottom: 56px; gap: 36px; }
+  .tanitim .dugmeler { width: 100%; }
   .bolum-blok { padding-top: 64px; }
   .menu { gap: 0 18px; }
 }

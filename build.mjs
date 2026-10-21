@@ -199,7 +199,7 @@ const ust = `
 <a class="atla" href="#icerik">İçeriğe geç</a>
 <header class="ust">
 <div class="kap ust-ic">
-<a href="/" class="marka" aria-label="Ortak Kürsü ana sayfa"><span class="marka-ad">Ortak <span class="vurgu">—</span>Kürsü</span><span class="marka-alt">Teknoloji · Hukuk · Politika</span></a>
+<a href="/" class="marka" aria-label="Ortak Kürsü ana sayfa"><span class="marka-ad">Ortak Kürsü</span></a>
 <nav aria-label="Ana menü" class="menu">
 <a href="/#bulten">Bülten</a><a href="/#podcast">Podcast</a><a href="/#yazilar">Raporlar ve yazılar</a><a href="/#konusmalar">Konuşmalar</a><a href="/#hakkimda">Hakkımda</a><a href="/#abone" class="dugme dugme-vurgu">Abone ol</a>
 </nav>
@@ -219,28 +219,24 @@ const aydinlatmaMetni = `
 <p>Bülten, Substack Inc. altyapısıyla gönderildiği için e-posta adresiniz Amerika Birleşik Devletleri'ndeki sunuculara aktarılır; aktarım Kanun'un 9. maddesine göre yapılır. Adresiniz başka bir amaçla kullanılmaz, üçüncü kişilerle paylaşılmaz ve aboneliğiniz sürdüğü müddetçe saklanır.</p>
 <p>Rızanızı her bültenin altındaki bağlantıyla dilediğiniz an geri alabilirsiniz. Kanun'un 11. maddesindeki haklarınız için ${esc(site.iletisimEposta)} adresine yazabilirsiniz.</p>`;
 
-const index = `${head('Ortak Kürsü · Çiğdem Gizem Okkaoğlu', 'Teknolojinin, hukukun ve politikanın aynı kürsüde buluştuğu yer. Haftalık bülten, podcast, raporlar ve yazılar.')}
+const index = `${head('Ortak Kürsü · Çiğdem Gizem Okkaoğlu', 'Çiğdem Gizem Okkaoğlu: haftalık Teknoloji · Hukuk · Politika bülteni, Ortak Kürsü podcast, raporlar, yazılar ve konuşmalar.')}
 <body>${ust}
 <main id="icerik">
 
 <section class="kahraman">
-<div class="kap kahraman-ic">
-<div class="kahraman-sol">
-<p class="ust-etiket">Teknoloji · Hukuk · Politika</p>
-<h1>Teknolojinin, hukukun ve politikanın aynı kürsüde buluştuğu yer.</h1>
-<p class="giris">Her hafta tek bir meseleyi kaynaklarıyla birlikte ele alıyor, dünyadaki örneklerine bakıyor ve ülkemiz için ne anlama geldiğini soruyoruz.</p>
-<div class="dugmeler"><a href="/#bulten" class="dugme dugme-acik">Son bülteni oku</a><a href="/#podcast" class="dugme dugme-cerceve">${oynat}Podcast'i dinle</a></div>
-</div>
-<div class="kahraman-sag">
-<div class="kisi"><img src="/assets/logo.png" alt="" width="88" height="88" class="kisi-logo"><div><p class="kisi-ad">Çiğdem Gizem Okkaoğlu</p><p class="kisi-unvan">Hukukçu · Teknoloji Politikaları Doktora Adayı · Endüstri Mühendisi</p></div></div>
-<p class="alinti">"Bu kürsüyü konuklarımla, çalışmalarından yararlandığım uzmanlarla ve sizlerle paylaşıyorum."</p>
-<p class="kucuk">Bülten her pazar · ${esc(site.aboneSayisiMetni)}</p>
-</div>
+<h1 class="gizli">Ortak Kürsü · Çiğdem Gizem Okkaoğlu</h1>
+<picture class="afis">
+<source media="(max-width: 700px)" srcset="/assets/banner-dar.jpg" width="1000" height="563">
+<img src="/assets/banner-genis.jpg" srcset="/assets/banner-genis-1200.jpg 1200w, /assets/banner-genis.jpg 1983w" sizes="100vw" width="1983" height="500" alt="Ortak Kürsü: Teknoloji · Hukuk · Politika. Kiremit rengi bir daire önünde siyah kürsü." fetchpriority="high">
+</picture>
+<div class="kap tanitim">
+<div class="kisi"><div><p class="kisi-ad">Çiğdem Gizem Okkaoğlu</p><p class="kisi-unvan">Hukukçu · Teknoloji Politikaları Doktora Adayı · Endüstri Mühendisi</p></div></div>
+<div class="dugmeler"><a href="/#bulten" class="dugme dugme-koyu">Son bülteni oku</a><a href="/#podcast" class="dugme dugme-cerceve-koyu">${oynat}Podcast'i dinle</a><a href="/#abone" class="dugme dugme-cerceve-koyu">Abone ol</a></div>
 </div>
 </section>
 
 <section id="bulten" class="kap bolum-blok">
-<div class="baslik-satir"><div><p class="ust-etiket koyu">Haftalık bülten</p><h2>Teknoloji · Hukuk · Politika</h2></div><a href="${esc(site.substackAdres)}/archive" class="ok-baglanti">Tüm sayılar →</a></div>
+<div class="baslik-satir"><div><p class="ust-etiket koyu">Her pazar</p><h2>Haftalık bülten</h2></div><a href="${esc(site.substackAdres)}/archive" class="ok-baglanti">Tüm sayılar →</a></div>
 <div class="sayilar">
 ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 </div>
@@ -252,7 +248,7 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 <img src="/assets/logo.png" alt="Ortak Kürsü logosu: krem zemin üzerinde kiremit rengi daire önünde siyah bir kürsü" width="180" height="180" class="kapak">
 <p class="ust-etiket">Podcast</p>
 <h2>Ortak Kürsü</h2>
-<p>Haftalık bir sohbet: gündemden tek bir mesele, açık açık ve tane tane. Kaynakları bölüm notlarında, dünyadaki örnekleri ve Türkiye'ye etkisi bölümün içinde.</p>
+<p>Haftalık bir sohbet: gündemden tek bir mesele, açık açık ve tane tane. Kaynakları bölüm notlarında.</p>
 <div class="dugmeler"><a href="${esc(site.spotify)}" class="dugme dugme-acik">Spotify'da dinle</a><a href="${esc(site.youtube)}" class="dugme dugme-cerceve">YouTube'da izle</a><a href="${esc(site.youtubeMusic)}" class="dugme dugme-cerceve">YouTube Music'te dinle</a></div>
 </div>
 <ol class="bolumler">${bolumHTML}</ol>
