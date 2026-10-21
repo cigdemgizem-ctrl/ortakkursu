@@ -141,7 +141,7 @@ function haftaAraligi(yil, hafta) { // ISO hafta → "12–18 Ekim 2026"
 }
 function sayiKarti(s, buyuk) {
   const maddeler = Array.isArray(s.ozet) ? s.ozet : [];
-  const gosterilen = buyuk ? maddeler : maddeler.slice(0, 2);
+  const gosterilen = buyuk ? maddeler : maddeler.slice(0, 3);
   const ozetHTML = gosterilen.length
     ? `<ul class="sayi-ozet">${gosterilen.map((m) => `<li>${esc(m)}</li>`).join('')}</ul>`
     : (s.ozet_yedek ? `<p class="sayi-ozet">${esc(kisalt(s.ozet_yedek, 260))}</p>` : '');
