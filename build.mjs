@@ -301,10 +301,12 @@ const index = `${head('Ortak Kürsü · Çiğdem Gizem Okkaoğlu | Teknoloji, Hu
 <main id="icerik">
 
 <section class="kahraman">
-<h1 class="gizli">Ortak Kürsü: Çiğdem Gizem Okkaoğlu ile teknoloji, hukuk ve politika</h1>
-<div class="afis-kare"><img src="/assets/afis-kare-1000.jpg" srcset="/assets/afis-kare-600.jpg 600w, /assets/afis-kare-1000.jpg 1000w" sizes="(max-width: 600px) 100vw, 520px" width="1000" height="1000" alt="Ortak Kürsü logosu: kiremit rengi bir dairenin önünde siyah bir kürsü; üç mikrofon Teknoloji, Hukuk ve Politika kelimelerine uzanıyor." fetchpriority="high"></div>
-<div class="kap tanitim">
+<div class="kap kahraman-ic">
+<div class="kahraman-yazi">
+<h1 class="kahraman-ad">Ortak<br>Kürsü</h1>
 <div class="dugmeler"><a href="/#bulten" class="dugme dugme-koyu">Son bülteni oku</a><a href="/#podcast" class="dugme dugme-cerceve-koyu">${oynat}Podcast'i dinle</a><a href="/#abone" class="dugme dugme-cerceve-koyu">Abone ol</a></div>
+</div>
+<div class="kahraman-gorsel"><img src="/assets/kursu-sahne.jpg" srcset="/assets/kursu-sahne-600.jpg 600w, /assets/kursu-sahne.jpg 974w" sizes="(max-width: 760px) 100vw, 560px" width="974" height="814" alt="Kiremit rengi bir dairenin önünde siyah bir kürsü; üç mikrofon Teknoloji, Hukuk ve Politika kelimelerine uzanıyor." fetchpriority="high"></div>
 </div>
 </section>
 
