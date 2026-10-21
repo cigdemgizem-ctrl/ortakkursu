@@ -152,7 +152,7 @@ function sayiKarti(s, buyuk) {
 // ---------- Yazılar listesi ----------
 const yazilar = [
   ...manuel.map((y) => ({ k: y.tarih, tarih: anahtarTarih(y.tarih), baslik: y.baslik, yayin: y.yayin, kat: y.kategori, url: y.url })),
-  ...substackYazilar.map((p) => ({ k: p.post_date.slice(0, 10), tarih: AYLAR[new Date(p.post_date).getUTCMonth()], baslik: p.title, yayin: 'Ortak Kürsü · yazı', kat: tahminKategori(p), url: p.canonical_url })),
+  ...substackYazilar.map((p) => ({ k: p.post_date.slice(0, 10), tarih: AYLAR[new Date(p.post_date).getUTCMonth()], baslik: p.title, yayin: 'Ortak Kürsü · Yazı', kat: tahminKategori(p), url: p.canonical_url })),
 ].sort((a, b) => (a.k < b.k ? 1 : a.k > b.k ? -1 : 0));
 
 function yaziListesiHTML() {
