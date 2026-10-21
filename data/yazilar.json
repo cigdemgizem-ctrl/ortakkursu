@@ -1,36 +1,222 @@
 {
   "_aciklama": "Substack dışındaki yazılar. Yeni yazı eklemek için listeye bir satır ekleyin. tarih: YYYY-AA-GG (gün bilinmiyorsa 00, ay bilinmiyorsa 00). kategori: dijital | yz | rekabet | egemenlik | toplum. url boş bırakılırsa başlık bağlantısız görünür.",
   "yazilar": [
-    { "tarih": "2026-10-20", "baslik": "\"Made in Europe\" ve Türkiye", "yayin": "Toplum Çalışmaları Enstitüsü · Rapor", "kategori": "egemenlik", "url": "https://www.toplum.org.tr/made-in-europe-ve-turkiye/" },
-    { "tarih": "2026-08-21", "baslik": "Yeni Güç Mimarisi: Dijital Hegemonya", "yayin": "Toplum Çalışmaları Enstitüsü · Rapor No 27 · İmran Gürakan ile", "kategori": "egemenlik", "url": "https://www.toplum.org.tr/yeni-guc-mimarisi-dijital-hegemonya/" },
-    { "tarih": "2026-08-03", "baslik": "\"Adli Süreçteki Çocuk\" Düzenlemesine Dair Değerlendirme", "yayin": "Toplum Çalışmaları Enstitüsü", "kategori": "toplum", "url": "https://www.toplum.org.tr/adli-surecteki-cocuk-duzenlemesine-dair-degerlendirme/" },
-    { "tarih": "2026-06-08", "baslik": "Yapay Zekânın Dağıtım Kanallarında Hâkim Durumun Kötüye Kullanılması: Rekabet Kurulunun Meta–WhatsApp Geçici Tedbir Kararı Örneği", "yayin": "Toplum Çalışmaları Enstitüsü", "kategori": "rekabet", "url": "https://www.toplum.org.tr/yapay-zekanin-dagitim-kanallarinda-hakim-durumun-kotuye-kullanilmasi-rekabet-kurulunun-meta-whatsapp-gecici-tedbir-karari-ornegi/" },
-    { "tarih": "2026-05-12", "baslik": "Türkiye Büyük Millet Meclisi Yapay Zekâ Komisyon Raporu Üzerine: Küresel Perspektifte Analiz ve Politika Önerileri", "yayin": "Toplum Çalışmaları Enstitüsü", "kategori": "yz", "url": "https://www.toplum.org.tr/turkiye-buyuk-millet-meclisi-yapay-zeka-komisyon-raporu-uzerine-kuresel-perspektifte-analiz-ve-politika-onerileri/" },
-    { "tarih": "2025-11-00", "baslik": "Regulation of Digital Markets: A Comparative Analysis of the EU Digital Markets Act and Its Implications for Competition Law in Türkiye", "yayin": "Yüksek lisans tezi · ODTÜ Avrupa Çalışmaları", "kategori": "dijital", "url": "" },
-    { "tarih": "2025-04-00", "baslik": "Computational Antitrust", "yayin": "Uygulamalı Rekabet Hukuku Seminerleri, On İki Levha · Y. S. Günay ve E. Kurt ile", "kategori": "rekabet", "url": "" },
-    { "tarih": "2024-12-01", "baslik": "Dünya Bankası'nın \"2024 Yılı Yoksulluk, Refah ve Gezegen Raporu\" ve Türkiye'deki Durum", "yayin": "Toplum Çalışmaları Enstitüsü", "kategori": "toplum", "url": "https://www.toplum.org.tr/dunya-bankasinin-2024-yili-yoksulluk-refah-ve-gezegen-raporu-ve-turkiyedeki-durum/" },
-    { "tarih": "2024-11-03", "baslik": "Toplumun En Büyük Ortak Politika Önerisi: \"Göçmenlerin Geri Gönderilmesi\"", "yayin": "Toplum Çalışmaları Enstitüsü", "kategori": "toplum", "url": "https://www.toplum.org.tr/toplumun-en-buyuk-ortak-politika-onerisi-gocmenlerin-geri-gonderilmesi/" },
-    { "tarih": "2024-09-27", "baslik": "Dijital Devler Mercek Altında", "yayin": "Toplum Çalışmaları Enstitüsü", "kategori": "dijital", "url": "https://www.toplum.org.tr/dijital-devler-mercek-altinda/" },
-    { "tarih": "2024-09-00", "baslik": "Evolution of On-Site Inspections in Türkiye", "yayin": "Concurrences Competition Law Review, On-Topic N3-2024, ss. 5–16 · Y. S. Günay ve E. Kurt ile", "kategori": "rekabet", "url": "" },
-    { "tarih": "2023-06-00", "baslik": "Uluslararası Ticaret Hukuku Temelinde Ticaret Politikası Savunma Araçlarına Genel Bir Bakış", "yayin": "BASEAK CORE Articles – 1, On İki Levha, ss. 87–124 · A. Canbeyli ile", "kategori": "egemenlik", "url": "" },
-    { "tarih": "2023-04-00", "baslik": "Turkish Competition Board concludes sports equipment sector investigation with settlement and fine", "yayin": "International Law Office Competition & Antitrust Newsletter · G. Gürkaynak, E. İnce, E. Devec ile", "kategori": "rekabet", "url": "" },
-    { "tarih": "2023-01-00", "baslik": "Turkish Competition Board publishes new decision regarding local threshold exception in software sector", "yayin": "ILO Competition & Antitrust Newsletter · G. Gürkaynak, E. İnce ve diğerleri ile", "kategori": "rekabet", "url": "" },
-    { "tarih": "2022-11-00", "baslik": "İlaç Sektöründe Rekabeti Kısıtlayıcı Yatay Anlaşmalar", "yayin": "Doç. Dr. Nurkut İnan Armağanı, İstanbul Bilgi Üniversitesi Rekabet Hukuku Merkezi · C. İnce ile", "kategori": "rekabet", "url": "" },
-    { "tarih": "2022-09-00", "baslik": "Reassessment by the Turkish Competition Board upon Administrative Court's Annulment Decision in Predatory Pricing Cases", "yayin": "G. Gürkaynak, E. İnce ve diğerleri ile", "kategori": "rekabet", "url": "" },
-    { "tarih": "2022-07-08", "baslik": "The Turkish Competition Board's approach towards the full-functionality of JVs takes a turn (Melco)", "yayin": "Mondaq · G. Gürkaynak, E. İnce ve diğerleri ile", "kategori": "rekabet", "url": "" },
-    { "tarih": "2022-06-02", "baslik": "The Turkish Competition Authority publishes its final report on its e-marketplace sector inquiry", "yayin": "Mondaq · G. Gürkaynak, E. İnce ve diğerleri ile", "kategori": "dijital", "url": "" },
-    { "tarih": "2022-06-01", "baslik": "Rekabet ve Sürdürülebilirlik: Sorulması Gereken Normatif ve Teknik Sorular", "yayin": "Üstad Dergi, Cilt 14", "kategori": "rekabet", "url": "" },
-    { "tarih": "2022-06-00", "baslik": "Alleged price coordination in the welding sector and the importance of economic analysis (Magmaweld / Oerlikon / Askaynak / Gedik)", "yayin": "Concurrences e-Competitions · G. Gürkaynak, C. İnce ve diğerleri ile", "kategori": "rekabet", "url": "https://www.concurrences.com/en/auteurs/cigdem-gizem-okkaoglu" },
-    { "tarih": "2022-05-02", "baslik": "DMA: EU, Turkey and Beyond", "yayin": "Mondaq · G. Gürkaynak, E. İnce ve diğerleri ile", "kategori": "dijital", "url": "" },
-    { "tarih": "2022-05-01", "baslik": "Competition Board issues first reverse Morris trust decision in Regal/Rexnord acquisition", "yayin": "ILO Competition & Antitrust Newsletter · G. Gürkaynak, E. İnce ile", "kategori": "rekabet", "url": "" },
-    { "tarih": "2022-04-00", "baslik": "Individual exemption for a frequent flyer cooperation agreement (Turkish Airlines / Kuveyt Türk)", "yayin": "Concurrences e-Competitions · G. Gürkaynak, E. İnce ve diğerleri ile", "kategori": "rekabet", "url": "https://www.concurrences.com/en/auteurs/cigdem-gizem-okkaoglu" },
-    { "tarih": "2022-03-00", "baslik": "Restriction of Sales through Online Marketplaces Considered Hardcore Restriction: The BSH Exemption Decision", "yayin": "I.C.C.L.R., Cilt 8 · G. Gürkaynak, C. Yıldırım ve diğerleri ile", "kategori": "dijital", "url": "" },
-    { "tarih": "2021-12-00", "baslik": "Rekabet Hukuku Kapsamında Dijital Pazarlara İlişkin Güncel Tartışmalara Genel Bir Bakış", "yayin": "Üstad Dergi, Cilt 13", "kategori": "dijital", "url": "" },
-    { "tarih": "2021-06-00", "baslik": "Dijital Piyasalara Etkin Müdahale: Türkiye İçin Çıkarımlar", "yayin": "Üstad Dergi, Cilt 12", "kategori": "dijital", "url": "" },
-    { "tarih": "2020-12-00", "baslik": "Data Protection as a Non-Price Parameter of Competition", "yayin": "Competition Law Presentation Series, On İki Levha", "kategori": "dijital", "url": "" },
-    { "tarih": "2020-06-00", "baslik": "The effects of COVID-19 pandemic on digital platforms: Benefits seem to outweigh harms", "yayin": "Network Industries Quarterly Turkey, Cilt 1, Sayı 2", "kategori": "dijital", "url": "" },
-    { "tarih": "2020-05-25", "baslik": "OECD Background Note by Turkey on Consumer Data Rights and Competition", "yayin": "OECD", "kategori": "dijital", "url": "" },
-    { "tarih": "2020-03-00", "baslik": "Big Data and Merger Control", "yayin": "Uzmanlık tezi · Rekabet Kurumu", "kategori": "dijital", "url": "" },
-    { "tarih": "2019-07-00", "baslik": "Competition Enforcement in the Pharmaceutical Sector: The Case for Turkey in Light of the Turkish Pharmaceutical Sector Report", "yayin": "OECD RCC Newsletter, Sayı 13, ss. 16–19", "kategori": "rekabet", "url": "" }
+    {
+      "tarih": "2026-10-20",
+      "baslik": "\"Made in Europe\" ve Türkiye",
+      "yayin": "Toplum Çalışmaları Enstitüsü · Rapor",
+      "kategori": "egemenlik",
+      "url": "https://www.toplum.org.tr/made-in-europe-ve-turkiye/"
+    },
+    {
+      "tarih": "2026-08-21",
+      "baslik": "Yeni Güç Mimarisi: Dijital Hegemonya",
+      "yayin": "Toplum Çalışmaları Enstitüsü · Rapor No 27 · İmran Gürakan ile",
+      "kategori": "egemenlik",
+      "url": "https://www.toplum.org.tr/yeni-guc-mimarisi-dijital-hegemonya/"
+    },
+    {
+      "tarih": "2026-08-03",
+      "baslik": "\"Adli Süreçteki Çocuk\" Düzenlemesine Dair Değerlendirme",
+      "yayin": "Toplum Çalışmaları Enstitüsü",
+      "kategori": "toplum",
+      "url": "https://www.toplum.org.tr/adli-surecteki-cocuk-duzenlemesine-dair-degerlendirme/"
+    },
+    {
+      "tarih": "2026-06-08",
+      "baslik": "Yapay Zekânın Dağıtım Kanallarında Hâkim Durumun Kötüye Kullanılması: Rekabet Kurulunun Meta–WhatsApp Geçici Tedbir Kararı Örneği",
+      "yayin": "Toplum Çalışmaları Enstitüsü",
+      "kategori": "rekabet",
+      "url": "https://www.toplum.org.tr/yapay-zekanin-dagitim-kanallarinda-hakim-durumun-kotuye-kullanilmasi-rekabet-kurulunun-meta-whatsapp-gecici-tedbir-karari-ornegi/"
+    },
+    {
+      "tarih": "2026-05-12",
+      "baslik": "Türkiye Büyük Millet Meclisi Yapay Zekâ Komisyon Raporu Üzerine: Küresel Perspektifte Analiz ve Politika Önerileri",
+      "yayin": "Toplum Çalışmaları Enstitüsü",
+      "kategori": "yz",
+      "url": "https://www.toplum.org.tr/turkiye-buyuk-millet-meclisi-yapay-zeka-komisyon-raporu-uzerine-kuresel-perspektifte-analiz-ve-politika-onerileri/"
+    },
+    {
+      "tarih": "2025-11-00",
+      "baslik": "Regulation of Digital Markets: A Comparative Analysis of the EU Digital Markets Act and Its Implications for Competition Law in Türkiye",
+      "yayin": "Yüksek lisans tezi · ODTÜ Avrupa Çalışmaları",
+      "kategori": "dijital",
+      "url": ""
+    },
+    {
+      "tarih": "2025-04-00",
+      "baslik": "Computational Antitrust",
+      "yayin": "Uygulamalı Rekabet Hukuku Seminerleri, On İki Levha · Y. S. Günay ve E. Kurt ile",
+      "kategori": "rekabet",
+      "url": ""
+    },
+    {
+      "tarih": "2024-12-01",
+      "baslik": "Dünya Bankası'nın \"2024 Yılı Yoksulluk, Refah ve Gezegen Raporu\" ve Türkiye'deki Durum",
+      "yayin": "Toplum Çalışmaları Enstitüsü",
+      "kategori": "toplum",
+      "url": "https://www.toplum.org.tr/dunya-bankasinin-2024-yili-yoksulluk-refah-ve-gezegen-raporu-ve-turkiyedeki-durum/"
+    },
+    {
+      "tarih": "2024-11-03",
+      "baslik": "Toplumun En Büyük Ortak Politika Önerisi: \"Göçmenlerin Geri Gönderilmesi\"",
+      "yayin": "Toplum Çalışmaları Enstitüsü",
+      "kategori": "toplum",
+      "url": "https://www.toplum.org.tr/toplumun-en-buyuk-ortak-politika-onerisi-gocmenlerin-geri-gonderilmesi/"
+    },
+    {
+      "tarih": "2024-09-27",
+      "baslik": "Dijital Devler Mercek Altında",
+      "yayin": "Toplum Çalışmaları Enstitüsü",
+      "kategori": "dijital",
+      "url": "https://www.toplum.org.tr/dijital-devler-mercek-altinda/"
+    },
+    {
+      "tarih": "2024-09-00",
+      "baslik": "Evolution of On-Site Inspections in Türkiye",
+      "yayin": "Concurrences Competition Law Review, On-Topic N3-2024, ss. 5–16 · Y. S. Günay ve E. Kurt ile",
+      "kategori": "rekabet",
+      "url": ""
+    },
+    {
+      "tarih": "2023-06-00",
+      "baslik": "Uluslararası Ticaret Hukuku Temelinde Ticaret Politikası Savunma Araçlarına Genel Bir Bakış",
+      "yayin": "BASEAK CORE Articles – 1, On İki Levha, ss. 87–124 · A. Canbeyli ile",
+      "kategori": "egemenlik",
+      "url": ""
+    },
+    {
+      "tarih": "2023-04-00",
+      "baslik": "Turkish Competition Board concludes sports equipment sector investigation with settlement and fine",
+      "yayin": "International Law Office Competition & Antitrust Newsletter · G. Gürkaynak, E. İnce, E. Devec ile",
+      "kategori": "rekabet",
+      "url": ""
+    },
+    {
+      "tarih": "2023-01-00",
+      "baslik": "Turkish Competition Board publishes new decision regarding local threshold exception in software sector",
+      "yayin": "ILO Competition & Antitrust Newsletter · G. Gürkaynak, E. İnce ve diğerleri ile",
+      "kategori": "rekabet",
+      "url": ""
+    },
+    {
+      "tarih": "2022-11-00",
+      "baslik": "İlaç Sektöründe Rekabeti Kısıtlayıcı Yatay Anlaşmalar",
+      "yayin": "Doç. Dr. Nurkut İnan Armağanı, İstanbul Bilgi Üniversitesi Rekabet Hukuku Merkezi · C. İnce ile",
+      "kategori": "rekabet",
+      "url": ""
+    },
+    {
+      "tarih": "2022-09-00",
+      "baslik": "Reassessment by the Turkish Competition Board upon Administrative Court's Annulment Decision in Predatory Pricing Cases",
+      "yayin": "G. Gürkaynak, E. İnce ve diğerleri ile",
+      "kategori": "rekabet",
+      "url": ""
+    },
+    {
+      "tarih": "2022-07-08",
+      "baslik": "The Turkish Competition Board's approach towards the full-functionality of JVs takes a turn (Melco)",
+      "yayin": "Mondaq · G. Gürkaynak, E. İnce ve diğerleri ile",
+      "kategori": "rekabet",
+      "url": ""
+    },
+    {
+      "tarih": "2022-06-02",
+      "baslik": "The Turkish Competition Authority publishes its final report on its e-marketplace sector inquiry",
+      "yayin": "Mondaq · G. Gürkaynak, E. İnce ve diğerleri ile",
+      "kategori": "dijital",
+      "url": ""
+    },
+    {
+      "tarih": "2022-06-01",
+      "baslik": "Rekabet ve Sürdürülebilirlik: Sorulması Gereken Normatif ve Teknik Sorular",
+      "yayin": "Üstad Dergi, Cilt 14",
+      "kategori": "rekabet",
+      "url": ""
+    },
+    {
+      "tarih": "2022-06-00",
+      "baslik": "Alleged price coordination in the welding sector and the importance of economic analysis (Magmaweld / Oerlikon / Askaynak / Gedik)",
+      "yayin": "Concurrences e-Competitions · G. Gürkaynak, C. İnce ve diğerleri ile",
+      "kategori": "rekabet",
+      "url": "https://www.concurrences.com/en/auteurs/cigdem-gizem-okkaoglu"
+    },
+    {
+      "tarih": "2022-05-02",
+      "baslik": "DMA: EU, Turkey and Beyond",
+      "yayin": "Mondaq · G. Gürkaynak, E. İnce ve diğerleri ile",
+      "kategori": "dijital",
+      "url": ""
+    },
+    {
+      "tarih": "2022-05-01",
+      "baslik": "Competition Board issues first reverse Morris trust decision in Regal/Rexnord acquisition",
+      "yayin": "ILO Competition & Antitrust Newsletter · G. Gürkaynak, E. İnce ile",
+      "kategori": "rekabet",
+      "url": ""
+    },
+    {
+      "tarih": "2022-04-00",
+      "baslik": "Individual exemption for a frequent flyer cooperation agreement (Turkish Airlines / Kuveyt Türk)",
+      "yayin": "Concurrences e-Competitions · G. Gürkaynak, E. İnce ve diğerleri ile",
+      "kategori": "rekabet",
+      "url": "https://www.concurrences.com/en/auteurs/cigdem-gizem-okkaoglu"
+    },
+    {
+      "tarih": "2022-03-00",
+      "baslik": "Restriction of Sales through Online Marketplaces Considered Hardcore Restriction: The BSH Exemption Decision",
+      "yayin": "I.C.C.L.R., Cilt 8 · G. Gürkaynak, C. Yıldırım ve diğerleri ile",
+      "kategori": "dijital",
+      "url": ""
+    },
+    {
+      "tarih": "2021-12-00",
+      "baslik": "Rekabet Hukuku Kapsamında Dijital Pazarlara İlişkin Güncel Tartışmalara Genel Bir Bakış",
+      "yayin": "Üstad Dergi, Cilt 13",
+      "kategori": "dijital",
+      "url": ""
+    },
+    {
+      "tarih": "2021-06-00",
+      "baslik": "Dijital Piyasalara Etkin Müdahale: Türkiye İçin Çıkarımlar",
+      "yayin": "Üstad Dergi, Cilt 12",
+      "kategori": "dijital",
+      "url": ""
+    },
+    {
+      "tarih": "2020-12-00",
+      "baslik": "Data Protection as a Non-Price Parameter of Competition",
+      "yayin": "Competition Law Presentation Series, On İki Levha",
+      "kategori": "dijital",
+      "url": ""
+    },
+    {
+      "tarih": "2020-06-00",
+      "baslik": "The effects of COVID-19 pandemic on digital platforms: Benefits seem to outweigh harms",
+      "yayin": "Network Industries Quarterly Turkey, Cilt 1, Sayı 2",
+      "kategori": "dijital",
+      "url": ""
+    },
+    {
+      "tarih": "2020-05-25",
+      "baslik": "OECD Background Note by Turkey on Consumer Data Rights and Competition",
+      "yayin": "OECD",
+      "kategori": "dijital",
+      "url": ""
+    },
+    {
+      "tarih": "2020-09-00",
+      "baslik": "Big Data and Merger Control",
+      "yayin": "Uzmanlık tezi · Rekabet Kurumu",
+      "kategori": "dijital",
+      "url": "https://www.rekabet.gov.tr/Dosya/uzmanlik-tezleri/05-cigdem-gizem-okka-tez-20200923173802835-pdf"
+    },
+    {
+      "tarih": "2019-07-00",
+      "baslik": "Competition Enforcement in the Pharmaceutical Sector: The Case for Turkey in Light of the Turkish Pharmaceutical Sector Report",
+      "yayin": "OECD RCC Newsletter, Sayı 13, ss. 16–19",
+      "kategori": "rekabet",
+      "url": ""
+    }
   ]
 }

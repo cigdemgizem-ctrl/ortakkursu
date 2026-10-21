@@ -39,15 +39,46 @@ async function substackCek() {
       canonical_url: p.canonical_url, slug: p.slug,
       type: p.type === 'podcast' || p.podcast_url ? 'podcast' : 'newsletter',
       podcast_duration: p.podcast_duration || null,
+      cover_image: p.cover_image || '',
+      ozet_yedek: (p.truncated_body_text || p.description || '').trim(),
     }));
 }
 
+// Bülten sayısının "Bu sayıda" bölümünü özet olarak çıkar
+function htmlMetin(h) {
+  return h.replace(/<\/(p|li|h[1-6]|div|blockquote)>/gi, '\n').replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;|&#8217;/g, '’').replace(/&#8220;|&#8221;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+}
+function kisalt(t, n = 300) {
+  t = t.replace(/\s+/g, ' ').trim();
+  if (t.length <= n) return t;
+  const k = t.slice(0, n); const son = Math.max(k.lastIndexOf('. '), k.lastIndexOf('; '));
+  return (son > n * 0.5 ? k.slice(0, son + 1) : k.replace(/\s+\S*$/, '') + '…');
+}
+async function sayiOzeti(slug) {
+  const r = await fetch(`${site.substackAdres}/api/v1/posts/${slug}`, { headers: { 'User-Agent': 'ortakkursu.com site derleyici' }, signal: AbortSignal.timeout(20000) });
+  if (!r.ok) return '';
+  const j = await r.json();
+  const metin = htmlMetin(j.body_html || '');
+  const i = metin.search(/Bu sayıda/i);
+  if (i < 0) return '';
+  const satirlar = metin.slice(i).split('\n').map((x) => x.trim()).filter(Boolean);
+  satirlar[0] = satirlar[0].replace(/^Bu sayıda\s*[:…\.]*\s*/i, '');
+  const alinan = [];
+  for (const sat of satirlar) { if (!sat) continue; if (alinan.join(' ').length > 320) break; if (/^Başlarken/i.test(sat) && alinan.length) break; alinan.push(sat); }
+  return kisalt(alinan.filter(Boolean).join(alinan.every((x) => x.length < 140) ? ' · ' : ' '), 320);
+}
+
+const SAYI_RE = /Teknoloji\s*·\s*Hukuk\s*·\s*Politika\s*\((\d{4})\/(\d{1,2})\)/i;
 let gonderiler = onbellek;
 try {
   const taze = await substackCek();
   if (taze.length) {
     const bySlug = new Map(onbellek.map((p) => [p.slug, p]));
-    for (const p of taze) bySlug.set(p.slug, p);
+    for (const p of taze) { const eski = bySlug.get(p.slug) || {}; bySlug.set(p.slug, { ...eski, ...p, ozet: eski.ozet || '' }); }
+    for (const p of bySlug.values()) {
+      if (SAYI_RE.test(p.title) && !p.ozet) { try { p.ozet = await sayiOzeti(p.slug); } catch { /* özet alınamazsa boş kalır */ } }
+    }
     gonderiler = [...bySlug.values()];
     await writeFile('data/substack-onbellek.json', JSON.stringify(gonderiler, null, 2) + '\n');
     console.log(`Substack: ${taze.length} gönderi çekildi.`);
@@ -57,11 +88,10 @@ try {
 }
 gonderiler.sort((a, b) => (a.post_date < b.post_date ? 1 : -1));
 
-const SAYI_RE = /Teknoloji\s*·\s*Hukuk\s*·\s*Politika\s*\((\d{4})\/(\d{1,2})\)/i;
 const sayilar = [], bolumler = [], substackYazilar = [];
 for (const p of gonderiler) {
   const m = p.title.match(SAYI_RE);
-  if (m) sayilar.push({ ...p, no: `${m[1]}/${m[2]}` });
+  if (m) sayilar.push({ ...p, no: `${m[1]}/${m[2]}`, yil: Number(m[1]), hafta: Number(m[2]) });
   else if (p.type === 'podcast') bolumler.push(p);
   else substackYazilar.push(p);
 }
@@ -94,6 +124,26 @@ function anahtarTarih(t) { // "YYYY-AA-GG" (00 = bilinmiyor) → gösterim
   return g ? `${g} ${AYLAR[a - 1]}` : AYLAR[a - 1];
 }
 
+function haftaAraligi(yil, hafta) { // ISO hafta → "12–18 Ekim 2026"
+  const ocak4 = new Date(Date.UTC(yil, 0, 4));
+  const pzt = new Date(ocak4); pzt.setUTCDate(ocak4.getUTCDate() - ((ocak4.getUTCDay() + 6) % 7) + (hafta - 1) * 7);
+  const paz = new Date(pzt); paz.setUTCDate(pzt.getUTCDate() + 6);
+  const a1 = AYLAR[pzt.getUTCMonth()], a2 = AYLAR[paz.getUTCMonth()];
+  if (pzt.getUTCFullYear() !== paz.getUTCFullYear()) return `${pzt.getUTCDate()} ${a1} ${pzt.getUTCFullYear()} – ${paz.getUTCDate()} ${a2} ${paz.getUTCFullYear()}`;
+  return a1 === a2 ? `${pzt.getUTCDate()}–${paz.getUTCDate()} ${a2} ${paz.getUTCFullYear()}` : `${pzt.getUTCDate()} ${a1} – ${paz.getUTCDate()} ${a2} ${paz.getUTCFullYear()}`;
+}
+function kapakUrl(u) {
+  if (!u) return '';
+  if (u.includes('substackcdn.com/image/youtube/')) return u;
+  if (u.startsWith('https://substack-post-media.s3.amazonaws.com/')) return `https://substackcdn.com/image/fetch/w_960,c_limit,f_auto,q_auto:good/${encodeURIComponent(u)}`;
+  return u.replace(/\/image\/fetch\/[^/]*\//, (m) => m.replace(/fetch\/[^/]*\//, 'fetch/w_960,c_limit,f_auto,q_auto:good/'));
+}
+function sayiKarti(s, buyuk) {
+  const ozet = s.ozet || kisalt(s.ozet_yedek || '', 260);
+  const kapak = kapakUrl(s.cover_image);
+  return `<a class="kart sayi${buyuk ? ' sayi-buyuk' : ''}" href="${esc(s.canonical_url)}">${kapak ? `<span class="sayi-kapak"><img src="${esc(kapak)}" alt="" loading="${buyuk ? 'eager' : 'lazy'}"></span>` : ''}<span class="sayi-govde"><span class="etiket">${buyuk ? 'Son sayı · ' : ''}Sayı ${s.no}</span><span class="sayi-hafta">${haftaAraligi(s.yil, s.hafta)}</span>${ozet ? `<span class="sayi-ozet">${esc(ozet)}</span>` : ''}<span class="oku">Oku →</span></span></a>`;
+}
+
 // ---------- Yazılar listesi ----------
 const yazilar = [
   ...manuel.map((y) => ({ k: y.tarih, tarih: anahtarTarih(y.tarih), baslik: y.baslik, yayin: y.yayin, kat: y.kategori, url: y.url })),
@@ -115,14 +165,13 @@ const filtreHTML = [`<button type="button" class="filtre" aria-pressed="true" da
   ...KATEGORILER.map((k) => `<button type="button" class="filtre" aria-pressed="false" data-kat="${k.id}">${esc(k.ad)} · ${sayac(k.id)}</button>`)].join('');
 
 // ---------- Bölümler ----------
-const sonSayi = sayilar[0];
-const oncekiSayilar = sayilar.slice(1, 9);
 const oynat = '<svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 2.5 13 8l-8.5 5.5Z" fill="currentColor"/></svg>';
 const bolumHTML = bolumler.slice(0, 6).map((b) => `
 <li><a class="bolum" href="${esc(b.canonical_url)}"><span class="bolum-oynat">${oynat}</span><span class="bolum-metin"><span class="bolum-ust">Bölüm ${b.no} · ${gunAy(b.post_date)}${b.podcast_duration ? ` · ${Math.round(b.podcast_duration / 60)} dk` : ''}</span><span class="bolum-ad">${esc(b.ad)}</span></span></a></li>`).join('');
 
-const konusmaHTML = konusmalar.map((t) => `
-<article class="kart konusma"><span class="etiket">${esc(t.zaman)}</span><h3>${esc(t.baslik)}</h3><p>${esc(t.yer)}</p>${t.video ? `<a href="${esc(t.video)}">Videoyu izle →</a>` : ''}</article>`).join('');
+const konusmaHTML = konusmalar.map((t) => t.video
+  ? `<a class="kart konusma" href="${esc(t.video)}"><span class="etiket">${esc(t.zaman)}</span><h3>${esc(t.baslik)}</h3><p>${esc(t.yer)}</p><span class="oku">${oynat} Videoyu izle</span></a>`
+  : `<article class="kart konusma"><span class="etiket">${esc(t.zaman)}</span><h3>${esc(t.baslik)}</h3><p>${esc(t.yer)}</p></article>`).join('\n');
 
 // ---------- Sayfa iskeleti ----------
 const head = (baslik, aciklama, yol = '/') => `<!doctype html>
@@ -192,9 +241,8 @@ const index = `${head('Ortak Kürsü · Çiğdem Gizem Okkaoğlu', 'Teknolojinin
 
 <section id="bulten" class="kap bolum-blok">
 <div class="baslik-satir"><div><p class="ust-etiket koyu">Haftalık bülten</p><h2>Teknoloji · Hukuk · Politika</h2></div><a href="${esc(site.substackAdres)}/archive" class="ok-baglanti">Tüm sayılar →</a></div>
-<div class="bulten-izgara">
-${sonSayi ? `<a class="kart son-sayi" href="${esc(sonSayi.canonical_url)}"><span class="etiket">Son sayı · ${sonSayi.no}</span><span class="son-sayi-baslik">${esc(sonSayi.title)}</span><span class="soluk">${tarihMetni(sonSayi.post_date)}</span>${sonSayi.subtitle ? `<span class="soluk">${esc(sonSayi.subtitle)}</span>` : ''}<span class="oku">Oku →</span></a>` : ''}
-<div class="kart onceki"><p class="etiket soluk-etiket">Önceki sayılar</p><ul>${oncekiSayilar.map((s) => `<li><a href="${esc(s.canonical_url)}"><span>Sayı ${s.no}</span><span class="soluk">${gunAy(s.post_date)}</span></a></li>`).join('')}</ul></div>
+<div class="sayilar">
+${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 </div>
 </section>
 

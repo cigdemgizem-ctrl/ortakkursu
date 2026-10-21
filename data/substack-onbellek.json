@@ -1,24 +1,175 @@
 [
-  { "title": "Türkiye ve \"Made in Europe\"", "post_date": "2026-10-20T16:29:08.150Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/turkiye-ve-made-in-europe-736", "slug": "turkiye-ve-made-in-europe-736", "type": "podcast", "podcast_duration": 3025 },
-  { "title": "Teknoloji · Hukuk · Politika (2026/42)", "post_date": "2026-10-18T16:55:47.519Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202642", "slug": "teknoloji-hukuk-politika-202642", "type": "newsletter" },
-  { "title": "Bölüm 4: Baroların Teknolojik Dönüşümdeki Yeri", "post_date": "2026-10-13T17:29:39.744Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/bolum-4-barolarn-teknolojik-donusumdeki-865", "slug": "bolum-4-barolarn-teknolojik-donusumdeki-865", "type": "podcast", "podcast_duration": 3086 },
-  { "title": "Teknoloji · Hukuk · Politika (2026/41)", "post_date": "2026-10-12T10:23:57.682Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202641", "slug": "teknoloji-hukuk-politika-202641", "type": "newsletter" },
-  { "title": "Bölüm 3: Fon Krizi Teknoloji Şirketlerini Nasıl Etkiler?", "post_date": "2026-10-06T13:34:48.442Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/bolum-3-fon-krizi-teknoloji-sirketlerini-c92", "slug": "bolum-3-fon-krizi-teknoloji-sirketlerini-c92", "type": "podcast", "podcast_duration": 3317 },
-  { "title": "Teknoloji · Hukuk · Politika (2026/40)", "post_date": "2026-10-04T10:00:11.809Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202640", "slug": "teknoloji-hukuk-politika-202640", "type": "newsletter" },
-  { "title": "Bölüm 2: Yapay Zeka BM Güvenlik Konseyinde", "post_date": "2026-09-28T14:22:28.540Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/bolum-2-yapay-zeka-bm-guvenlik-konseyinde-e98", "slug": "bolum-2-yapay-zeka-bm-guvenlik-konseyinde-e98", "type": "podcast", "podcast_duration": 1952 },
-  { "title": "Teknoloji · Hukuk · Politika (2026/39)", "post_date": "2026-09-27T13:28:48.440Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202639", "slug": "teknoloji-hukuk-politika-202639", "type": "newsletter" },
-  { "title": "Bölüm 1: 15 Yaş Altına Sosyal Medya Yasağı", "post_date": "2026-09-23T11:11:12.821Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/bolum-1-15-yas-altna-sosyal-medya-eae", "slug": "bolum-1-15-yas-altna-sosyal-medya-eae", "type": "podcast", "podcast_duration": 2400 },
-  { "title": "Teknoloji · Hukuk · Politika (2026/38)", "post_date": "2026-09-20T16:06:39.607Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202638", "slug": "teknoloji-hukuk-politika-202638", "type": "newsletter" },
-  { "title": "Teknoloji · Hukuk · Politika (2026/37)", "post_date": "2026-09-13T12:51:38.632Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202637", "slug": "teknoloji-hukuk-politika-202637", "type": "newsletter" },
-  { "title": "Teknoloji · Hukuk · Politika (2026/36)", "post_date": "2026-09-06T11:03:33.671Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202636", "slug": "teknoloji-hukuk-politika-202636", "type": "newsletter" },
-  { "title": "Teknoloji · Hukuk · Politika (2026/35)", "post_date": "2026-08-30T10:00:00.000Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202635", "slug": "teknoloji-hukuk-politika-202635", "type": "newsletter" },
-  { "title": "Bir Çipin Jeopolitiği: Nvidia H200", "subtitle": "Erişimin Silaha, Üretimin Kalkana Dönüştüğü Çağda Bir Çipin İki Hükümet Arasındaki Yolculuğu", "post_date": "2026-08-24T10:00:00.000Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/bir-cipin-jeopolitigi-nvidia-h200", "slug": "bir-cipin-jeopolitigi-nvidia-h200", "type": "newsletter" },
-  { "title": "Meta’nın “Büyük Tütün Anı”", "subtitle": "Çocuk Güvenliği, Platform Tasarımı ve Düzenlemenin Kesişiminde Emsal Dava", "post_date": "2026-08-18T10:00:00.000Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/metann-buyuk-tutun-an", "slug": "metann-buyuk-tutun-an", "type": "newsletter" },
-  { "title": "\"Yazılım Mühendisliği Bitiyor\" mu?", "subtitle": "Meslek bitmiyor, emek yukarı taşınıyor. Peki Türkiye hangi kata çıkıyor?", "post_date": "2026-08-16T12:00:00.000Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/yazlm-muhendisligi-bitiyor-mu", "slug": "yazlm-muhendisligi-bitiyor-mu", "type": "newsletter" },
-  { "title": "GPT-5.6-Cyber: Kimlerin Elinde?", "subtitle": "Yapay zekânın siber kapasitesi güçlenirken, erişim eşitsizliği bir egemenlik sorununa dönüşüyor", "post_date": "2026-08-16T10:00:00.000Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/gpt-56-cyber-kimlerin-elinde", "slug": "gpt-56-cyber-kimlerin-elinde", "type": "newsletter" },
-  { "title": "Google’s Monopoly Over Android App Distribution Challenged", "post_date": "2024-10-08T10:00:00.000Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/googles-monopoly-over-android-app", "slug": "googles-monopoly-over-android-app", "type": "newsletter" },
-  { "title": "May 14, 2024: A New Era in AI", "post_date": "2024-05-14T10:00:00.000Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/may-14-2024-a-new-era-in-ai", "slug": "may-14-2024-a-new-era-in-ai", "type": "newsletter" },
-  { "title": "Federal Trade Commission's Final Rule on Banning Non-Competes", "post_date": "2024-05-03T10:00:00.000Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/federal-trade-commissions-final-rule", "slug": "federal-trade-commissions-final-rule", "type": "newsletter" },
-  { "title": "Rekabet Hukuku Ekseninde Yapay Zeka", "subtitle": "2023'te neler oldu?", "post_date": "2024-04-04T10:00:00.000Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/rekabet-hukuku-ekseninde-yapay-zeka", "slug": "rekabet-hukuku-ekseninde-yapay-zeka", "type": "newsletter" },
-  { "title": "Büyük Dil Modelleri ve Hukuk", "subtitle": "Alanın Öncülerine Ait Röportaj ve Makale İncelemesi", "post_date": "2024-04-03T10:00:00.000Z", "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/buyuk-dil-modelleri-ve-hukuk", "slug": "buyuk-dil-modelleri-ve-hukuk", "type": "newsletter" }
+  {
+    "title": "Türkiye ve \"Made in Europe\"",
+    "post_date": "2026-10-20T16:29:08.150Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/turkiye-ve-made-in-europe-736",
+    "slug": "turkiye-ve-made-in-europe-736",
+    "type": "podcast",
+    "podcast_duration": 3025
+  },
+  {
+    "title": "Teknoloji · Hukuk · Politika (2026/42)",
+    "post_date": "2026-10-18T16:55:47.519Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202642",
+    "slug": "teknoloji-hukuk-politika-202642",
+    "type": "newsletter",
+    "cover_image": "https://substack-post-media.s3.amazonaws.com/public/images/b7aec50e-4e86-4ab8-a702-2ad3e181ef83_900x599.jpeg"
+  },
+  {
+    "title": "Bölüm 4: Baroların Teknolojik Dönüşümdeki Yeri",
+    "post_date": "2026-10-13T17:29:39.744Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/bolum-4-barolarn-teknolojik-donusumdeki-865",
+    "slug": "bolum-4-barolarn-teknolojik-donusumdeki-865",
+    "type": "podcast",
+    "podcast_duration": 3086
+  },
+  {
+    "title": "Teknoloji · Hukuk · Politika (2026/41)",
+    "post_date": "2026-10-12T10:23:57.682Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202641",
+    "slug": "teknoloji-hukuk-politika-202641",
+    "type": "newsletter",
+    "cover_image": "https://substack-post-media.s3.amazonaws.com/public/images/2f29a1f9-8e38-4f8b-94d0-1d4f82eaaee9_1080x802.jpeg"
+  },
+  {
+    "title": "Bölüm 3: Fon Krizi Teknoloji Şirketlerini Nasıl Etkiler?",
+    "post_date": "2026-10-06T13:34:48.442Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/bolum-3-fon-krizi-teknoloji-sirketlerini-c92",
+    "slug": "bolum-3-fon-krizi-teknoloji-sirketlerini-c92",
+    "type": "podcast",
+    "podcast_duration": 3317
+  },
+  {
+    "title": "Teknoloji · Hukuk · Politika (2026/40)",
+    "post_date": "2026-10-04T10:00:11.809Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202640",
+    "slug": "teknoloji-hukuk-politika-202640",
+    "type": "newsletter",
+    "cover_image": "https://substack-post-media.s3.amazonaws.com/public/images/81534eb3-bb5f-44f8-a11f-675ff6a66702_1600x900.jpeg"
+  },
+  {
+    "title": "Bölüm 2: Yapay Zeka BM Güvenlik Konseyinde",
+    "post_date": "2026-09-28T14:22:28.540Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/bolum-2-yapay-zeka-bm-guvenlik-konseyinde-e98",
+    "slug": "bolum-2-yapay-zeka-bm-guvenlik-konseyinde-e98",
+    "type": "podcast",
+    "podcast_duration": 1952
+  },
+  {
+    "title": "Teknoloji · Hukuk · Politika (2026/39)",
+    "post_date": "2026-09-27T13:28:48.440Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202639",
+    "slug": "teknoloji-hukuk-politika-202639",
+    "type": "newsletter",
+    "cover_image": "https://substack-post-media.s3.amazonaws.com/public/images/9c7a03c1-ae46-4b13-a88c-daee1a64c511_1536x1024.png"
+  },
+  {
+    "title": "Bölüm 1: 15 Yaş Altına Sosyal Medya Yasağı",
+    "post_date": "2026-09-23T11:11:12.821Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/bolum-1-15-yas-altna-sosyal-medya-eae",
+    "slug": "bolum-1-15-yas-altna-sosyal-medya-eae",
+    "type": "podcast",
+    "podcast_duration": 2400
+  },
+  {
+    "title": "Teknoloji · Hukuk · Politika (2026/38)",
+    "post_date": "2026-09-20T16:06:39.607Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202638",
+    "slug": "teknoloji-hukuk-politika-202638",
+    "type": "newsletter",
+    "cover_image": "https://substack-post-media.s3.amazonaws.com/public/images/04e785bf-ec72-479a-a5f2-f01d41ea9aa4_1000x784.jpeg"
+  },
+  {
+    "title": "Teknoloji · Hukuk · Politika (2026/37)",
+    "post_date": "2026-09-13T12:51:38.632Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202637",
+    "slug": "teknoloji-hukuk-politika-202637",
+    "type": "newsletter",
+    "cover_image": "https://substackcdn.com/image/youtube/w_728,c_limit/Dy2kbPEwoi4"
+  },
+  {
+    "title": "Teknoloji · Hukuk · Politika (2026/36)",
+    "post_date": "2026-09-06T11:03:33.671Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202636",
+    "slug": "teknoloji-hukuk-politika-202636",
+    "type": "newsletter",
+    "cover_image": "https://substack-post-media.s3.amazonaws.com/public/images/c82b458a-109f-4ca8-9afc-0ac8731fce78_610x594.png"
+  },
+  {
+    "title": "Teknoloji · Hukuk · Politika (2026/35)",
+    "post_date": "2026-08-30T10:00:00.000Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202635",
+    "slug": "teknoloji-hukuk-politika-202635",
+    "type": "newsletter",
+    "cover_image": "https://substack-post-media.s3.amazonaws.com/public/images/d8ae39d0-671f-4507-893f-3ed4f7d051f4_1336x889.png"
+  },
+  {
+    "title": "Bir Çipin Jeopolitiği: Nvidia H200",
+    "subtitle": "Erişimin Silaha, Üretimin Kalkana Dönüştüğü Çağda Bir Çipin İki Hükümet Arasındaki Yolculuğu",
+    "post_date": "2026-08-24T10:00:00.000Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/bir-cipin-jeopolitigi-nvidia-h200",
+    "slug": "bir-cipin-jeopolitigi-nvidia-h200",
+    "type": "newsletter"
+  },
+  {
+    "title": "Meta’nın “Büyük Tütün Anı”",
+    "subtitle": "Çocuk Güvenliği, Platform Tasarımı ve Düzenlemenin Kesişiminde Emsal Dava",
+    "post_date": "2026-08-18T10:00:00.000Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/metann-buyuk-tutun-an",
+    "slug": "metann-buyuk-tutun-an",
+    "type": "newsletter"
+  },
+  {
+    "title": "\"Yazılım Mühendisliği Bitiyor\" mu?",
+    "subtitle": "Meslek bitmiyor, emek yukarı taşınıyor. Peki Türkiye hangi kata çıkıyor?",
+    "post_date": "2026-08-16T12:00:00.000Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/yazlm-muhendisligi-bitiyor-mu",
+    "slug": "yazlm-muhendisligi-bitiyor-mu",
+    "type": "newsletter"
+  },
+  {
+    "title": "GPT-5.6-Cyber: Kimlerin Elinde?",
+    "subtitle": "Yapay zekânın siber kapasitesi güçlenirken, erişim eşitsizliği bir egemenlik sorununa dönüşüyor",
+    "post_date": "2026-08-16T10:00:00.000Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/gpt-56-cyber-kimlerin-elinde",
+    "slug": "gpt-56-cyber-kimlerin-elinde",
+    "type": "newsletter"
+  },
+  {
+    "title": "Google’s Monopoly Over Android App Distribution Challenged",
+    "post_date": "2024-10-08T10:00:00.000Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/googles-monopoly-over-android-app",
+    "slug": "googles-monopoly-over-android-app",
+    "type": "newsletter"
+  },
+  {
+    "title": "May 14, 2024: A New Era in AI",
+    "post_date": "2024-05-14T10:00:00.000Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/may-14-2024-a-new-era-in-ai",
+    "slug": "may-14-2024-a-new-era-in-ai",
+    "type": "newsletter"
+  },
+  {
+    "title": "Federal Trade Commission's Final Rule on Banning Non-Competes",
+    "post_date": "2024-05-03T10:00:00.000Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/federal-trade-commissions-final-rule",
+    "slug": "federal-trade-commissions-final-rule",
+    "type": "newsletter"
+  },
+  {
+    "title": "Rekabet Hukuku Ekseninde Yapay Zeka",
+    "subtitle": "2023'te neler oldu?",
+    "post_date": "2024-04-04T10:00:00.000Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/rekabet-hukuku-ekseninde-yapay-zeka",
+    "slug": "rekabet-hukuku-ekseninde-yapay-zeka",
+    "type": "newsletter"
+  },
+  {
+    "title": "Büyük Dil Modelleri ve Hukuk",
+    "subtitle": "Alanın Öncülerine Ait Röportaj ve Makale İncelemesi",
+    "post_date": "2024-04-03T10:00:00.000Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/buyuk-dil-modelleri-ve-hukuk",
+    "slug": "buyuk-dil-modelleri-ve-hukuk",
+    "type": "newsletter"
+  }
 ]
