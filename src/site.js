@@ -38,3 +38,23 @@
     }
   });
 })();
+
+// Konuşma videoları: tıklanınca sayfada oynat (YouTube çerezsiz oynatıcı)
+(function () {
+  document.querySelectorAll('.yt').forEach(function (kutu) {
+    var dugme = kutu.querySelector('.yt-oynat');
+    if (!dugme) return;
+    dugme.addEventListener('click', function () {
+      var id = kutu.getAttribute('data-id');
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      f.title = dugme.getAttribute('aria-label') || 'YouTube videosu';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      f.allowFullscreen = true;
+      kutu.innerHTML = '';
+      kutu.appendChild(f);
+      var li = kutu.closest('.konusma');
+      if (li) li.classList.add('konusma-acik');
+    });
+  });
+})();

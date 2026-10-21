@@ -172,9 +172,13 @@ const oynat = '<svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true
 const bolumHTML = bolumler.slice(0, 6).map((b) => `
 <li><a class="bolum" href="${esc(b.canonical_url)}"><span class="bolum-oynat">${oynat}</span><span class="bolum-metin"><span class="bolum-ust">Bölüm ${b.no} · ${gunAy(b.post_date)}${b.podcast_duration ? ` · ${Math.round(b.podcast_duration / 60)} dk` : ''}</span><span class="bolum-ad">${esc(b.ad)}</span></span></a></li>`).join('');
 
-const konusmaHTML = konusmalar.map((t) => t.video
-  ? `<a class="kart konusma" href="${esc(t.video)}"><span class="etiket">${esc(t.zaman)}</span><h3>${esc(t.baslik)}</h3><p>${esc(t.yer)}</p><span class="oku">${oynat} Videoyu izle</span></a>`
-  : `<article class="kart konusma"><span class="etiket">${esc(t.zaman)}</span><h3>${esc(t.baslik)}</h3><p>${esc(t.yer)}</p></article>`).join('\n');
+const ytId = (u) => (String(u || '').match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/) || [])[1] || '';
+const konusmaHTML = konusmalar.map((t) => {
+  const id = ytId(t.video);
+  const metin = `<div class="konusma-metin"><span class="etiket">${esc(t.zaman)}</span><h3>${esc(t.baslik)}</h3><p>${esc(t.yer)}</p>${id ? `<a class="yt-dis" href="${esc(t.video)}">YouTube'da aç ↗</a>` : ''}</div>`;
+  if (!id) return `<li class="konusma konusma-videosuz">${metin}</li>`;
+  return `<li class="konusma"><div class="yt" data-id="${id}"><button type="button" class="yt-oynat" aria-label="${esc(t.baslik)} videosunu oynat"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="yt-dugme" aria-hidden="true"><svg viewBox="0 0 68 48" width="56" height="40"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#f00"/><path d="M45 24 27 14v20z" fill="#fff"/></svg></span></button></div>${metin}</li>`;
+}).join('\n');
 
 // ---------- Logolar ----------
 const LOGO = {
@@ -277,7 +281,7 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 <section id="konusmalar" class="kap bolum-blok">
 <p class="ust-etiket koyu">Kürsüden</p>
 <h2>Konuşmalar ve programlar</h2>
-<div class="konusma-izgara">${konusmaHTML}</div>
+<ol class="konusma-listesi">${konusmaHTML}</ol>
 <p class="soluk"><a href="${esc(site.youtube)}">Tüm konuşma kayıtları YouTube kanalında →</a></p>
 </section>
 

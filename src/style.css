@@ -135,11 +135,22 @@ a.yazi-baslik:hover { color: var(--kiremit-koyu); }
 .yazi-kat { font-size: 13px; font-weight: 600; color: var(--kiremit-koyu); }
 
 /* Konuşmalar */
-.konusma-izgara { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 24px; margin: 32px 0 20px; }
-.konusma h3 { font-size: 21px; }
+.konusma-listesi { list-style: none; margin: 32px 0 20px; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.konusma { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 24px; align-items: center; background: var(--beyaz); border: 1px solid var(--tas); border-radius: 14px; padding: 12px; }
+.konusma-videosuz { grid-template-columns: minmax(0, 1fr); padding: 18px 24px; }
+.konusma-metin { display: flex; flex-direction: column; gap: 4px; min-width: 0; padding-right: 12px; }
+.konusma h3 { font-size: 20px; line-height: 1.3; }
 .konusma p { color: var(--soluk); font-size: 15px; }
-a.konusma:hover h3 { color: var(--kiremit-koyu); }
-.konusma .oku { display: inline-flex; align-items: center; gap: 8px; }
+.yt-dis { font-size: 14px; font-weight: 600; margin-top: 4px; width: fit-content; }
+.yt { position: relative; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: #000; }
+.yt-oynat { all: unset; cursor: pointer; display: block; width: 100%; height: 100%; position: relative; }
+.yt-oynat img { width: 100%; height: 100%; object-fit: cover; }
+.yt-dugme { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: .9; transition: opacity .2s, transform .2s; }
+.yt-oynat:hover .yt-dugme, .yt-oynat:focus-visible .yt-dugme { opacity: 1; transform: scale(1.08); }
+.yt-oynat:focus-visible { outline: 3px solid var(--kiremit); outline-offset: -3px; }
+.yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.konusma-acik { grid-template-columns: minmax(0, 1fr); }
+.konusma-acik .yt { max-width: 860px; }
 
 /* Hakkımda */
 .hakkimda { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px 48px; align-items: center; border-top: 2px solid var(--murekkep); padding-top: 48px; padding-bottom: 48px; }
@@ -180,6 +191,8 @@ a.konusma:hover h3 { color: var(--kiremit-koyu); }
   .sayi-buyuk .sayi-govde { padding: 24px; }
   .yazi { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .tanitim .dugmeler { width: 100%; }
+  .konusma { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .konusma-metin { padding: 0 6px 6px; }
   .bolum-blok { padding-top: 64px; }
   .menu { gap: 0 18px; }
 }
