@@ -206,3 +206,5 @@ a.yazi-baslik:hover { color: var(--kiremit-koyu); }
   .bolum-blok { padding-top: 64px; }
   .menu { gap: 0 18px; }
 }
+
+.nowrap { white-space: nowrap; }
