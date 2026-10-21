@@ -312,7 +312,7 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 
 <section id="abone" class="abone">
 <div class="kap abone-ic">
-<div><h2>Her pazar, haftanın Teknoloji · Hukuk · Politika bülteni</h2><p>Bülten e-posta kutunuza gelsin; yeni podcast bölümlerinden de ilk siz haberdar olun.</p></div>
+<div><h2>Her Pazar, haftanın Teknoloji · Hukuk · Politika bülteni</h2><p>Bülten e-posta kutunuza gelsin; yeni podcast bölümlerinden de ilk siz haberdar olun.</p></div>
 <form class="abone-form" id="abone-formu" action="${esc(site.substackAdres)}/subscribe" method="get" novalidate>
 <div class="eposta-satir">
 <label for="eposta" class="gizli">E-posta adresiniz</label>
