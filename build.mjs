@@ -220,7 +220,7 @@ const ust = `
 <div class="kap ust-ic">
 <a href="/" class="marka" aria-label="Ortak Kürsü ana sayfa"><span class="marka-ad">Ortak Kürsü</span></a>
 <nav aria-label="Ana menü" class="menu">
-<a href="/#bulten">Bülten</a><a href="/#podcast">Podcast</a><a href="/#yazilar">Raporlar ve yazılar</a><a href="/#konusmalar">Konuşmalar ve programlar</a><a href="/#hakkimda">Hakkımda</a><a href="/#abone" class="dugme dugme-vurgu">Abone ol</a>
+<a href="/#bulten">Bülten</a><a href="/#podcast">Podcast</a><a href="/#konusmalar">Konuşmalar ve programlar</a><a href="/#yazilar">Raporlar ve yazılar</a><a href="/#iletisim">İletişim</a><a href="/#abone" class="dugme dugme-vurgu">Abone ol</a>
 </nav>
 </div>
 </header>`;
@@ -274,6 +274,13 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 </div>
 </section>
 
+<section id="konusmalar" class="kap bolum-blok">
+<p class="ust-etiket koyu">Kürsüden</p>
+<h2>Konuşmalar ve programlar</h2>
+<div class="konusma-izgara">${konusmaHTML}</div>
+<p class="soluk"><a href="${esc(site.youtube)}">Tüm konuşma kayıtları YouTube kanalında →</a></p>
+</section>
+
 <section id="yazilar" class="kap bolum-blok">
 <p class="ust-etiket koyu">Raporlar ve yazılar</p>
 <h2>Uzun soluklu çalışmalar</h2>
@@ -287,16 +294,10 @@ ${sayilar.slice(0, 12).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 <div id="yazi-alani">${yaziListesiHTML()}</div>
 </section>
 
-<section id="konusmalar" class="kap bolum-blok">
-<p class="ust-etiket koyu">Kürsüden</p>
-<h2>Konuşmalar ve programlar</h2>
-<div class="konusma-izgara">${konusmaHTML}</div>
-<p class="soluk"><a href="${esc(site.youtube)}">Tüm konuşma kayıtları YouTube kanalında →</a></p>
-</section>
 
-<section id="hakkimda" class="kap bolum-blok">
+<section id="iletisim" class="kap bolum-blok">
 <div class="hakkimda">
-<div><p class="ust-etiket koyu">Hakkımda</p><h2>Çiğdem Gizem Okkaoğlu</h2><p class="soluk">Hukukçu · Teknoloji Politikaları Doktora Adayı · Endüstri Mühendisi</p></div>
+<div><p class="ust-etiket koyu">İletişim</p><h2>Çiğdem Gizem Okkaoğlu</h2></div>
 <nav class="sosyal" aria-label="Sosyal medya hesapları">${sosyalHTML}</nav>
 </div>
 </section>
