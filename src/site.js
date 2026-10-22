@@ -86,3 +86,39 @@
     });
   });
 })();
+
+// Bülten kartları: sabit özet alanına tam sığan maddeleri göster; kalan boşluk
+// en az iki satırsa bir sonraki maddeyi o kadar satırla "…" ile kısaltarak doldur
+(function () {
+  var listeler = document.querySelectorAll('.sayi:not(.sayi-buyuk) .sayi-ozet');
+  if (!listeler.length) return;
+  function sigdir() {
+    listeler.forEach(function (ul) {
+      var maddeler = [].slice.call(ul.querySelectorAll('li'));
+      maddeler.forEach(function (li) { li.hidden = false; li.classList.remove('kisaltilmis'); li.style.removeProperty('-webkit-line-clamp'); });
+      var kutu = ul.getBoundingClientRect();
+      var satir = parseFloat(getComputedStyle(ul).lineHeight) || 23;
+      var bosluk = parseFloat(getComputedStyle(ul).rowGap) || 8;
+      var son = -1;
+      for (var i = 0; i < maddeler.length; i++) {
+        if (maddeler[i].getBoundingClientRect().bottom <= kutu.bottom + 1) son = i; else break;
+      }
+      if (son < 0) son = 0;
+      var altSinir = maddeler[son].getBoundingClientRect().bottom;
+      for (var j = son + 1; j < maddeler.length; j++) maddeler[j].hidden = true;
+      var kalan = kutu.bottom - altSinir - bosluk;
+      var satirSayisi = Math.floor(kalan / satir);
+      if (son + 1 < maddeler.length && satirSayisi >= 1) {
+        var li = maddeler[son + 1];
+        li.hidden = false;
+        li.classList.add('kisaltilmis');
+        li.style.setProperty('-webkit-line-clamp', String(satirSayisi));
+      }
+    });
+  }
+  var zaman;
+  window.addEventListener('resize', function () { clearTimeout(zaman); zaman = setTimeout(sigdir, 150); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sigdir);
+  window.addEventListener('load', sigdir);
+  sigdir();
+})();

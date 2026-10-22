@@ -212,3 +212,8 @@ a.yazi-baslik:hover { color: var(--kiremit-koyu); }
 }
 
 .nowrap { white-space: nowrap; }
+
+/* Küçük bülten kartları: sabit özet alanı; sığmayan madde gizlenir (site.js) */
+.sayi:not(.sayi-buyuk) .sayi-ozet { height: 16em; overflow: hidden; }
+.sayi-ozet li.kisaltilmis { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+.sayi:not(.sayi-buyuk) .sayi-ozet li[hidden] { display: none; }
