@@ -19,6 +19,9 @@ const KATEGORILER = [
   { id: 'rekabet', ad: 'Rekabet hukuku uygulaması' },
   { id: 'egemenlik', ad: 'Ticaret, sanayi ve egemenlik' },
   { id: 'toplum', ad: 'Toplum ve kamu politikası' },
+  { id: 'veri', ad: 'Kişisel verilerin korunması' },
+  { id: 'finans', ad: 'Fintech ve sürdürülebilir finans' },
+  { id: 'ticari', ad: 'Marka ve uyuşmazlık hukuku' },
 ];
 const katAd = Object.fromEntries(KATEGORILER.map((k) => [k.id, k.ad]));
 const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
@@ -100,7 +103,7 @@ for (const p of gonderiler) {
   const m = p.title.match(SAYI_RE);
   if (m) sayilar.push({ ...p, no: `${m[1]}/${m[2]}`, yil: Number(m[1]), hafta: Number(m[2]) });
   else if (p.type === 'podcast') bolumler.push(p);
-  else substackYazilar.push(p);
+  else if (!(site.substackHaric || []).includes(p.slug)) substackYazilar.push(p);
 }
 // Bölüm numaraları: başlıkta "Bölüm N:" varsa o, yoksa sıraya göre
 const kronolojik = [...bolumler].reverse();
