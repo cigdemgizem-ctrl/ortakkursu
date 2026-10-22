@@ -143,7 +143,9 @@ function sayiKarti(s, buyuk) {
   const maddeler = Array.isArray(s.ozet) ? s.ozet : [];
   const gosterilen = maddeler;
   const ozetHTML = gosterilen.length
-    ? `<ul class="sayi-ozet">${gosterilen.map((m) => `<li>${esc(m)}</li>`).join('')}</ul>`
+    ? (buyuk
+      ? `<ul class="sayi-ozet">${gosterilen.map((m) => `<li>${esc(m)}</li>`).join('')}</ul>`
+      : `<p class="sayi-ozet-metin">${gosterilen.map((m) => esc(m)).join('<br>')}</p>`)
     : (s.ozet_yedek ? `<p class="sayi-ozet">${esc(kisalt(s.ozet_yedek, 260))}</p>` : '');
   const kapak = s.cover_image || '';
   return `<a class="kart sayi${buyuk ? ' sayi-buyuk' : ''}" href="${esc(s.canonical_url)}">${kapak ? `<span class="sayi-kapak"><img src="${esc(kapak)}" alt="Sayı ${s.no} kapak görseli" loading="${buyuk ? 'eager' : 'lazy'}" decoding="async" width="960" height="540"></span>` : ''}<span class="sayi-govde"><span class="etiket">${buyuk ? 'Son sayı · ' : ''}Sayı ${s.no}</span><span class="sayi-hafta">${haftaAraligi(s.yil, s.hafta)}</span>${ozetHTML}<span class="oku">Oku →</span></span></a>`;

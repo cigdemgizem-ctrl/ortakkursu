@@ -213,10 +213,5 @@ a.yazi-baslik:hover { color: var(--kiremit-koyu); }
 
 .nowrap { white-space: nowrap; }
 
-/* Küçük bülten kartları: sabit özet alanı; sığmayan madde gizlenir (site.js) */
-.sayi:not(.sayi-buyuk) .sayi-ozet { height: 16em; overflow: hidden; }
-.sayi-ozet li.kisaltilmis { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
-.sayi:not(.sayi-buyuk) .sayi-ozet li[hidden] { display: none; }
-
-.abone-baslik .satir { display: block; }
-@media (max-width: 760px) { .abone-baslik .satir { display: inline; } }
+/* Küçük bülten kartları: özet tam 10 satırlık sabit alana yayılır, son satır "…" ile biter */
+.sayi-ozet-metin { margin: 0; color: var(--soluk); font-size: 15px; line-height: 1.55; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 10; line-clamp: 10; overflow: hidden; height: calc(15px * 1.55 * 10); }
