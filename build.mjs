@@ -355,7 +355,7 @@ ${sayilar.slice(0, 7).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 
 <section id="abone" class="abone">
 <div class="kap abone-ic">
-<div><h2>"Ortak Kürsü" bülteninin ve podcast yayınının <span class="nowrap">e-posta</span> adresinize iletilmesi için<br>lütfen <span class="nowrap">e-posta</span> adresinizi giriniz:</h2></div>
+<div><h2 class="abone-baslik"><span class="satir">"Ortak Kürsü" bülteninin ve podcast yayınının</span> <span class="satir"><span class="nowrap">e-posta</span> adresinize iletilmesi için</span> <span class="satir">lütfen <span class="nowrap">e-posta</span> adresinizi giriniz:</span></h2></div>
 <form class="abone-form" id="abone-formu" action="${esc(site.substackAdres)}/subscribe" method="get" novalidate>
 <div class="eposta-satir">
 <label for="eposta" class="gizli">E-posta adresiniz</label>
