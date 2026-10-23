@@ -318,7 +318,7 @@ const index = `${head('Ortak Kürsü · Çiğdem Gizem Okkaoğlu | Teknoloji, Hu
 <h1 class="kahraman-ad">Ortak<br>Kürsü</h1>
 <div class="dugmeler"><a href="/#bulten" class="dugme dugme-koyu">Son bülteni oku</a><a href="/#podcast" class="dugme dugme-cerceve-koyu">${oynat}Podcast'i dinle</a><a href="/#abone" class="dugme dugme-cerceve-koyu">Abone ol</a></div>
 </div>
-<div class="kahraman-gorsel"><img src="/assets/kursu-sahne.jpg" srcset="/assets/kursu-sahne-600.jpg 600w, /assets/kursu-sahne.jpg 974w" sizes="(max-width: 760px) 100vw, 560px" width="974" height="814" alt="Kiremit rengi bir dairenin önünde siyah bir kürsü; üç mikrofon Teknoloji, Hukuk ve Politika kelimelerine uzanıyor." fetchpriority="high"></div>
+<div class="kahraman-gorsel"><picture><source type="image/webp" srcset="/assets/kursu-sahne-600.webp 600w, /assets/kursu-sahne.webp 974w" sizes="(max-width: 760px) 100vw, 560px"><img src="/assets/kursu-sahne.jpg" srcset="/assets/kursu-sahne-600.jpg 600w, /assets/kursu-sahne.jpg 974w" sizes="(max-width: 760px) 100vw, 560px" width="974" height="814" alt="Kiremit rengi bir dairenin önünde siyah bir kürsü; üç mikrofon Teknoloji, Hukuk ve Politika kelimelerine uzanıyor." fetchpriority="high"></picture></div>
 </div>
 </section>
 
@@ -333,7 +333,7 @@ ${sayilar.slice(0, 7).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 <div class="baslik-satir"><div><p class="ust-etiket koyu">Her Hafta</p><h2>Podcast</h2></div><a href="/podcast/" class="ok-baglanti">Tümünü gör →</a></div>
 <div class="podcast-ic">
 <div class="podcast-sol">
-<img src="/assets/logo-360.jpg" alt="Ortak Kürsü logosu: krem zemin üzerinde kiremit rengi daire önünde siyah bir kürsü" width="180" height="180" class="kapak">
+<picture><source type="image/webp" srcset="/assets/logo-360.webp"><img src="/assets/logo-360.jpg" alt="Ortak Kürsü logosu: krem zemin üzerinde kiremit rengi daire önünde siyah bir kürsü" width="180" height="180" class="kapak"></picture>
 <p>Haftalık bir sohbet: gündemden tek bir mesele, açık açık ve tane tane. Kaynakları bölüm notlarında.</p>
 <div class="dugmeler"><a href="${esc(site.spotify)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.spotify}Spotify'da dinle</a><a href="${esc(site.youtube)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtube}YouTube'da izle</a><a href="${esc(site.youtubeMusic)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtubeMusic}YouTube Music'te dinle</a></div>
 </div>
