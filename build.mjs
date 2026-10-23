@@ -13,6 +13,8 @@ const konusmalar = JSON.parse(await readFile('data/konusmalar.json', 'utf8')).ko
 const raporlar = JSON.parse(await readFile('data/raporlar.json', 'utf8')).raporlar;
 const onbellek = JSON.parse(await readFile('data/substack-onbellek.json', 'utf8'));
 
+const FONT_URL = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital@1&display=swap';
+const STIL = (await readFile('src/style.css', 'utf8')).replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s*\n\s*/g, '\n');
 const KATEGORILER = [
   { id: 'dijital', ad: 'Dijital piyasalar ve platformlar' },
   { id: 'yz', ad: 'Yapay zekâ' },
@@ -151,7 +153,10 @@ function sayiKarti(s, buyuk) {
       : `<p class="sayi-ozet-metin">${gosterilen.map((m) => esc(m)).join('<br>')}</p>`)
     : (s.ozet_yedek ? `<p class="sayi-ozet">${esc(kisalt(s.ozet_yedek, 260))}</p>` : '');
   const kapak = s.cover_image || '';
-  return `<a class="kart sayi${buyuk ? ' sayi-buyuk' : ''}" href="${esc(s.canonical_url)}">${kapak ? `<span class="sayi-kapak"><img src="${esc(kapak)}" alt="Sayı ${s.no} kapak görseli" loading="${buyuk ? 'eager' : 'lazy'}" decoding="async" width="960" height="540"></span>` : ''}<span class="sayi-govde"><span class="etiket">${buyuk ? 'Son sayı · ' : ''}Sayı ${s.no}</span><span class="sayi-hafta">${haftaAraligi(s.yil, s.hafta)}</span>${ozetHTML}<span class="oku">Oku →</span></span></a>`;
+  const kaynak = (kapak.match(/\/(https?%3A[^/]+)$/i) || [])[1];
+  const boy = (w) => `https://substackcdn.com/image/fetch/w_${w},c_limit,f_auto,q_auto:good,fl_progressive:steep/${kaynak}`;
+  const srcset = kaynak ? ` srcset="${[400, 640, 960, 1280].map((w) => `${boy(w)} ${w}w`).join(', ')}" sizes="${buyuk ? '(max-width: 760px) 100vw, 600px' : '(max-width: 760px) 100vw, 380px'}"` : '';
+  return `<a class="kart sayi${buyuk ? ' sayi-buyuk' : ''}" href="${esc(s.canonical_url)}">${kapak ? `<span class="sayi-kapak"><img src="${esc(kaynak ? boy(640) : kapak)}"${srcset} alt="Sayı ${s.no} kapak görseli" loading="${buyuk ? 'eager' : 'lazy'}" decoding="async" width="960" height="540"></span>` : ''}<span class="sayi-govde"><span class="etiket">${buyuk ? 'Son sayı · ' : ''}Sayı ${s.no}</span><span class="sayi-hafta">${haftaAraligi(s.yil, s.hafta)}</span>${ozetHTML}<span class="oku">Oku →</span></span></a>`;
 }
 
 // ---------- Yazılar listesi ----------
@@ -272,8 +277,9 @@ const head = (baslik, aciklama, yol = '/', ekJsonLd = [], robots = 'index, follo
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital@1&display=swap">
-<link rel="stylesheet" href="/style.css?v=${SURUM}">
+<link rel="preload" as="style" href="${FONT_URL}" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="${FONT_URL}"></noscript>
+<style>${STIL}</style>
 <script type="application/ld+json">${jsonLd([WEBSITE, KISI, ...ekJsonLd])}</script>
 <script data-goatcounter="https://ortakkursu.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>`;
@@ -327,7 +333,7 @@ ${sayilar.slice(0, 7).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 <div class="baslik-satir"><div><p class="ust-etiket koyu">Her Hafta</p><h2>Podcast</h2></div><a href="/podcast/" class="ok-baglanti">Tümünü gör →</a></div>
 <div class="podcast-ic">
 <div class="podcast-sol">
-<img src="/assets/logo.png" alt="Ortak Kürsü logosu: krem zemin üzerinde kiremit rengi daire önünde siyah bir kürsü" width="180" height="180" class="kapak">
+<img src="/assets/logo-360.jpg" alt="Ortak Kürsü logosu: krem zemin üzerinde kiremit rengi daire önünde siyah bir kürsü" width="180" height="180" class="kapak">
 <p>Haftalık bir sohbet: gündemden tek bir mesele, açık açık ve tane tane. Kaynakları bölüm notlarında.</p>
 <div class="dugmeler"><a href="${esc(site.spotify)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.spotify}Spotify'da dinle</a><a href="${esc(site.youtube)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtube}YouTube'da izle</a><a href="${esc(site.youtubeMusic)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtubeMusic}YouTube Music'te dinle</a></div>
 </div>
