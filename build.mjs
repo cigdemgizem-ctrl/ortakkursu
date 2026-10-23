@@ -275,6 +275,7 @@ const head = (baslik, aciklama, yol = '/', ekJsonLd = [], robots = 'index, follo
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital@1&display=swap">
 <link rel="stylesheet" href="/style.css?v=${SURUM}">
 <script type="application/ld+json">${jsonLd([WEBSITE, KISI, ...ekJsonLd])}</script>
+<script data-goatcounter="https://ortakkursu.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>`;
 
 const ust = `
@@ -397,6 +398,8 @@ const aydinlatmaSayfa = `${head('Aydınlatma Metni · Ortak Kürsü', 'Ortak Kü
 <main id="icerik" class="kap bolum-blok metin-sayfa">
 <h1>Kişisel Verilerin Korunması Aydınlatma Metni</h1>
 ${aydinlatmaMetni}
+<h2>Site ziyaret istatistikleri</h2>
+<p>Sitenin hangi sayfalarının okunduğunu görmek için çerez kullanmayan GoatCounter hizmetinden yararlanılır. Bu hizmet ziyaretçiyi tanımlamaz; IP adresi saklanmaz, yalnızca sayfa adresi, yönlendiren site, tarayıcı türü, ekran boyutu ve ülke bilgisi toplu istatistik olarak tutulur.</p>
 <p><a href="/#abone">← Aboneliğe dön</a></p>
 </main>${alt}
 </body>
