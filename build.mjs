@@ -382,7 +382,7 @@ ${sayilar.slice(0, 7).map((x, i) => sayiKarti(x, i === 0)).join('\n')}
 <div class="podcast-ic">
 <div class="podcast-sol">
 <picture><source type="image/webp" srcset="/assets/logo-360.webp"><img src="/assets/logo-360.jpg" alt="Ortak Kürsü logosu: krem zemin üzerinde kiremit rengi daire önünde siyah bir kürsü" width="180" height="180" class="kapak"></picture>
-<p>Her hafta gündemden tek bir meseleyi farklı boyutlarıyla ve ülkemiz için ne anlama geldiğini de sorgulayarak tartışıyoruz. Kaynaklar bölüm notlarında.</p>
+<p>Her hafta gündemden tek bir meseleyi farklı boyutlarıyla ve ülkemiz için ne anlama geldiğini sorgulayarak tartışıyoruz. Kaynaklar bölüm notlarında.</p>
 <div class="dugmeler"><a href="${esc(site.spotify)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.spotify}Spotify'da dinle</a><a href="${esc(site.youtube)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtube}YouTube'da izle</a><a href="${esc(site.youtubeMusic)}" class="dugme dugme-cerceve-koyu dugme-logo">${LOGO.youtubeMusic}YouTube Music'te dinle</a></div>
 </div>
 <ol class="bolumler">${bolumHTML}</ol>
