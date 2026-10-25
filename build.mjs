@@ -32,10 +32,25 @@ const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz',
 const BASLIK = { 'User-Agent': 'Mozilla/5.0 (compatible; ortakkursu.com site derleyici; +https://ortakkursu.com)', Accept: 'application/json, application/rss+xml, text/xml;q=0.9, */*;q=0.8' };
 const DURUM = { zaman: new Date().toISOString(), kaynak: 'önbellek', hatalar: [] };
 const xmlAl = (blok, etiket) => { const m = blok.match(new RegExp(`<${etiket}[^>]*>([\\s\\S]*?)<\/${etiket}>`, 'i')); return m ? m[1].replace(/^<!\[CDATA\[([\s\S]*)\]\]>$/, '$1').trim() : ''; };
+const TARAYICI = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36', Accept: 'application/rss+xml,application/xml;q=0.9,*/*;q=0.8', 'Accept-Language': 'tr-TR,tr;q=0.9,en;q=0.8' };
 async function rssCek() {
-  const r = await fetch(`${site.substackAdres}/feed`, { headers: BASLIK, signal: AbortSignal.timeout(20000) });
-  if (!r.ok) throw new Error(`RSS yanıtı ${r.status}`);
-  const xml = await r.text();
+  const feed = `${site.substackAdres}/feed`;
+  const yollar = [
+    ['doğrudan', feed, BASLIK],
+    ['doğrudan-tarayıcı', feed, TARAYICI],
+    ['allorigins', `https://api.allorigins.win/raw?url=${encodeURIComponent(feed)}`, TARAYICI],
+    ['codetabs', `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(feed)}`, TARAYICI],
+  ];
+  let xml = '';
+  for (const [ad, url, baslik] of yollar) {
+    try {
+      const r = await fetch(url, { headers: baslik, signal: AbortSignal.timeout(25000) });
+      const t = r.ok ? await r.text() : '';
+      if (r.ok && /<item>/i.test(t)) { xml = t; DURUM.rssYolu = ad; break; }
+      DURUM.hatalar.push(`rss/${ad}: ${r.status}`);
+    } catch (e) { DURUM.hatalar.push(`rss/${ad}: ${e.message}`); }
+  }
+  if (!xml) throw new Error('RSS alınamadı');
   const ogeler = xml.match(/<item>[\s\S]*?<\/item>/gi) || [];
   if (!ogeler.length) throw new Error('RSS boş');
   return ogeler.map((o) => {
