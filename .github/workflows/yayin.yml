@@ -1,13 +1,13 @@
 name: Siteyi derle ve yayımla
 
-# Her gönderimde, her gün sabah ve her pazar akşamı siteyi Substack'ten
+# Her gönderimde, her gün sabah ve pazar günleri saat başı siteyi Substack'ten
 # güncel verilerle yeniden derleyip GitHub Pages'te yayımlar.
 on:
   push:
     branches: [main]
   schedule:
     - cron: '17 4 * * *'    # her gün 07:17 (Türkiye saati)
-    - cron: '47 17 * * 0'   # her pazar 20:47 (Türkiye saati), bülten sonrası
+    - cron: '23 4-20 * * 0' # pazar günleri 07:23–23:23 arası saat başı (Türkiye saati), bülten sonrası
   workflow_dispatch: {}
 
 permissions:

@@ -29,11 +29,35 @@ const katAd = Object.fromEntries(KATEGORILER.map((k) => [k.id, k.ad]));
 const AYLAR = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
 
 // ---------- Substack ----------
+const BASLIK = { 'User-Agent': 'Mozilla/5.0 (compatible; ortakkursu.com site derleyici; +https://ortakkursu.com)', Accept: 'application/json, application/rss+xml, text/xml;q=0.9, */*;q=0.8' };
+const DURUM = { zaman: new Date().toISOString(), kaynak: 'önbellek', hatalar: [] };
+const xmlAl = (blok, etiket) => { const m = blok.match(new RegExp(`<${etiket}[^>]*>([\\s\\S]*?)<\/${etiket}>`, 'i')); return m ? m[1].replace(/^<!\[CDATA\[([\s\S]*)\]\]>$/, '$1').trim() : ''; };
+async function rssCek() {
+  const r = await fetch(`${site.substackAdres}/feed`, { headers: BASLIK, signal: AbortSignal.timeout(20000) });
+  if (!r.ok) throw new Error(`RSS yanıtı ${r.status}`);
+  const xml = await r.text();
+  const ogeler = xml.match(/<item>[\s\S]*?<\/item>/gi) || [];
+  if (!ogeler.length) throw new Error('RSS boş');
+  return ogeler.map((o) => {
+    const link = xmlAl(o, 'link');
+    const enc = [...o.matchAll(/<enclosure[^>]*url="([^"]+)"[^>]*type="([^"]+)"/gi)];
+    const ses = enc.find((e) => /^audio/.test(e[2])); const gorsel = enc.find((e) => /^image/.test(e[2]));
+    const sure = xmlAl(o, 'itunes:duration');
+    const govde = xmlAl(o, 'content:encoded');
+    return {
+      title: htmlMetin(xmlAl(o, 'title')), subtitle: htmlMetin(xmlAl(o, 'description')), post_date: new Date(xmlAl(o, 'pubDate')).toISOString(),
+      canonical_url: link, slug: (link.match(/\/p\/([^/?#]+)/) || [])[1] || link,
+      type: ses ? 'podcast' : 'newsletter',
+      podcast_duration: sure ? sure.split(':').reduce((t, x) => t * 60 + Number(x), 0) : null,
+      cover_image: gorsel ? gorsel[1] : '', ozet_yedek: kisalt(htmlMetin(govde), 400), _govde: govde,
+    };
+  });
+}
 async function substackCek() {
   const hepsi = [];
   for (let offset = 0; offset < 500; offset += 50) {
     const url = `${site.substackAdres}/api/v1/archive?sort=new&offset=${offset}&limit=50`;
-    const r = await fetch(url, { headers: { 'User-Agent': 'ortakkursu.com site derleyici' }, signal: AbortSignal.timeout(20000) });
+    const r = await fetch(url, { headers: BASLIK, signal: AbortSignal.timeout(20000) });
     if (!r.ok) throw new Error(`Substack yanıtı ${r.status}`);
     const sayfa = await r.json();
     if (!Array.isArray(sayfa)) throw new Error('Beklenmeyen Substack yanıtı');
@@ -54,7 +78,8 @@ async function substackCek() {
 // Bülten sayısının "Bu sayıda" bölümünü özet olarak çıkar
 function htmlMetin(h) {
   return h.replace(/<\/(p|li|h[1-6]|div|blockquote)>/gi, '\n').replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '')
-    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;|&#8217;/g, '’').replace(/&#8220;|&#8221;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+    .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;|&#8217;/g, '’').replace(/&#8220;|&#8221;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&#(\d+);/g, (m, n) => String.fromCodePoint(Number(n))).replace(/&#x([0-9a-f]+);/gi, (m, n) => String.fromCodePoint(parseInt(n, 16)));
 }
 function kisalt(t, n = 300) {
   t = t.replace(/\s+/g, ' ').trim();
@@ -62,11 +87,14 @@ function kisalt(t, n = 300) {
   const k = t.slice(0, n); const son = Math.max(k.lastIndexOf('. '), k.lastIndexOf('; '));
   return (son > n * 0.5 ? k.slice(0, son + 1) : k.replace(/\s+\S*$/, '') + '…');
 }
-async function sayiOzeti(slug) {
-  const r = await fetch(`${site.substackAdres}/api/v1/posts/${slug}`, { headers: { 'User-Agent': 'ortakkursu.com site derleyici' }, signal: AbortSignal.timeout(20000) });
-  if (!r.ok) return [];
-  const j = await r.json();
-  const bloklar = (j.body_html || '').match(/<(p|li|h[1-6]|blockquote)[^>]*>[\s\S]*?<\/\1>/gi) || [];
+async function sayiOzeti(slug, govde) {
+  let html = govde || '';
+  if (!html) {
+    const r = await fetch(`${site.substackAdres}/api/v1/posts/${slug}`, { headers: BASLIK, signal: AbortSignal.timeout(20000) });
+    if (!r.ok) return [];
+    html = (await r.json()).body_html || '';
+  }
+  const bloklar = html.match(/<(p|li|h[1-6]|blockquote)[^>]*>[\s\S]*?<\/\1>/gi) || [];
   const metinler = bloklar.map((b) => htmlMetin(b).replace(/\s+/g, ' ').trim()).filter(Boolean);
   const i = metinler.findIndex((t) => /^Bu say[ıi]da/i.test(t));
   if (i < 0) return [];
@@ -84,18 +112,22 @@ async function sayiOzeti(slug) {
 const SAYI_RE = /Teknoloji\s*·\s*Hukuk\s*·\s*Politika\s*\((\d{4})\/(\d{1,2})\)/i;
 let gonderiler = onbellek;
 try {
-  const taze = await substackCek();
+  let taze = [];
+  try { taze = await substackCek(); DURUM.kaynak = 'api'; }
+  catch (e) { DURUM.hatalar.push(`api: ${e.message}`); taze = await rssCek(); DURUM.kaynak = 'rss'; }
   if (taze.length) {
     const bySlug = new Map(onbellek.map((p) => [p.slug, p]));
-    for (const p of taze) { const eski = bySlug.get(p.slug) || {}; bySlug.set(p.slug, { ...eski, ...p, ozet: eski.ozet && eski.ozet.length ? eski.ozet : [], cover_image: p.cover_image || eski.cover_image || '' }); }
+    for (const p of taze) { const eski = bySlug.get(p.slug) || {}; const dolu = Object.fromEntries(Object.entries(p).filter(([, v]) => v !== null && v !== '')); bySlug.set(p.slug, { ...eski, ...dolu, ozet: eski.ozet && eski.ozet.length ? eski.ozet : [], cover_image: p.cover_image || eski.cover_image || '' }); }
     for (const p of bySlug.values()) {
-      if (SAYI_RE.test(p.title) && !(p.ozet && p.ozet.length)) { try { p.ozet = await sayiOzeti(p.slug); } catch { /* özet alınamazsa boş kalır */ } }
+      if (SAYI_RE.test(p.title) && !(p.ozet && p.ozet.length)) { try { p.ozet = await sayiOzeti(p.slug, p._govde); } catch { /* özet alınamazsa boş kalır */ } }
+      delete p._govde;
     }
     gonderiler = [...bySlug.values()];
     await writeFile('data/substack-onbellek.json', JSON.stringify(gonderiler, null, 2) + '\n');
     console.log(`Substack: ${taze.length} gönderi çekildi.`);
   }
 } catch (e) {
+  DURUM.hatalar.push(`rss: ${e.message}`);
   console.warn(`Substack'e ulaşılamadı (${e.message}); önbellek kullanılıyor.`);
 }
 gonderiler.sort((a, b) => (a.post_date < b.post_date ? 1 : -1));
@@ -153,7 +185,7 @@ function sayiKarti(s, buyuk) {
       : `<p class="sayi-ozet-metin">${gosterilen.map((m) => esc(m)).join('<br>')}</p>`)
     : (s.ozet_yedek ? `<p class="sayi-ozet">${esc(kisalt(s.ozet_yedek, 260))}</p>` : '');
   const kapak = s.cover_image || '';
-  const kaynak = (kapak.match(/\/(https?%3A[^/]+)$/i) || [])[1];
+  const kaynak = (kapak.match(/\/(https?%3A[^/]+)$/i) || [])[1] || (/^https:\/\/substack-post-media\./.test(kapak) ? encodeURIComponent(kapak) : '');
   const boy = (w) => `https://substackcdn.com/image/fetch/w_${w},c_limit,f_auto,q_auto:good,fl_progressive:steep/${kaynak}`;
   const srcset = kaynak ? ` srcset="${[400, 640, 960, 1280].map((w) => `${boy(w)} ${w}w`).join(', ')}" sizes="${buyuk ? '(max-width: 760px) 100vw, 600px' : '(max-width: 760px) 100vw, 380px'}"` : '';
   return `<a class="kart sayi${buyuk ? ' sayi-buyuk' : ''}" href="${esc(s.canonical_url)}">${kapak ? `<span class="sayi-kapak"><img src="${esc(kaynak ? boy(640) : kapak)}"${srcset} alt="Sayı ${s.no} kapak görseli" loading="${buyuk ? 'eager' : 'lazy'}" decoding="async" width="960" height="540"></span>` : ''}<span class="sayi-govde"><span class="etiket">${buyuk ? 'Son sayı · ' : ''}Sayı ${s.no}</span><span class="sayi-hafta">${haftaAraligi(s.yil, s.hafta)}</span>${ozetHTML}<span class="oku">Oku →</span></span></a>`;
@@ -430,6 +462,7 @@ await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <url><loc>${SITE}/podcast/</loc><lastmod>${sonBolumTarih}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
 `);
+await writeFile('dist/derleme.json', JSON.stringify(DURUM, null, 2));
 await writeFile('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 await writeFile('dist/404.html', `${head('Sayfa bulunamadı · Ortak Kürsü', 'Aradığınız sayfa bulunamadı.', '/404.html', [], 'noindex, follow')}
 <body>${ust}

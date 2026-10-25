@@ -1,11 +1,15 @@
 [
   {
     "title": "Türkiye ve \"Made in Europe\"",
-    "post_date": "2026-10-20T16:29:08.150Z",
+    "post_date": "2026-10-20T16:29:08.000Z",
     "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/turkiye-ve-made-in-europe-736",
     "slug": "turkiye-ve-made-in-europe-736",
     "type": "podcast",
-    "podcast_duration": 3025
+    "podcast_duration": 3025,
+    "subtitle": "Avrupa Birliği, \"Avrupa’da üretilmiştir\" ifadesine ilk kez hukuki bir sonuç bağlıyor.",
+    "ozet_yedek": "Avrupa Birliği, \"Avrupa’da üretilmiştir\" ifadesine ilk kez hukuki bir sonuç bağlıyor. Hangi ürünün Avrupa malı sayılacağı, kamu ihalelerinde ve devlet desteklerinde kimin öne geçeceğini belirleyecek. Geçen hafta Fransa ile Almanya bu tanım üzerinde uzlaştı ve uzlaşmanın tarif ettiği çerçeve, otomotiv ihracatının dörtte üçe yakınını Avrupa Birliği’ne yapan Türkiye’yi dışarıda bırakıyor.",
+    "ozet": [],
+    "cover_image": ""
   },
   {
     "title": "Teknoloji · Hukuk · Politika (2026/42)",
@@ -227,5 +231,19 @@
     "type": "newsletter",
     "podcast_duration": null,
     "cover_image": "https://substackcdn.com/image/fetch/$s_!M94z!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff58b09f8-7434-4392-9c29-0a7fedea85a2_1890x1124.png"
+  },
+  {
+    "title": "Teknoloji · Hukuk · Politika (2026/43)",
+    "subtitle": "19–25 Ekim 2026",
+    "post_date": "2026-10-25T06:05:18.000Z",
+    "canonical_url": "https://cigdemgizemokkaoglu.substack.com/p/teknoloji-hukuk-politika-202643",
+    "slug": "teknoloji-hukuk-politika-202643",
+    "type": "newsletter",
+    "cover_image": "https://substackcdn.com/image/fetch/$s_!ZQF4!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e2a9cfd-840c-4a80-8915-93a5877594f7_1786x1180.png",
+    "ozet_yedek": "Başlarken… 2 Kasım 1988 akşamı, Cornell Üniversitesi’nde yüksek lisans öğrencisi olan 23 yaşındaki Robert Tappan Morris, MIT’deki bir bilgisayardan ağa küçük bir program saldı. Program, kendini bilgisayardan bilgisayara kopyalayan bir \"solucan\"dı ve dönemin yaygın yazılımlarındaki açıkları kullanarak yayılıyordu.",
+    "ozet": [
+      "🛡️Yapay zekâ, internetin yaklaşık yüzde 70'inin dayandığı PHP’de iki kritik açık buldu. Düzeltmenin, saldırganlara fırsat vermemek için herkes tarafından aynı saatte yayımlanması planlanmıştı. Bir şirket düzeltmeyi altı saat erken yayımlayınca bu plan bozuldu; ardından dünya genelinde milyonlarca saldırı denemesi görüldü ve pek çok kamu sitesi kapatıldı. Siber Güvenlik Başkanlığımız ulusal tarama başlattı.",
+      "🇪🇺Avrupa, en gelişmiş yapay zekâ modellerini geliştirme yarışını ABD ve Çin’e bırakmalı mı? Avrupa Komisyonu Başkanı Ursula von der Leyen’in \"modeli kimin yaptığından çok, nasıl kullandığımız önemli\" çizgisine, Avrupa’nın en büyük yapay zekâ şirketi olan Fransız Mistral’in CEO’su Arthur Mensch \"İnşa et ya da teslim ol\" diye cevap verdi."
+    ]
   }
 ]
