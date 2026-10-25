@@ -38,11 +38,6 @@ async function rssCek() {
   const yollar = [
     ['doğrudan', feed, BASLIK],
     ['doğrudan-tarayıcı', feed, TARAYICI],
-    ['allorigins', `https://api.allorigins.win/raw?url=${encodeURIComponent(feed)}`, TARAYICI],
-    ['corsproxy', `https://corsproxy.io/?url=${encodeURIComponent(feed)}`, TARAYICI],
-    ['rss2json', `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed)}`, TARAYICI],
-    ['allorigins-2', `https://api.allorigins.win/raw?url=${encodeURIComponent(feed)}`, TARAYICI],
-    ['codetabs', `https://api.codetabs.com/v1/proxy/?quest=${encodeURIComponent(feed)}`, TARAYICI],
   ];
   const cd = (x) => `<![CDATA[${String(x || '').replace(/\]\]>/g, ']]&gt;')}]]>`;
   const jsondanXml = (j) => (j.items || []).map((i) => `<item><title>${cd(i.title)}</title><description>${cd('')}</description><link>${i.link}</link><pubDate>${new Date(i.pubDate.replace(' ', 'T') + 'Z').toUTCString()}</pubDate>${i.enclosure && i.enclosure.link ? `<enclosure url="${i.enclosure.link}" type="${i.enclosure.type || ''}"/>` : ''}${i.thumbnail ? `<enclosure url="${i.thumbnail}" type="image/jpeg"/>` : ''}${i.enclosure && i.enclosure.duration ? `<itunes:duration>${i.enclosure.duration}</itunes:duration>` : ''}<content:encoded>${cd(i.content || i.description)}</content:encoded></item>`).join('');
