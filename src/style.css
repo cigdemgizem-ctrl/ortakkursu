@@ -197,9 +197,10 @@ a.yazi-baslik:hover { color: var(--kiremit-koyu); }
 .metin-sayfa h1 { font-size: clamp(30px, 4vw, 40px); margin-bottom: 8px; }
 .metin-sayfa h2 { font-size: clamp(21px, 2.4vw, 25px); margin-top: 10px; }
 .egitim-listesi { list-style: none; padding: 0; margin: 0 0 8px; border-top: 1px solid var(--tas); }
-.egitim-listesi li { display: grid; grid-template-columns: 120px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--tas); }
-.egitim-yil { color: var(--kiremit-koyu); font-weight: 600; font-variant-numeric: tabular-nums; }
-@media (max-width: 520px) { .egitim-listesi li { grid-template-columns: 1fr; gap: 2px; } }
+.egitim-listesi li { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--tas); }
+.egitim-tur { display: block; font-size: 14px; color: #5c5650; margin-top: 2px; }
+.egitim-yil { color: var(--kiremit-koyu); font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+@media (max-width: 520px) { .egitim-listesi li { gap: 10px; } }
 
 @media (max-width: 760px) {
   .sayi-buyuk { grid-template-columns: minmax(0, 1fr); }

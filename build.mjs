@@ -467,13 +467,13 @@ const hakkimdaSayfa = `${head('Hakkımda · Çiğdem Gizem Okkaoğlu · Ortak K�
 <h1>Hakkımda</h1>
 <h2><span aria-hidden="true">🎓</span> Eğitim</h2>
 <ul class="egitim-listesi">
-<li><span class="egitim-yil">Devam ediyor</span><span><strong>ODTÜ</strong> Bilim ve Teknoloji Politikası Çalışmaları (TEKPOL) · Doktora</span></li>
-<li><span class="egitim-yil">2025</span><span><strong>ODTÜ</strong> Avrupa Çalışmaları · Tezli Yüksek Lisans</span></li>
-<li><span class="egitim-yil">2019</span><span><strong>Ankara Üniversitesi</strong> Hukuk Fakültesi</span></li>
-<li><span class="egitim-yil">2018</span><span><strong>Anadolu Üniversitesi</strong> İktisat Bölümü</span></li>
-<li><span class="egitim-yil">2015</span><span><strong>Bilkent Üniversitesi</strong> Endüstri Mühendisliği Bölümü</span></li>
-<li><span class="egitim-yil">2012</span><span><strong>Anadolu Üniversitesi</strong> Sosyal Hizmetler Bölümü</span></li>
-<li><span class="egitim-yil">2009</span><span><strong>Ankara Atatürk Anadolu Lisesi</strong></span></li>
+<li><span><strong>ODTÜ</strong> Bilim ve Teknoloji Politikası Çalışmaları (TEKPOL)<span class="egitim-tur">Doktora Programı</span></span><span class="egitim-yil">Devam ediyor</span></li>
+<li><span><strong>ODTÜ</strong> Avrupa Çalışmaları<span class="egitim-tur">Tezli Yüksek Lisans Programı</span></span><span class="egitim-yil">2025</span></li>
+<li><span><strong>Ankara Üniversitesi</strong> Hukuk Fakültesi<span class="egitim-tur">Lisans Programı</span></span><span class="egitim-yil">2019</span></li>
+<li><span><strong>Anadolu Üniversitesi</strong> İktisat Bölümü<span class="egitim-tur">Lisans Programı</span></span><span class="egitim-yil">2018</span></li>
+<li><span><strong>Bilkent Üniversitesi</strong> Endüstri Mühendisliği Bölümü<span class="egitim-tur">Lisans Programı</span></span><span class="egitim-yil">2015</span></li>
+<li><span><strong>Anadolu Üniversitesi</strong> Sosyal Hizmetler Bölümü<span class="egitim-tur">Ön Lisans Programı</span></span><span class="egitim-yil">2012</span></li>
+<li><span><strong>Ankara Atatürk Anadolu Lisesi</strong><span class="egitim-tur">Lise</span></span><span class="egitim-yil">2009</span></li>
 </ul>
 <h2><span aria-hidden="true">💼</span> İş Tecrübesi</h2>
 <p>Ankara Barosuna bağlı avukatım. Rekabet Kurumunda beş yıl uzman yardımcısı ve uzman olarak çalıştım. Ardından Balcıoğlu Selçuk Ardıyok Keki Avukatlık Ortaklığında (Dentons Türkiye) Danışman, ELİG Gürkaynak Avukatlık Bürosunda Kıdemli Avukat ve Günay Erdoğan Avukatlık Bürosunda Ortak Avukat olarak çalıştım. Hâlihazırda uluslararası bir teknoloji şirketinde Baş Hukuk Müşaviri olarak çalışıyorum. Bunun yanı sıra <a href="https://www.toplum.org.tr/">Toplum Çalışmaları Enstitüsünde</a> Genel Sekreter olarak görev yapıyorum.</p>
