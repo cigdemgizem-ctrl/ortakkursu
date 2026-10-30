@@ -472,6 +472,7 @@ const hakkimdaSayfa = `${head('Hakkımda · Çiğdem Gizem Okkaoğlu · Ortak K�
 <li>Ankara Üniversitesi Hukuk Fakültesi, Lisans Programı (2019)</li>
 <li>Anadolu Üniversitesi İktisat Bölümü, Lisans Programı (2018)</li>
 <li>Bilkent Üniversitesi Endüstri Mühendisliği Bölümü, Lisans Programı (2015)</li>
+<li>Johann Wolfgang Goethe-Universität Frankfurt, Erasmus Öğrencisi (2013)</li>
 <li>Anadolu Üniversitesi Sosyal Hizmetler Bölümü, Ön Lisans Programı (2012)</li>
 <li>Ankara Atatürk Anadolu Lisesi (2009)</li>
 </ul>
