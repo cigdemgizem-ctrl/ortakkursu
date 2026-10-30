@@ -465,6 +465,7 @@ const hakkimdaSayfa = `${head('Hakkımda · Çiğdem Gizem Okkaoğlu · Ortak K�
 <body>${ust}
 <main id="icerik" class="kap bolum-blok metin-sayfa">
 <h1>Hakkımda</h1>
+<h2><span aria-hidden="true">🎓</span> Eğitim</h2>
 <ul class="egitim-listesi">
 <li><span class="egitim-yil">Devam ediyor</span><span><strong>ODTÜ</strong> Bilim ve Teknoloji Politikası Çalışmaları (TEKPOL) · Doktora</span></li>
 <li><span class="egitim-yil">2025</span><span><strong>ODTÜ</strong> Avrupa Çalışmaları · Tezli Yüksek Lisans</span></li>
@@ -474,6 +475,7 @@ const hakkimdaSayfa = `${head('Hakkımda · Çiğdem Gizem Okkaoğlu · Ortak K�
 <li><span class="egitim-yil">2012</span><span><strong>Anadolu Üniversitesi</strong> Sosyal Hizmetler Bölümü</span></li>
 <li><span class="egitim-yil">2009</span><span><strong>Ankara Atatürk Anadolu Lisesi</strong></span></li>
 </ul>
+<h2><span aria-hidden="true">💼</span> İş Tecrübesi</h2>
 <p>Rekabet Kurumunda beş yıl uzman yardımcısı ve uzman olarak çalıştım. Ardından Balcıoğlu Selçuk Ardıyok Keki Avukatlık Ortaklığında (Dentons Türkiye) Danışman, ELİG Gürkaynak Avukatlık Bürosunda Kıdemli Avukat ve Günay Erdoğan Avukatlık Bürosunda Ortak Avukat olarak çalıştım. Hâlihazırda uluslararası bir teknoloji şirketinde Baş Hukuk Müşaviri olarak çalışıyorum.</p>
 <p><a href="/#iletisim">İletişim →</a></p>
 </main>${alt}
