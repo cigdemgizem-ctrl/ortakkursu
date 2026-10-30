@@ -465,6 +465,7 @@ const hakkimdaSayfa = `${head('Hakkımda · Çiğdem Gizem Okkaoğlu · Ortak K�
 <body>${ust}
 <main id="icerik" class="kap bolum-blok metin-sayfa">
 <h1>Hakkımda</h1>
+<h2><span aria-hidden="true">🎓</span> Eğitim</h2>
 <ul class="egitim-listesi">
 <li>ODTÜ Bilim ve Teknoloji Politikası Çalışmaları (TEKPOL), Doktora Programı (devam ediyor)</li>
 <li>ODTÜ Avrupa Çalışmaları, Tezli Yüksek Lisans Programı (2025)</li>
@@ -475,6 +476,7 @@ const hakkimdaSayfa = `${head('Hakkımda · Çiğdem Gizem Okkaoğlu · Ortak K�
 <li>Anadolu Üniversitesi Sosyal Hizmetler Bölümü, Ön Lisans Programı (2012)</li>
 <li>Ankara Atatürk Anadolu Lisesi (2009)</li>
 </ul>
+<h2><span aria-hidden="true">💼</span> İş Tecrübesi</h2>
 <p>Rekabet Kurumunda beş yıl uzman yardımcısı ve uzman olarak çalıştım. Ardından Balcıoğlu Selçuk Ardıyok Keki Avukatlık Ortaklığında Danışman, ELİG Gürkaynak Avukatlık Bürosunda Kıdemli Avukat ve Günay Erdoğan Avukatlık Bürosunda Ortak Avukat olarak beş yıl çalıştım. Hâlihazırda uluslararası bir teknoloji şirketinde Baş Hukuk Müşaviri olarak çalışıyorum. Bunun yanı sıra Toplum Çalışmaları Enstitüsünde Genel Sekreter olarak görev yapıyorum. İyi düzeyde İngilizce, orta düzeyde Almanca ve İspanyolca biliyorum.</p>
 <p><a href="/#iletisim">İletişim →</a></p>
 </main>${alt}
