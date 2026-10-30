@@ -289,7 +289,8 @@ const KISI = {
   email: 'mailto:info@ortakkursu.com',
   description: 'Hukukçu, teknoloji politikaları doktora adayı ve endüstri mühendisi. Ortak Kürsü bülteni ve podcastinin yazarı ve sunucusu.',
   knowsAbout: ['Rekabet hukuku', 'Dijital piyasalar', 'Teknoloji politikası', 'Yapay zekâ yönetişimi', 'Dijital Piyasalar Yasası'],
-  alumniOf: [{ '@type': 'CollegeOrUniversity', name: 'Orta Doğu Teknik Üniversitesi' }, { '@type': 'CollegeOrUniversity', name: 'Ankara Üniversitesi' }, { '@type': 'CollegeOrUniversity', name: 'Bilkent Üniversitesi' }],
+  alumniOf: ['Orta Doğu Teknik Üniversitesi', 'Ankara Üniversitesi', 'Bilkent Üniversitesi', 'Anadolu Üniversitesi'].map((name) => ({ '@type': 'CollegeOrUniversity', name })),
+  jobTitle: 'Baş Hukuk Müşaviri',
   sameAs: [site.linkedin, site.youtube, site.youtubeMusic, site.spotify, site.x, site.substackAdres, site.instagram, 'https://www.toplum.org.tr/author/cigdem-gizem-okkaoglu/'].filter(Boolean),
 };
 const WEBSITE = { '@type': 'WebSite', '@id': 'https://ortakkursu.com/#site', name: 'Ortak Kürsü', alternateName: 'ortakkursu.com', url: 'https://ortakkursu.com/', inLanguage: 'tr-TR', publisher: { '@id': 'https://ortakkursu.com/#kisi' } };
@@ -338,7 +339,7 @@ const ust = `
 <div class="kap ust-ic">
 <a href="/" class="marka" aria-label="Ortak Kürsü ana sayfa"><span class="marka-ad">Ortak Kürsü</span></a>
 <nav aria-label="Ana menü" class="menu">
-<a href="/#bulten">Bülten</a><a href="/#podcast">Podcast</a><a href="/#konusmalar">Konuşma ve Programlar</a><a href="/#yazilar">Rapor ve Yazılar</a><a href="/#iletisim">İletişim</a><a href="/#abone" class="dugme dugme-vurgu">Abone ol</a>
+<a href="/#bulten">Bülten</a><a href="/#podcast">Podcast</a><a href="/#konusmalar">Konuşma ve Programlar</a><a href="/#yazilar">Rapor ve Yazılar</a><a href="/hakkimda/">Hakkımda</a><a href="/#iletisim">İletişim</a><a href="/#abone" class="dugme dugme-vurgu">Abone ol</a>
 </nav>
 </div>
 </header>`;
@@ -460,6 +461,21 @@ ${aydinlatmaMetni}
 </html>
 `;
 
+const hakkimdaSayfa = `${head('Hakkımda · Çiğdem Gizem Okkaoğlu · Ortak Kürsü', 'Çiğdem Gizem Okkaoğlu: eğitim ve meslek geçmişi. Hukukçu, endüstri mühendisi, ODTÜ TEKPOL doktora öğrencisi.', '/hakkimda/', [{ '@type': 'ProfilePage', url: `${SITE}/hakkimda/`, mainEntity: { '@id': 'https://ortakkursu.com/#kisi' }, inLanguage: 'tr-TR' }])}
+<body>${ust}
+<main id="icerik" class="kap bolum-blok metin-sayfa">
+<p class="ust-etiket koyu">Hakkımda</p>
+<h1>Çiğdem Gizem Okkaoğlu</h1>
+<h2>Eğitim</h2>
+<p>2015 yılında Bilkent Üniversitesi Endüstri Mühendisliği Bölümü’nden mezun oldum. Ankara Üniversitesi Hukuk Fakültesi’nden 2019’da; Anadolu Üniversitesi İktisat Bölümü’nden 2018’de, Sosyal Hizmetler Bölümü’nden 2012’de mezun oldum. ODTÜ Avrupa Çalışmaları Tezli Yüksek Lisans Programı’nı 2025’te tamamladım. Hâlen ODTÜ Bilim ve Teknoloji Politikası Çalışmaları (TEKPOL) doktora programına devam ediyorum.</p>
+<h2>Meslek</h2>
+<p>Rekabet Kurumu’nda beş yıl uzman yardımcısı ve uzman olarak çalıştım. Ardından Balcıoğlu Selçuk Ardıyok Keki Avukatlık Ortaklığı’nda (Dentons Türkiye) Danışman, ELİG Gürkaynak Avukatlık Bürosu’nda Kıdemli Avukat ve Günay Erdoğan Avukatlık Bürosu’nda Ortak Avukat olarak çalıştım. Hâlihazırda uluslararası bir teknoloji şirketinde Baş Hukuk Müşaviri olarak çalışıyorum.</p>
+<p><a href="/#iletisim">İletişim →</a></p>
+</main>${alt}
+</body>
+</html>
+`;
+
 // ---------- Yaz ----------
 if (existsSync('dist')) await rm('dist', { recursive: true });
 await mkdir('dist/aydinlatma-metni', { recursive: true });
@@ -468,6 +484,8 @@ await cp('src/style.css', 'dist/style.css');
 await cp('src/site.js', 'dist/site.js');
 await writeFile('dist/index.html', index);
 await writeFile('dist/aydinlatma-metni/index.html', aydinlatmaSayfa);
+await mkdir('dist/hakkimda', { recursive: true });
+await writeFile('dist/hakkimda/index.html', hakkimdaSayfa);
 const bugun = new Date().toISOString().slice(0, 10);
 const sonSayiTarih = (sayilar[0]?.post_date || new Date().toISOString()).slice(0, 10);
 const sonBolumTarih = (bolumler[0]?.post_date || new Date().toISOString()).slice(0, 10);
@@ -475,6 +493,7 @@ await writeFile('dist/sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>${SITE}/</loc><lastmod>${bugun}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
 <url><loc>${SITE}/bulten/</loc><lastmod>${sonSayiTarih}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>${SITE}/hakkimda/</loc><lastmod>${bugun}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>${SITE}/podcast/</loc><lastmod>${sonBolumTarih}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
 `);
