@@ -477,7 +477,7 @@ const hakkimdaSayfa = `${head('Hakkımda · Çiğdem Gizem Okkaoğlu · Ortak K�
 <li>Ankara Atatürk Anadolu Lisesi (2009)</li>
 </ul>
 <h2><span aria-hidden="true">💼</span> İş Tecrübesi</h2>
-<p>Rekabet Kurumunda beş yıl uzman yardımcısı ve uzman olarak çalıştım. Ardından Balcıoğlu Selçuk Ardıyok Keki Avukatlık Ortaklığında (Dentons Türkiye) Danışman, ELİG Gürkaynak Avukatlık Bürosunda Kıdemli Avukat ve Günay Erdoğan Avukatlık Bürosunda Ortak Avukat olarak çalıştım. Hâlihazırda uluslararası bir teknoloji şirketinde Baş Hukuk Müşaviri olarak çalışıyorum. Bunun yanı sıra <a href="https://www.toplum.org.tr/">Toplum Çalışmaları Enstitüsünde</a> Genel Sekreter olarak görev yapıyorum.</p>
+<p>Rekabet Kurumunda beş yıl uzman yardımcısı ve uzman olarak çalıştım. Ardından Balcıoğlu Selçuk Ardıyok Keki Avukatlık Ortaklığında Danışman, ELİG Gürkaynak Avukatlık Bürosunda Kıdemli Avukat ve Günay Erdoğan Avukatlık Bürosunda Ortak Avukat olarak çalıştım. Hâlihazırda uluslararası bir teknoloji şirketinde Baş Hukuk Müşaviri olarak çalışıyorum. Bunun yanı sıra <a href="https://www.toplum.org.tr/">Toplum Çalışmaları Enstitüsünde</a> Genel Sekreter olarak görev yapıyorum.</p>
 <p><a href="/#iletisim">İletişim →</a></p>
 </main>${alt}
 </body>
