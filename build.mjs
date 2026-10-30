@@ -464,12 +464,17 @@ ${aydinlatmaMetni}
 const hakkimdaSayfa = `${head('Hakkımda · Çiğdem Gizem Okkaoğlu · Ortak Kürsü', 'Çiğdem Gizem Okkaoğlu: eğitim ve meslek geçmişi. Hukukçu, endüstri mühendisi, ODTÜ TEKPOL doktora öğrencisi.', '/hakkimda/', [{ '@type': 'ProfilePage', url: `${SITE}/hakkimda/`, mainEntity: { '@id': 'https://ortakkursu.com/#kisi' }, inLanguage: 'tr-TR' }])}
 <body>${ust}
 <main id="icerik" class="kap bolum-blok metin-sayfa">
-<p class="ust-etiket koyu">Hakkımda</p>
-<h1>Çiğdem Gizem Okkaoğlu</h1>
-<h2>Eğitim</h2>
-<p>2015 yılında Bilkent Üniversitesi Endüstri Mühendisliği Bölümü’nden mezun oldum. Ankara Üniversitesi Hukuk Fakültesi’nden 2019’da; Anadolu Üniversitesi İktisat Bölümü’nden 2018’de, Sosyal Hizmetler Bölümü’nden 2012’de mezun oldum. ODTÜ Avrupa Çalışmaları Tezli Yüksek Lisans Programı’nı 2025’te tamamladım. Hâlen ODTÜ Bilim ve Teknoloji Politikası Çalışmaları (TEKPOL) doktora programına devam ediyorum.</p>
-<h2>Meslek</h2>
-<p>Rekabet Kurumu’nda beş yıl uzman yardımcısı ve uzman olarak çalıştım. Ardından Balcıoğlu Selçuk Ardıyok Keki Avukatlık Ortaklığı’nda (Dentons Türkiye) Danışman, ELİG Gürkaynak Avukatlık Bürosu’nda Kıdemli Avukat ve Günay Erdoğan Avukatlık Bürosu’nda Ortak Avukat olarak çalıştım. Hâlihazırda uluslararası bir teknoloji şirketinde Baş Hukuk Müşaviri olarak çalışıyorum.</p>
+<h1>Hakkımda</h1>
+<ul class="egitim-listesi">
+<li><span class="egitim-yil">Devam ediyor</span><span><strong>ODTÜ</strong> Bilim ve Teknoloji Politikası Çalışmaları (TEKPOL) · Doktora</span></li>
+<li><span class="egitim-yil">2025</span><span><strong>ODTÜ</strong> Avrupa Çalışmaları · Tezli Yüksek Lisans</span></li>
+<li><span class="egitim-yil">2019</span><span><strong>Ankara Üniversitesi</strong> Hukuk Fakültesi</span></li>
+<li><span class="egitim-yil">2018</span><span><strong>Anadolu Üniversitesi</strong> İktisat Bölümü</span></li>
+<li><span class="egitim-yil">2015</span><span><strong>Bilkent Üniversitesi</strong> Endüstri Mühendisliği Bölümü</span></li>
+<li><span class="egitim-yil">2012</span><span><strong>Anadolu Üniversitesi</strong> Sosyal Hizmetler Bölümü</span></li>
+<li><span class="egitim-yil">2009</span><span><strong>Ankara Atatürk Anadolu Lisesi</strong></span></li>
+</ul>
+<p>Rekabet Kurumunda beş yıl uzman yardımcısı ve uzman olarak çalıştım. Ardından Balcıoğlu Selçuk Ardıyok Keki Avukatlık Ortaklığında (Dentons Türkiye) Danışman, ELİG Gürkaynak Avukatlık Bürosunda Kıdemli Avukat ve Günay Erdoğan Avukatlık Bürosunda Ortak Avukat olarak çalıştım. Hâlihazırda uluslararası bir teknoloji şirketinde Baş Hukuk Müşaviri olarak çalışıyorum.</p>
 <p><a href="/#iletisim">İletişim →</a></p>
 </main>${alt}
 </body>
