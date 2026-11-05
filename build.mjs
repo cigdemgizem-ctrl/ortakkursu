@@ -310,7 +310,7 @@ const head = (baslik, aciklama, yol = '/', ekJsonLd = [], robots = 'index, follo
 <meta property="og:site_name" content="Ortak Kürsü">
 <meta property="og:title" content="${esc(baslik)}">
 <meta property="og:description" content="${esc(aciklama)}">
-<meta property="og:image" content="${SITE}/assets/og-image-2.jpg">
+<meta property="og:image" content="${SITE}/assets/og-image-3.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Ortak Kürsü: Teknoloji · Hukuk · Politika">
@@ -321,7 +321,7 @@ const head = (baslik, aciklama, yol = '/', ekJsonLd = [], robots = 'index, follo
 <meta name="twitter:creator" content="@cigdemokkaoglu">
 <meta name="twitter:title" content="${esc(baslik)}">
 <meta name="twitter:description" content="${esc(aciklama)}">
-<meta name="twitter:image" content="${SITE}/assets/og-image-2.jpg">
+<meta name="twitter:image" content="${SITE}/assets/og-image-3.jpg">
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
