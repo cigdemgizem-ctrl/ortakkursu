@@ -55,14 +55,11 @@ p { margin: 0; }
 /* Kahraman */
 .gizli { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .kahraman { background: #F5F1E9; border-bottom: 1px solid var(--tas); overflow: hidden; }
-.kahraman-ic { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center; gap: 24px; padding-top: 40px; }
-.kahraman-yazi { display: flex; flex-direction: column; gap: 36px; padding-bottom: 40px; }
-.kahraman-ad { font-family: var(--serif); font-weight: 800; font-size: clamp(64px, 9vw, 132px); line-height: .92; letter-spacing: -0.02em; margin: 0; color: var(--murekkep); }
-.kahraman-gorsel { align-self: end; }
+.kahraman-ic { display: flex; flex-direction: column; align-items: center; gap: 28px; padding-top: 32px; padding-bottom: 44px; }
+.kahraman-gorsel { width: 100%; max-width: 480px; }
 .kahraman-gorsel picture { display: block; }
-.kahraman-gorsel img { width: 100%; max-width: 600px; height: auto; display: block; margin-left: auto;
-  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14%, #000 88%, transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0, #000 14%, #000 88%, transparent 100%); }
+.kahraman-gorsel img { width: 100%; height: auto; display: block; border-radius: 22px; box-shadow: 0 10px 30px rgba(22, 22, 22, 0.10); }
+.kahraman .dugmeler { justify-content: center; }
 .dugme-koyu { background: var(--murekkep); color: var(--krem); }
 .dugme-koyu:hover { background: #333; color: var(--krem); }
 .dugme-cerceve-koyu { border: 1.5px solid var(--murekkep); color: var(--murekkep); }
@@ -203,9 +200,7 @@ a.yazi-baslik:hover { color: var(--kiremit-koyu); }
   .sayi-buyuk .sayi-kapak { aspect-ratio: 16 / 9; min-height: 0; }
   .sayi-buyuk .sayi-govde { padding: 24px; }
   .yazi { grid-template-columns: minmax(0, 1fr); gap: 4px; }
-  .kahraman-ic { grid-template-columns: minmax(0, 1fr); padding-top: 32px; gap: 8px; }
-  .kahraman-yazi { padding-bottom: 8px; gap: 24px; }
-  .kahraman-gorsel img { margin: 0 auto; }
+  .kahraman-ic { padding-top: 16px; padding-bottom: 32px; gap: 20px; }
   .konusma { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .konusma-metin { padding: 0 6px 6px; }
   .rapor-kapak { flex-basis: 96px; }
