@@ -75,7 +75,8 @@ async function substackCek() {
     const url = `${site.substackAdres}/api/v1/archive?sort=new&offset=${offset}&limit=50`;
     const r = await fetch(url, { headers: BASLIK, signal: AbortSignal.timeout(20000) });
     if (!r.ok) throw new Error(`Substack yanıtı ${r.status}`);
-    const sayfa = await r.json();
+    const ham = await r.json();
+    const sayfa = Array.isArray(ham) ? ham : ham.posts;
     if (!Array.isArray(sayfa)) throw new Error('Beklenmeyen Substack yanıtı');
     hepsi.push(...sayfa);
     if (sayfa.length < 50) break;
@@ -108,7 +109,7 @@ async function sayiOzeti(slug, govde) {
   if (!html) {
     const r = await fetch(`${site.substackAdres}/api/v1/posts/${slug}`, { headers: BASLIK, signal: AbortSignal.timeout(20000) });
     if (!r.ok) return [];
-    html = (await r.json()).body_html || '';
+    const j = await r.json(); html = (j.post || j).body_html || '';
   }
   const bloklar = html.match(/<(p|li|h[1-6]|blockquote)[^>]*>[\s\S]*?<\/\1>/gi) || [];
   const metinler = bloklar.map((b) => htmlMetin(b).replace(/\s+/g, ' ').trim()).filter(Boolean);
